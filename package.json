@@ -1,0 +1,35 @@
+{
+  "name": "shadix-ui",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev --turbo",
+    "start": "next start",
+    "postinstall": "fumadocs-mdx",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "next": "15.5.4",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "lucide-react": "^0.544.0",
+    "fumadocs-ui": "15.8.5",
+    "fumadocs-core": "15.8.5",
+    "fumadocs-mdx": "12.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "24.6.2",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "typescript": "^5.9.3",
+    "@types/mdx": "^2.0.13",
+    "@tailwindcss/postcss": "^4.1.14",
+    "tailwindcss": "^4.1.14",
+    "postcss": "^8.5.6",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.4",
+    "@eslint/eslintrc": "^3"
+  },
+  "packageManager": "pnpm@10.17.1+sha512.17c560fca4867ae9473a3899ad84a88334914f379be46d455cbf92e5cf4b39d34985d452d2583baf19967fa76cb5c17bc9e245529d0b98745721aa7200ecaf7a"
+}
