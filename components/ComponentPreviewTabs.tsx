@@ -1,8 +1,9 @@
 'use client'
 
 import * as React from 'react'
-import { cn } from '@/shadcn/lib/utils'
+
 import { Tabs, TabsList, TabsTrigger } from '@/shadcn/components/ui/tabs'
+import { cn } from '@/shadcn/lib/utils'
 
 export function ComponentPreviewTabs({
     className,

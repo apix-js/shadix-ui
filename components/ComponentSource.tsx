@@ -1,8 +1,14 @@
 import * as React from 'react'
-import { cn } from '@/shadcn/lib/utils'
+
+import fs from 'node:fs/promises'
+import path from 'node:path'
+
+import { CodeCollapsibleWrapper } from '@/components/CodeCollapsibleWrapper'
+import { CopyButton } from '@/components/CopyButton'
+import { getIconForLanguageExtension } from '@/components/Icons'
 import { highlightCode } from '@/lib/highlight-code'
 import { getRegistryItem } from '@/lib/registry'
-import { CopyButton } from '@/components/CopyButton'
+import { cn } from '@/shadcn/lib/utils'
 
 export async function ComponentSource({
     name,
@@ -29,13 +35,22 @@ export async function ComponentSource({
         code = item?.files?.[0]?.content
     }
 
+    if (src) {
+        const file = await fs.readFile(path.join(process.cwd(), src), 'utf-8')
+        code = file
+    }
+
     if (!code) {
         return null
     }
 
-    // Fix imports
-    code = code.replaceAll('@/registry/new-york/', '@/registry/new-york/')
-    code = code.replaceAll('export default', 'export')
+    // Fix imports.
+    // Replace @/registry/new-york-v4/ with @/components/.
+    code = code.replaceAll('@/registry/new-york/', '@/components/')
+
+    // Replace export default with export.
+    // code = code.replaceAll('export default', 'export')
+    code = code.replaceAll('/* eslint-disable react/no-children-prop */\n', '')
 
     const lang = language ?? title?.split('.').pop() ?? 'tsx'
     const highlightedCode = await highlightCode(code, lang)
@@ -49,9 +64,9 @@ export async function ComponentSource({
     }
 
     return (
-        <div className={className}>
+        <CodeCollapsibleWrapper className={className}>
             <ComponentCode code={code} highlightedCode={highlightedCode} language={lang} title={title} />
-        </div>
+        </CodeCollapsibleWrapper>
     )
 }
 
@@ -74,7 +89,7 @@ function ComponentCode({
                     className="text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70"
                     data-language={language}
                 >
-                    {/* {getIconForLanguageExtension(language)} */}
+                    {getIconForLanguageExtension(language)}
                     {title}
                 </figcaption>
             )}

@@ -1,9 +1,11 @@
 "use client"
 
 import * as React from "react"
+
 import { CheckIcon, ClipboardIcon } from "lucide-react"
-import { cn } from "@/shadcn/lib/utils"
+
 import { Button } from "@/shadcn/components/ui/button"
+import { cn } from "@/shadcn/lib/utils"
 
 export function CopyButton({
   value,

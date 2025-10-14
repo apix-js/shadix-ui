@@ -1,9 +1,10 @@
 "use client"
 
 import * as React from "react"
-import * as TabsPrimitive from "@radix-ui/react-tabs"
 
 import { cn } from "@/shadcn/lib/utils"
+
+import * as TabsPrimitive from "@radix-ui/react-tabs"
 
 function Tabs({
   className,
@@ -63,4 +64,4 @@ function TabsContent({
   )
 }
 
-export { Tabs, TabsList, TabsTrigger, TabsContent }
+export { Tabs, TabsContent,TabsList, TabsTrigger }
