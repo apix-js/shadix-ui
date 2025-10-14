@@ -2,8 +2,7 @@
 
 import React, { useState } from 'react'
 
-import { Copy } from 'fumadocs-ui/internal/icons'
-import { Clipboard, Terminal, TerminalSquare } from 'lucide-react'
+import { Clipboard, TerminalSquare } from 'lucide-react'
 
 import { Button } from '@/shadcn/components/ui/button'
 import {

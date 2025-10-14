@@ -325,7 +325,11 @@
             width: 2px;
             height: 100%;
             content: '';
-            background-color: color-mix(in oklab, var(--muted-foreground) 50%, transparent);
+            background-color: color-mix(
+                in oklab,
+                var(--muted-foreground) 50%,
+                transparent
+            );
         }
     }
 
@@ -339,10 +343,10 @@
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
+    * {
+        @apply border-border outline-ring/50;
     }
-  body {
-    @apply bg-background text-foreground;
+    body {
+        @apply bg-background text-foreground;
     }
 }

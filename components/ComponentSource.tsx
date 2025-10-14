@@ -58,14 +58,24 @@ export async function ComponentSource({
     if (!collapsible) {
         return (
             <div className={cn('relative', className)}>
-                <ComponentCode code={code} highlightedCode={highlightedCode} language={lang} title={title} />
+                <ComponentCode
+                    code={code}
+                    highlightedCode={highlightedCode}
+                    language={lang}
+                    title={title}
+                />
             </div>
         )
     }
 
     return (
         <CodeCollapsibleWrapper className={className}>
-            <ComponentCode code={code} highlightedCode={highlightedCode} language={lang} title={title} />
+            <ComponentCode
+                code={code}
+                highlightedCode={highlightedCode}
+                language={lang}
+                title={title}
+            />
         </CodeCollapsibleWrapper>
     )
 }
@@ -82,11 +92,11 @@ function ComponentCode({
     title: string | undefined
 }) {
     return (
-        <figure data-rehype-pretty-code-figure="" className="[&>pre]:max-h-96">
+        <figure data-rehype-pretty-code-figure='' className='[&>pre]:max-h-96'>
             {title && (
                 <figcaption
-                    data-rehype-pretty-code-title=""
-                    className="text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70"
+                    data-rehype-pretty-code-title=''
+                    className='text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70'
                     data-language={language}
                 >
                     {getIconForLanguageExtension(language)}

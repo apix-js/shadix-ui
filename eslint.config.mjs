@@ -49,9 +49,7 @@ const eslintConfig = [
                 },
             ],
             'simple-import-sort/exports': 'error',
-            // 'import/first': 'error',
-            // 'import/newline-after-import': 'error',
-            // 'import/no-duplicates': 'error',
+            '@typescript-eslint/no-empty-object-type': 'off',
         },
         linterOptions: {
             reportUnusedDisableDirectives: true,
@@ -61,7 +59,14 @@ const eslintConfig = [
         // },
     },
     {
-        ignores: ['node_modules/**', '.next/**', 'out/**', 'build/**', '.source/**', 'next-env.d.ts'],
+        ignores: [
+            'node_modules/**',
+            '.next/**',
+            'out/**',
+            'build/**',
+            '.source/**',
+            'next-env.d.ts',
+        ],
     },
 ]
 

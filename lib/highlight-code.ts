@@ -20,7 +20,8 @@ export async function highlightCode(code: string, language: string = 'tsx') {
                             'relative grid min-w-full break-words rounded-md border-0 bg-transparent p-0 text-sm shadow-none'
                     },
                     line(node) {
-                        node.properties['class'] = 'min-h-[1.5rem] w-full break-words px-4 py-0.5 leading-relaxed'
+                        node.properties['class'] =
+                            'min-h-[1.5rem] w-full break-words px-4 py-0.5 leading-relaxed'
                         node.properties['data-line'] = ''
                     },
                 },

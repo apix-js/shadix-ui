@@ -37,7 +37,10 @@ const readJson = async <T>(file: string): Promise<T> => {
     return JSON.parse(content) as T
 }
 
-const recursiveFilesList = async (rootDir: string, exts: string[]): Promise<string[]> => {
+const recursiveFilesList = async (
+    rootDir: string,
+    exts: string[]
+): Promise<string[]> => {
     const results: string[] = []
 
     const walk = async (current: string): Promise<void> => {
@@ -57,7 +60,11 @@ const recursiveFilesList = async (rootDir: string, exts: string[]): Promise<stri
             }
 
             if (entry.isFile()) {
-                const matches = exts.some((ext) => entry.name.toLocaleLowerCase().endsWith(ext.toLocaleLowerCase()))
+                const matches = exts.some((ext) =>
+                    entry.name
+                        .toLocaleLowerCase()
+                        .endsWith(ext.toLocaleLowerCase())
+                )
                 if (matches) {
                     results.push(abs)
                 }
@@ -70,7 +77,10 @@ const recursiveFilesList = async (rootDir: string, exts: string[]): Promise<stri
     return results
 }
 
-const createTSXLazyComponent = (importPath: string, fallbackName: string): string => {
+const createTSXLazyComponent = (
+    importPath: string,
+    fallbackName: string
+): string => {
     // TSX expression string that will be embedded in the generated file
     return `React.lazy(async () => {
     const mod = await import("${importPath}")
@@ -100,9 +110,13 @@ const main = async (): Promise<void> => {
             target: file.target ?? '',
         }))
 
-        const firstImport = item.files?.[0]?.path ? `@/${toPosix(item.files?.[0]?.path)}` : ''
+        const firstImport = item.files?.[0]?.path
+            ? `@/${toPosix(item.files?.[0]?.path)}`
+            : ''
 
-        const component = firstImport ? createTSXLazyComponent(firstImport, item.name) : 'null'
+        const component = firstImport
+            ? createTSXLazyComponent(firstImport, item.name)
+            : 'null'
 
         const record: RegistryIndexItem = {
             name: item.name,
@@ -168,9 +182,14 @@ const main = async (): Promise<void> => {
 
     out += `export const Index: Record<string, RegistryIndexItem> = {\n`
 
-    for (const [key, item] of Array.from(entries.entries()).sort(([a], [b]) => a.localeCompare(b))) {
+    for (const [key, item] of Array.from(entries.entries()).sort(([a], [b]) =>
+        a.localeCompare(b)
+    )) {
         const filesArray = `[${item.files
-            .map((f) => `{ path: "${f.path}", type: "${f.type}", target: "${f.target ?? ''}" }`)
+            .map(
+                (f) =>
+                    `{ path: "${f.path}", type: "${f.type}", target: "${f.target ?? ''}" }`
+            )
             .join(', ')}]`
 
         out += `  "${key}": {\n`

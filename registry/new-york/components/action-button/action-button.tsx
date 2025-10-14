@@ -1,9 +1,12 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react'
 
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, Variants } from 'framer-motion'
 
-import { ACTION_BUTTON_POPUP_BACKDROP_VARIANTS, ACTION_BUTTON_POPUP_VARIANTS } from '@/registry/new-york/lib/constants'
+import {
+    ACTION_BUTTON_POPUP_BACKDROP_VARIANTS,
+    ACTION_BUTTON_POPUP_VARIANTS,
+} from '@/registry/new-york/lib/constants'
 import { Button } from '@/shadcn/components/ui/button'
 import { cn } from '@/shadcn/lib/utils'
 
@@ -17,9 +20,15 @@ const ActionButton: React.FC<ActionButtonProps> = ({
     onClick,
     ...props
 }) => {
-    const [clickedPosition, setClickedPosition] = useState<{ x: number; y: number } | null>(null)
+    const [clickedPosition, setClickedPosition] = useState<{
+        x: number
+        y: number
+    } | null>(null)
     const [isOpen, setIsOpen] = useState(false)
-    const [centerPosition, setCenterPosition] = useState<{ x: number; y: number } | null>(null)
+    const [centerPosition, setCenterPosition] = useState<{
+        x: number
+        y: number
+    } | null>(null)
 
     const buttonRef = useRef<HTMLButtonElement>(null)
 
@@ -39,8 +48,9 @@ const ActionButton: React.FC<ActionButtonProps> = ({
     }, [])
 
     // Calculate animation variants with dynamic positioning
-    const getAnimationVariants = () => {
-        if (!clickedPosition || !centerPosition) return ACTION_BUTTON_POPUP_VARIANTS
+    const getAnimationVariants = (): Variants => {
+        if (!clickedPosition || !centerPosition)
+            return ACTION_BUTTON_POPUP_VARIANTS as Variants
 
         const deltaX = centerPosition.x - clickedPosition.x - 100
         const deltaY = centerPosition.y - clickedPosition.y - 100
@@ -114,18 +124,18 @@ const ActionButton: React.FC<ActionButtonProps> = ({
                     <>
                         <motion.div
                             variants={ACTION_BUTTON_POPUP_BACKDROP_VARIANTS}
-                            initial="initial"
-                            animate="animate"
-                            exit="exit"
-                            className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[999]"
+                            initial='initial'
+                            animate='animate'
+                            exit='exit'
+                            className='fixed inset-0 bg-black/20 backdrop-blur-sm z-[999]'
                             onClick={closePopup}
                         />
 
                         <motion.div
                             variants={getAnimationVariants()}
-                            initial="initial"
-                            animate="animate"
-                            exit="exit"
+                            initial='initial'
+                            animate='animate'
+                            exit='exit'
                             style={{
                                 position: 'fixed',
                                 left: clickedPosition.x,
@@ -133,9 +143,9 @@ const ActionButton: React.FC<ActionButtonProps> = ({
                                 transform: 'translate(-50%, -50%)',
                                 zIndex: 1000,
                             }}
-                            className="pointer-events-auto"
+                            className='pointer-events-auto'
                         >
-                            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 p-4 max-w-sm">
+                            <div className='bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 p-4 max-w-sm'>
                                 {popupContent}
                             </div>
                         </motion.div>
@@ -150,7 +160,13 @@ interface ActionButtonProps extends React.ComponentProps<'button'> {
     children: React.ReactNode // Button content
     popupContent: React.ReactNode // Content to show in popup
     className?: string
-    variant?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link'
+    variant?:
+        | 'default'
+        | 'destructive'
+        | 'outline'
+        | 'secondary'
+        | 'ghost'
+        | 'link'
     size?: 'default' | 'sm' | 'lg' | 'icon' | 'icon-sm' | 'icon-lg'
     disabled?: boolean
     onClick?: () => void
