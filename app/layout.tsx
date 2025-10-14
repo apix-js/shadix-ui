@@ -1,6 +1,8 @@
 import { RootProvider } from 'fumadocs-ui/provider/next'
 import { Inter } from 'next/font/google'
 
+import { Toaster } from '@/shadcn/components/ui/sonner'
+
 import '@/app/global.css'
 
 const inter = Inter({
@@ -26,6 +28,7 @@ export default function Layout({ children }: LayoutProps<'/'>) {
                     }}
                 >
                     {children}
+                    <Toaster position='top-center' />
                 </RootProvider>
             </body>
         </html>

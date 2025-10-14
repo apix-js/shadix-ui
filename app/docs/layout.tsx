@@ -21,7 +21,9 @@ export default function Layout({ children }: LayoutProps<'/docs'>) {
                         const meta = source.getNodeMeta(node)
                         if (!meta || !node.icon) return option
 
-                        const color = `var(--${meta.path.split('/')[0]}-color, var(--color-fd-foreground))`
+                        const color = `var(--${
+                            meta.path.split('/')[0]
+                        }-color, var(--color-fd-foreground))`
 
                         return {
                             ...option,

@@ -33,7 +33,6 @@ export async function getRegistryItem(name: string) {
         success: boolean
         data: RegistryIndexItem
     }
-    console.log('result', result)
 
     if (!result.success) {
         return null
