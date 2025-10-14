@@ -1,0 +1,43 @@
+---
+title: Action Button
+description: A button component that displays a popup when clicked with smooth animations
+---
+
+import ActionButton from '@/registry/new-york/components/action-button/action-button'
+import InstallTabs from '@/components/InstallTabs'
+
+<ComponentPreview name="action-button" />
+
+## Installation
+
+<Tabs items={['CLI', 'Manual']}>
+    <Tab value="CLI">
+        <InstallTabs pkg="action-button" />
+    </Tab>
+    <Tab value="Manual">
+        <InstallTabs pkg="action-button" />
+    </Tab>
+</Tabs>
+
+## Features
+
+-   **Interactive Popup**: Displays custom content in a popup when clicked
+-   **Smooth Animations**: Built with Framer Motion for fluid transitions
+-   **Positioning**: Popup appears centered relative to the button
+-   **Backdrop**: Semi-transparent backdrop with blur effect
+-   **Click Outside**: Automatically closes when clicking outside the popup
+-   **Accessibility**: Maintains button semantics and keyboard navigation
+-   **Variants**: Supports all standard button variants and sizes
+
+### API Reference
+
+| Prop           | Type                                                                          | Default     | Description                                                   |
+| -------------- | ----------------------------------------------------------------------------- | ----------- | ------------------------------------------------------------- |
+| `children`     | `React.ReactNode`                                                             | -           | The content to render inside the button                       |
+| `popupContent` | `React.ReactNode`                                                             | -           | The content to display in the popup                           |
+| `variant`      | `'default' \| 'destructive' \| 'outline' \| 'secondary' \| 'ghost' \| 'link'` | `'default'` | Button variant                                                |
+| `size`         | `'default' \| 'sm' \| 'lg' \| 'icon' \| 'icon-sm' \| 'icon-lg'`               | `'default'` | Button size                                                   |
+| `disabled`     | `boolean`                                                                     | `false`     | Disable the button if true                                    |
+| `onClick`      | `() => void`                                                                  | -           | Optional onClick handler                                      |
+| `className`    | `string`                                                                      | -           | Additional CSS class names for the button                     |
+| `container`    | `boolean`                                                                     | `false`     | Whether to contain the popup within the component's container |

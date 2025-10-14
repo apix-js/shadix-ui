@@ -1,0 +1,27 @@
+{
+    "$schema": "https://ui.shadcn.com/schema/registry.json",
+    "name": "shadix-ui",
+    "displayName": "Shadix UI",
+    "description": "A custom shadcn/ui registry",
+    "homepage": "https://shadix-ui.gihanrangana.dev",
+    "version": "1.0.0",
+    "items": [
+        {
+            "name": "action-button",
+            "description": "A button that displays a popup when clicked",
+            "type": "registry:component",
+            "registryDependencies": ["button"],
+            "dependencies": ["class-variance-authority", "framer-motion"],
+            "files": [
+                {
+                    "path": "registry/new-york/components/action-button/action-button.tsx",
+                    "type": "registry:ui"
+                },
+                {
+                    "path": "registry/new-york/lib/constants.ts",
+                    "type": "registry:lib"
+                }
+            ]
+        }
+    ]
+}
