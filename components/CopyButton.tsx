@@ -6,6 +6,8 @@ import { CheckIcon, ClipboardIcon } from 'lucide-react'
 
 import { Button } from '@/shadcn/components/ui/button'
 import { cn } from '@/shadcn/lib/utils'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/shadcn/components/ui/tooltip'
+import { toast } from 'sonner'
 
 export function CopyButton({
     value,
@@ -27,25 +29,31 @@ export function CopyButton({
     }, [hasCopied])
 
     return (
-        <Button
-            size='icon'
-            variant={variant}
-            className={cn(
-                'absolute top-3 right-2 z-10 size-7 hover:opacity-100 focus-visible:opacity-100',
-                className
-            )}
-            onClick={() => {
-                navigator.clipboard.writeText(value)
-                setHasCopied(true)
-            }}
-            {...props}
-        >
-            <span className='sr-only'>Copy</span>
-            {hasCopied ? (
-                <CheckIcon className='h-4 w-4' />
-            ) : (
-                <ClipboardIcon className='h-4 w-4' />
-            )}
-        </Button>
+        <Tooltip>
+            <TooltipTrigger asChild>
+                <Button
+                    size='icon'
+                    variant={variant}
+                    className={cn(
+                        'absolute top-3 right-2 z-10 size-7 hover:opacity-100 focus-visible:opacity-100',
+                        className
+                    )}
+                    onClick={() => {
+                        navigator.clipboard.writeText(value)
+                        setHasCopied(true)
+                        toast.success('Copied to clipboard')
+                    }}
+                    {...props}
+                >
+                    <span className='sr-only'>Copy</span>
+                    {hasCopied ? (
+                        <CheckIcon className='h-4 w-4' />
+                    ) : (
+                        <ClipboardIcon className='h-4 w-4' />
+                    )}
+                </Button>
+            </TooltipTrigger>
+            <TooltipContent>Copy to clipboard</TooltipContent>
+        </Tooltip>
     )
 }

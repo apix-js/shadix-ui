@@ -27,6 +27,7 @@ export const registryItemFileSchema = z.discriminatedUnion('type', [
         content: z.string().optional(),
         type: z.enum(['registry:file', 'registry:page']),
         target: z.string(),
+        githubUrl: z.string().optional(),
     }),
     z.object({
         path: z.string(),
@@ -36,6 +37,7 @@ export const registryItemFileSchema = z.discriminatedUnion('type', [
             'registry:page',
         ]),
         target: z.string().optional(),
+        githubUrl: z.string().optional(),
     }),
 ])
 

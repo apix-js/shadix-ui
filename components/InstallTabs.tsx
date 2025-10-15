@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import * as React from 'react'
 
 import { Clipboard, TerminalSquare } from 'lucide-react'
 
@@ -11,6 +11,7 @@ import {
     TabsList,
     TabsTrigger,
 } from '@/shadcn/components/ui/tabs'
+import { CopyButton } from '@/components/CopyButton'
 
 type PackageManager = 'pnpm' | 'npm' | 'yarn' | 'bun'
 
@@ -23,15 +24,26 @@ const getCommands = (command: string): Record<PackageManager, string> => {
     }
 }
 
-const InstallTabs: React.FC<InstallTabsProps> = ({ pkg }) => {
-    const command = `shadcn@latest add ${process.env.NEXT_PUBLIC_SHADCN_REGISTRY_URL}/${pkg}`
+const InstallTabs: React.FC<InstallTabsProps> = ({ pkg, external = false }) => {
+    const [value, setValue] = React.useState<PackageManager>('pnpm')
+    const [origin, setOrigin] = React.useState<string>('')
 
-    const [value, setValue] = useState<PackageManager>('pnpm')
+    // fix: Handle window access safely for SSR
+    React.useEffect(() => {
+        if (typeof window !== 'undefined') {
+            setOrigin(window.location.origin)
+        }
+    }, [])
 
-    const handleCopy = () => {}
+    let command = `shadcn@latest add ${origin}/${pkg}`
+
+    if (external) {
+        const packages = Array.isArray(pkg) ? pkg.join(' ') : pkg
+        command = `${packages}`
+    }
 
     return (
-        <div className='rounded-md bg-muted/50 p-0'>
+        <div className='rounded-md bg-muted/50 p-0 relative'>
             <Tabs
                 value={value}
                 onValueChange={(v) => setValue(v as PackageManager)}
@@ -53,7 +65,9 @@ const InstallTabs: React.FC<InstallTabsProps> = ({ pkg }) => {
                             ))}
                         </TabsList>
 
-                        <Button
+                        <CopyButton value={getCommands(command)[value]} />
+
+                        {/* <Button
                             variant='ghost'
                             size='icon'
                             onClick={handleCopy}
@@ -62,7 +76,7 @@ const InstallTabs: React.FC<InstallTabsProps> = ({ pkg }) => {
                         >
                             <Clipboard className='h-4 w-4' />
                             <span className='sr-only'>Copy command</span>
-                        </Button>
+                        </Button> */}
                     </div>
                 </div>
 
@@ -79,7 +93,8 @@ const InstallTabs: React.FC<InstallTabsProps> = ({ pkg }) => {
 }
 
 interface InstallTabsProps {
-    pkg: string
+    pkg: string | string[]
+    external?: boolean
 }
 
 export default InstallTabs

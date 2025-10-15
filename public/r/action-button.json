@@ -1,20 +1,42 @@
 {
-    "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-    "name": "action-button",
-    "type": "registry:component",
-    "description": "A button that displays a popup when clicked",
-    "dependencies": ["class-variance-authority", "framer-motion"],
-    "registryDependencies": ["button"],
-    "files": [
-        {
-            "path": "registry/new-york/components/action-button/action-button.tsx",
-            "content": "'use client'\nimport React, { useEffect, useRef, useState } from 'react'\n\nimport { AnimatePresence, motion } from 'framer-motion'\n\nimport { ACTION_BUTTON_POPUP_BACKDROP_VARIANTS, ACTION_BUTTON_POPUP_VARIANTS } from '@/registry/new-york/lib/constants'\nimport { Button } from '@/shadcn/components/ui/button'\nimport { cn } from '@/shadcn/lib/utils'\n\nconst ActionButton: React.FC<ActionButtonProps> = ({\n    children,\n    popupContent,\n    className,\n    variant = 'default',\n    size = 'default',\n    disabled = false,\n    onClick,\n    ...props\n}) => {\n    const [clickedPosition, setClickedPosition] = useState<{ x: number; y: number } | null>(null)\n    const [isOpen, setIsOpen] = useState(false)\n    const [centerPosition, setCenterPosition] = useState<{ x: number; y: number } | null>(null)\n\n    const buttonRef = useRef<HTMLButtonElement>(null)\n\n    // Calculate center of viewport\n    useEffect(() => {\n        const calculateCenter = () => {\n            setCenterPosition({\n                x: window.innerWidth / 2,\n                y: window.innerHeight / 2,\n            })\n        }\n\n        calculateCenter()\n        window.addEventListener('resize', calculateCenter)\n\n        return () => window.removeEventListener('resize', calculateCenter)\n    }, [])\n\n    // Calculate animation variants with dynamic positioning\n    const getAnimationVariants = () => {\n        if (!clickedPosition || !centerPosition) return ACTION_BUTTON_POPUP_VARIANTS\n\n        const deltaX = centerPosition.x - clickedPosition.x - 100\n        const deltaY = centerPosition.y - clickedPosition.y - 100\n\n        return {\n            initial: {\n                scale: 0,\n                opacity: 0,\n                x: 0,\n                y: 0,\n            },\n            animate: {\n                scale: 1,\n                opacity: 1,\n                x: deltaX,\n                y: deltaY,\n                transition: {\n                    type: 'spring',\n                    stiffness: 200,\n                    damping: 25,\n                    duration: 0.3,\n                },\n            },\n            exit: {\n                scale: 0,\n                opacity: 0,\n                x: 0,\n                y: 0,\n                transition: {\n                    duration: 0.3,\n                    ease: 'easeInOut',\n                },\n            },\n        }\n    }\n\n    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {\n        if (disabled) return\n\n        const rect = e.currentTarget.getBoundingClientRect()\n        setClickedPosition({\n            x: rect.left,\n            y: rect.top,\n        })\n        setIsOpen(true)\n        onClick?.()\n    }\n\n    const closePopup = () => {\n        setIsOpen(false)\n        // Delay clearing position to allow exit animation\n        setTimeout(() => setClickedPosition(null), 200)\n    }\n\n    return (\n        <>\n            <Button\n                ref={buttonRef}\n                className={cn(className)}\n                variant={variant}\n                size={size}\n                disabled={disabled}\n                onClick={handleClick}\n                {...props}\n            >\n                {children}\n            </Button>\n\n            <AnimatePresence>\n                {isOpen && clickedPosition && (\n                    <>\n                        <motion.div\n                            variants={ACTION_BUTTON_POPUP_BACKDROP_VARIANTS}\n                            initial=\"initial\"\n                            animate=\"animate\"\n                            exit=\"exit\"\n                            className=\"fixed inset-0 bg-black/20 backdrop-blur-sm z-[999]\"\n                            onClick={closePopup}\n                        />\n\n                        <motion.div\n                            variants={getAnimationVariants()}\n                            initial=\"initial\"\n                            animate=\"animate\"\n                            exit=\"exit\"\n                            style={{\n                                position: 'fixed',\n                                left: clickedPosition.x,\n                                top: clickedPosition.y,\n                                transform: 'translate(-50%, -50%)',\n                                zIndex: 1000,\n                            }}\n                            className=\"pointer-events-auto\"\n                        >\n                            <div className=\"bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 p-4 max-w-sm\">\n                                {popupContent}\n                            </div>\n                        </motion.div>\n                    </>\n                )}\n            </AnimatePresence>\n        </>\n    )\n}\n\ninterface ActionButtonProps extends React.ComponentProps<'button'> {\n    children: React.ReactNode // Button content\n    popupContent: React.ReactNode // Content to show in popup\n    className?: string\n    variant?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link'\n    size?: 'default' | 'sm' | 'lg' | 'icon' | 'icon-sm' | 'icon-lg'\n    disabled?: boolean\n    onClick?: () => void\n}\n\nexport default ActionButton\n",
-            "type": "registry:ui"
-        },
-        {
-            "path": "registry/new-york/lib/constants.ts",
-            "content": "export const ACTION_BUTTON_POPUP_VARIANTS = {\n    initial: {\n        scale: 0,\n        opacity: 0,\n        x: 0, // Start at button position\n        y: 0, // Start at button position\n    },\n    animate: {\n        scale: 1,\n        opacity: 1,\n        x: 0, // Will be calculated to move to center\n        y: 0, // Will be calculated to move to center\n        transition: {\n            type: 'spring',\n            stiffness: 200,\n            damping: 25,\n            duration: 0.6,\n        },\n    },\n    exit: {\n        scale: 0,\n        opacity: 0,\n        x: 0, // Return to button position\n        y: 0, // Return to button position\n        transition: {\n            duration: 0.3,\n            ease: 'easeInOut',\n        },\n    },\n}\n\nexport const ACTION_BUTTON_POPUP_BACKDROP_VARIANTS = {\n    initial: { opacity: 0 },\n    animate: { opacity: 1 },\n    exit: { opacity: 0 },\n}\n",
-            "type": "registry:lib"
-        }
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "action-button",
+  "type": "registry:component",
+  "description": "A button that displays a popup when clicked",
+  "dependencies": [
+    "class-variance-authority",
+    "framer-motion"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york/components/action-button.tsx",
+      "content": "'use client'\nimport React, { useTransition } from 'react'\n\nimport { Loader2Icon } from 'lucide-react'\nimport { toast } from 'sonner'\n\nimport {\n    AlertDialog,\n    AlertDialogAction,\n    AlertDialogCancel,\n    AlertDialogContent,\n    AlertDialogDescription,\n    AlertDialogFooter,\n    AlertDialogHeader,\n    AlertDialogTitle,\n    AlertDialogTrigger,\n} from '@/shadcn/components/ui/alert-dialog'\nimport { Button } from '@/shadcn/components/ui/button'\n\nconst ActionButton: React.FC<ActionButtonProps> = ({\n    children,\n    popupContent,\n    title,\n    onConfirm,\n    ...props\n}) => {\n    const [isLoading, startLoading] = useTransition()\n\n    const handleConfirm = () => {\n        startLoading(async () => {\n            const data = await onConfirm()\n            if (data.error) toast.error(data.message ?? 'Something went wrong')\n            else toast.success(data.message ?? 'Action successful')\n        })\n    }\n\n    return (\n        <AlertDialog open={isLoading ? true : undefined}>\n            <AlertDialogTrigger asChild>\n                <Button {...props}>{children}</Button>\n            </AlertDialogTrigger>\n\n            <AlertDialogContent>\n                <AlertDialogHeader>\n                    <AlertDialogTitle>{title}</AlertDialogTitle>\n\n                    <AlertDialogDescription asChild>\n                        {popupContent}\n                    </AlertDialogDescription>\n                </AlertDialogHeader>\n\n                <AlertDialogFooter>\n                    <AlertDialogCancel>Cancel</AlertDialogCancel>\n\n                    <AlertDialogAction\n                        disabled={isLoading}\n                        onClick={handleConfirm}\n                    >\n                        {isLoading ? (\n                            <Loader2Icon className='size-4 animate-spin' />\n                        ) : (\n                            'Confirm'\n                        )}\n                    </AlertDialogAction>\n                </AlertDialogFooter>\n            </AlertDialogContent>\n        </AlertDialog>\n    )\n}\n\ninterface ActionButtonProps extends React.ComponentProps<typeof Button> {\n    children: React.ReactNode // Button content\n    popupContent: React.ReactNode // Content to show in popup\n    className?: string\n    variant?:\n        | 'default'\n        | 'destructive'\n        | 'outline'\n        | 'secondary'\n        | 'ghost'\n        | 'link'\n    size?: 'default' | 'sm' | 'lg' | 'icon' | 'icon-sm' | 'icon-lg'\n    disabled?: boolean\n    onConfirm: () => Promise<{\n        message?: string\n        error?: boolean\n    }>\n}\n\nexport default ActionButton\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "api": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "description": "Button content",
+        "required": true
+      },
+      {
+        "name": "onConfirm",
+        "type": "() => Promise<{message?: string, error?: boolean}>",
+        "description": "Function to execute on confirmation",
+        "required": true
+      },
+      {
+        "name": "popupContent",
+        "type": "React.ReactNode",
+        "description": "Content to show in popup",
+        "required": true
+      }
     ]
+  }
 }

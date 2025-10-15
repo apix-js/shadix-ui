@@ -29,10 +29,12 @@ export async function ComponentSource({
     }
 
     let code: string | undefined
+    let githubUrl: string | undefined
 
     if (name) {
         const item = await getRegistryItem(name)
         code = item?.files?.[0]?.content
+        githubUrl = item?.files?.[0]?.githubUrl
     }
 
     if (src) {
@@ -69,7 +71,7 @@ export async function ComponentSource({
     }
 
     return (
-        <CodeCollapsibleWrapper className={className}>
+        <CodeCollapsibleWrapper githubUrl={githubUrl} className={className}>
             <ComponentCode
                 code={code}
                 highlightedCode={highlightedCode}
@@ -103,7 +105,9 @@ function ComponentCode({
                     {title}
                 </figcaption>
             )}
+
             <CopyButton value={code} />
+
             <div dangerouslySetInnerHTML={{ __html: highlightedCode }} />
         </figure>
     )

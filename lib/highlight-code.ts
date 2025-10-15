@@ -21,7 +21,7 @@ export async function highlightCode(code: string, language: string = 'tsx') {
                     },
                     line(node) {
                         node.properties['class'] =
-                            'min-h-[1.5rem] w-full break-words px-4 py-0.5 leading-relaxed'
+                            'min-h-[1.5rem] w-full break-words px-4 py-0.5'
                         node.properties['data-line'] = ''
                     },
                 },

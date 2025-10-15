@@ -68,7 +68,7 @@ const ActionButton: React.FC<ActionButtonProps> = ({
     )
 }
 
-interface ActionButtonProps extends React.ComponentProps<typeof Button> {
+export interface ActionButtonProps extends React.ComponentProps<typeof Button> {
     children: React.ReactNode // Button content
     popupContent: React.ReactNode // Content to show in popup
     className?: string

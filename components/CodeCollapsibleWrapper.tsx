@@ -10,12 +10,22 @@ import {
 } from '@/shadcn/components/ui/collapsible'
 import { Separator } from '@/shadcn/components/ui/separator'
 import { cn } from '@/shadcn/lib/utils'
+import { FoldVertical, UnfoldVertical } from 'lucide-react'
+import { Icons } from '@/components/Icons'
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipTrigger,
+} from '@/shadcn/components/ui/tooltip'
 
 export function CodeCollapsibleWrapper({
     className,
     children,
+    githubUrl,
     ...props
-}: React.ComponentProps<typeof Collapsible>) {
+}: React.ComponentProps<typeof Collapsible> & {
+    githubUrl?: string
+}) {
     const [isOpened, setIsOpened] = React.useState(false)
 
     return (
@@ -26,14 +36,42 @@ export function CodeCollapsibleWrapper({
             {...props}
         >
             <CollapsibleTrigger asChild>
-                <div className='absolute top-1.5 right-9 z-10 flex items-center'>
-                    <Button
-                        variant='ghost'
-                        size='sm'
-                        className='text-muted-foreground h-7 rounded-md px-2'
-                    >
-                        {isOpened ? 'Collapse' : 'Expand'}
-                    </Button>
+                <div className='absolute top-3 right-9 z-10 flex items-center'>
+                    <Tooltip>
+                        <TooltipTrigger asChild>
+                            <Button
+                                variant='ghost'
+                                size='sm'
+                                className='text-muted-foreground h-7 rounded-md px-2'
+                            >
+                                {isOpened ? (
+                                    <FoldVertical />
+                                ) : (
+                                    <UnfoldVertical />
+                                )}
+                            </Button>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                            {isOpened ? 'Collapse' : 'Expand'}
+                        </TooltipContent>
+                    </Tooltip>
+                    {githubUrl && (
+                        <Tooltip>
+                            <TooltipTrigger asChild>
+                                <Button
+                                    variant={'ghost'}
+                                    size={'sm'}
+                                    className='text-muted-foreground h-7 rounded-md px-2'
+                                    onClick={() =>
+                                        window.open(githubUrl, '_blank')
+                                    }
+                                >
+                                    <Icons.gitHub />
+                                </Button>
+                            </TooltipTrigger>
+                            <TooltipContent>Open in GitHub</TooltipContent>
+                        </Tooltip>
+                    )}
                     <Separator orientation='vertical' className='mx-1.5 !h-4' />
                 </div>
             </CollapsibleTrigger>

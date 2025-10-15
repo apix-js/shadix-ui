@@ -3,41 +3,67 @@ title: Action Button
 description: A button component that displays a popup when clicked with smooth animations
 ---
 
-import ActionButton from '@/registry/new-york/components/action-button/action-button'
-import InstallTabs from '@/components/InstallTabs'
-
 <ComponentPreview name='action-button-demo' />
 
 ## Installation
 
-<Tabs items={['CLI', 'Manual']}>
-    <Tab value='CLI'>
-        <InstallTabs pkg='action-button' />
-    </Tab>
-    <Tab value='Manual'>
-        <InstallTabs pkg='action-button' />
-    </Tab>
-</Tabs>
+<InstalationDocs name='action-button' filepath='components/ui' />
 
-## Features
+## Usage
 
-- **Interactive Popup**: Displays custom content in a popup when clicked
-- **Smooth Animations**: Built with Framer Motion for fluid transitions
-- **Positioning**: Popup appears centered relative to the button
-- **Backdrop**: Semi-transparent backdrop with blur effect
-- **Click Outside**: Automatically closes when clicking outside the popup
-- **Accessibility**: Maintains button semantics and keyboard navigation
-- **Variants**: Supports all standard button variants and sizes
+### Basic Usage
 
-### API Reference
+```tsx
+import ActionButton from '@/registry/new-york/components/action-button/action-button'
 
-| Prop           | Type                                                                          | Default     | Description                                                   |
-| -------------- | ----------------------------------------------------------------------------- | ----------- | ------------------------------------------------------------- |
-| `children`     | `React.ReactNode`                                                             | -           | The content to render inside the button                       |
-| `popupContent` | `React.ReactNode`                                                             | -           | The content to display in the popup                           |
-| `variant`      | `'default' \| 'destructive' \| 'outline' \| 'secondary' \| 'ghost' \| 'link'` | `'default'` | Button variant                                                |
-| `size`         | `'default' \| 'sm' \| 'lg' \| 'icon' \| 'icon-sm' \| 'icon-lg'`               | `'default'` | Button size                                                   |
-| `disabled`     | `boolean`                                                                     | `false`     | Disable the button if true                                    |
-| `onClick`      | `() => void`                                                                  | -           | Optional onClick handler                                      |
-| `className`    | `string`                                                                      | -           | Additional CSS class names for the button                     |
-| `container`    | `boolean`                                                                     | `false`     | Whether to contain the popup within the component's container |
+const ActionButtonDemo = () => {
+    return (
+        <ActionButton
+            onConfirm={() => {}}
+            popupContent={<div>This is a popup</div>}
+        >
+            Click Me
+        </ActionButton>
+    )
+}
+```
+
+### With Variants
+
+```tsx
+import ActionButton from '@/components/ui/action-button'
+
+const ActionButtonDemo = () => {
+    return (
+        <ActionButton
+            variant='outline'
+            onConfirm={() => {}}
+            popupContent={<div>This is a popup</div>}
+        >
+            Click Me
+        </ActionButton>
+    )
+}
+```
+
+### Disabled
+
+```tsx
+import ActionButton from '@/components/ui/action-button'
+
+const ActionButtonDemo = () => {
+    return (
+        <ActionButton
+            onConfirm={() => {}}
+            popupContent={<div>This is a popup</div>}
+            disabled
+        >
+            Click Me
+        </ActionButton>
+    )
+}
+```
+
+## Props
+
+<PropsTable name='ActionButtonProps' filename="action-button" />

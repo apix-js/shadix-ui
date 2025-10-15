@@ -14,14 +14,32 @@
             "dependencies": ["class-variance-authority", "framer-motion"],
             "files": [
                 {
-                    "path": "registry/new-york/components/action-button/action-button.tsx",
+                    "path": "registry/new-york/components/action-button.tsx",
                     "type": "registry:ui"
-                },
-                {
-                    "path": "registry/new-york/lib/constants.ts",
-                    "type": "registry:lib"
                 }
-            ]
+            ],
+            "meta": {
+                "api": [
+                    {
+                        "name": "children",
+                        "type": "React.ReactNode",
+                        "description": "Button content",
+                        "required": true
+                    },
+                    {
+                        "name": "onConfirm",
+                        "type": "() => Promise<{message?: string, error?: boolean}>",
+                        "description": "Function to execute on confirmation",
+                        "required": true
+                    },
+                    {
+                        "name": "popupContent",
+                        "type": "React.ReactNode",
+                        "description": "Content to show in popup",
+                        "required": true
+                    }
+                ]
+            }
         }
     ]
 }

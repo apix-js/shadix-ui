@@ -10,6 +10,12 @@ import { notFound } from 'next/navigation'
 
 import { getPageImage, source } from '@/lib/source'
 import { getMDXComponents } from '@/mdx-components'
+import { findNeighbour } from 'fumadocs-core/page-tree'
+import { Button } from '@/shadcn/components/ui/button'
+import Link from 'next/link'
+import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react'
+import { AIOpenButton } from '@/components/AIOpenButton'
+import { getAbsoluteUrl } from '@/lib/utils'
 
 export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
     const params = await props.params
@@ -17,6 +23,7 @@ export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
     if (!page) notFound()
 
     const MDX = page.data.body
+    const neighbours = await findNeighbour(source.pageTree, page.url)
 
     return (
         <DocsPage
@@ -30,8 +37,46 @@ export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
             }}
             full={page.data.full}
         >
-            <DocsTitle>{page.data.title}</DocsTitle>
+            <div className='flex items-center gap-2 justify-between'>
+                <DocsTitle className='flex-1 text-4xl text-foreground'>
+                    {page.data.title}
+                </DocsTitle>
+
+                <div className='flex h-full items-center gap-2'>
+                    <AIOpenButton url={getAbsoluteUrl(page.url)} />
+
+                    {neighbours.previous && (
+                        <Button
+                            variant='secondary'
+                            size='icon'
+                            className='extend-touch-target ml-auto size-8 shadow-none md:size-7'
+                            asChild
+                        >
+                            <Link href={neighbours.previous.url}>
+                                <ArrowLeftIcon />
+                                <span className='sr-only'>Previous</span>
+                            </Link>
+                        </Button>
+                    )}
+
+                    {neighbours.next && (
+                        <Button
+                            variant='secondary'
+                            size='icon'
+                            className='extend-touch-target size-8 shadow-none md:size-7'
+                            asChild
+                        >
+                            <Link href={neighbours.next.url}>
+                                <span className='sr-only'>Next</span>
+                                <ArrowRightIcon />
+                            </Link>
+                        </Button>
+                    )}
+                </div>
+            </div>
+
             <DocsDescription>{page.data.description}</DocsDescription>
+
             <DocsBody>
                 <MDX
                     components={getMDXComponents({

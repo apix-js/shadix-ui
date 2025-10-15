@@ -4,7 +4,7 @@ import { ComponentPreviewTabs } from '@/components/ComponentPreviewTabs'
 import { ComponentSource } from '@/components/ComponentSource'
 import { Index } from '@/registry/__index__'
 
-export default function ComponentPreview({
+export function ComponentPreview({
     name,
     type,
     className,
