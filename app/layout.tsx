@@ -1,10 +1,10 @@
 import { RootProvider } from 'fumadocs-ui/provider/next'
 import { Fira_Code, Inter } from 'next/font/google'
 
+import { ScrollArea } from '@/shadcn/components/ui/scroll-area'
 import { Toaster } from '@/shadcn/components/ui/sonner'
 
 import '@/app/global.css'
-import { ScrollArea } from '@/shadcn/components/ui/scroll-area'
 
 const inter = Inter({
     subsets: ['latin'],

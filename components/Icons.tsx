@@ -219,6 +219,7 @@ export const Icons = {
             viewBox='0 0 910 934'
             fill='none'
             xmlns='http://www.w3.org/2000/svg'
+            {...props}
         >
             <title>Scira AI</title>
             <path

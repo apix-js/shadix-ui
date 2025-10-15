@@ -1,7 +1,9 @@
-import { Index } from '@/registry/__index__'
 import * as React from 'react'
+
 import { createGenerator } from 'fumadocs-typescript'
 import { AutoTypeTable } from 'fumadocs-typescript/ui'
+
+import { Index } from '@/registry/__index__'
 
 const genrator = createGenerator()
 

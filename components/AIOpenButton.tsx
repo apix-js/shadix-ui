@@ -1,3 +1,7 @@
+import React from 'react'
+
+import { ChevronDown, MessageCircleIcon } from 'lucide-react'
+
 import { Icons } from '@/components/Icons'
 import { Button } from '@/shadcn/components/ui/button'
 import {
@@ -7,8 +11,6 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from '@/shadcn/components/ui/dropdown-menu'
-import { ChevronDown, MessageCircleIcon } from 'lucide-react'
-import React from 'react'
 
 const getPromptUrl = (baseUrl: string, url: string) => {
     return `${baseUrl}/?q=${encodeURIComponent(`Help me use this Shadix UI component: ${url}. Explain, show examples, and debug if needed.

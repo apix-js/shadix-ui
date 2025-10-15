@@ -3,11 +3,15 @@
 import * as React from 'react'
 
 import { CheckIcon, ClipboardIcon } from 'lucide-react'
+import { toast } from 'sonner'
 
 import { Button } from '@/shadcn/components/ui/button'
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipTrigger,
+} from '@/shadcn/components/ui/tooltip'
 import { cn } from '@/shadcn/lib/utils'
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/shadcn/components/ui/tooltip'
-import { toast } from 'sonner'
 
 export function CopyButton({
     value,

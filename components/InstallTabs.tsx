@@ -2,16 +2,15 @@
 
 import * as React from 'react'
 
-import { Clipboard, TerminalSquare } from 'lucide-react'
+import { TerminalSquare } from 'lucide-react'
 
-import { Button } from '@/shadcn/components/ui/button'
+import { CopyButton } from '@/components/CopyButton'
 import {
     Tabs,
     TabsContent,
     TabsList,
     TabsTrigger,
 } from '@/shadcn/components/ui/tabs'
-import { CopyButton } from '@/components/CopyButton'
 
 type PackageManager = 'pnpm' | 'npm' | 'yarn' | 'bun'
 

@@ -2,6 +2,9 @@
 
 import * as React from 'react'
 
+import { FoldVertical, UnfoldVertical } from 'lucide-react'
+
+import { Icons } from '@/components/Icons'
 import { Button } from '@/shadcn/components/ui/button'
 import {
     Collapsible,
@@ -9,14 +12,12 @@ import {
     CollapsibleTrigger,
 } from '@/shadcn/components/ui/collapsible'
 import { Separator } from '@/shadcn/components/ui/separator'
-import { cn } from '@/shadcn/lib/utils'
-import { FoldVertical, UnfoldVertical } from 'lucide-react'
-import { Icons } from '@/components/Icons'
 import {
     Tooltip,
     TooltipContent,
     TooltipTrigger,
 } from '@/shadcn/components/ui/tooltip'
+import { cn } from '@/shadcn/lib/utils'
 
 export function CodeCollapsibleWrapper({
     className,

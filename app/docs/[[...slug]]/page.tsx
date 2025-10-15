@@ -1,3 +1,4 @@
+import { findNeighbour } from 'fumadocs-core/page-tree'
 import { createRelativeLink } from 'fumadocs-ui/mdx'
 import {
     DocsBody,
@@ -5,17 +6,16 @@ import {
     DocsPage,
     DocsTitle,
 } from 'fumadocs-ui/page'
+import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react'
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-import { getPageImage, source } from '@/lib/source'
-import { getMDXComponents } from '@/mdx-components'
-import { findNeighbour } from 'fumadocs-core/page-tree'
-import { Button } from '@/shadcn/components/ui/button'
-import Link from 'next/link'
-import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react'
 import { AIOpenButton } from '@/components/AIOpenButton'
+import { getPageImage, source } from '@/lib/source'
 import { getAbsoluteUrl } from '@/lib/utils'
+import { getMDXComponents } from '@/mdx-components'
+import { Button } from '@/shadcn/components/ui/button'
 
 export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
     const params = await props.params

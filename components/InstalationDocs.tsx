@@ -1,5 +1,6 @@
-import React, { Activity } from 'react'
+import React from 'react'
 
+import { ComponentSource } from '@/components/ComponentSource'
 import InstallTabs from '@/components/InstallTabs'
 import { Index } from '@/registry/__index__'
 import {
@@ -8,7 +9,6 @@ import {
     TabsList,
     TabsTrigger,
 } from '@/shadcn/components/ui/tabs'
-import { ComponentSource } from '@/components/ComponentSource'
 
 const getFileName = (filepath: string) => {
     const files = filepath.split('/')
