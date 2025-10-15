@@ -40,7 +40,7 @@ const menuItems = {
     ),
     chatgpt: (url: string) => (
         <a
-            href={getPromptUrl('https://chatgpt.com/new', url)}
+            href={getPromptUrl('https://chatgpt.com', url)}
             target='_blank'
             rel='noopener noreferrer'
         >
