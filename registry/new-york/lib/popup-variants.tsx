@@ -1,27 +1,28 @@
-import { ReactNode } from 'react'
-import { Variant, Variants } from 'framer-motion'
+import type { ReactNode } from "react";
+
+import type { Variant, Variants } from "framer-motion";
 
 export type AnimationVariant =
-    | 'ripple'
-    | 'slide'
-    | 'flip'
-    | 'blur'
-    | 'elastic'
-    | 'pulse'
-    | 'zoom'
+    | "ripple"
+    | "slide"
+    | "flip"
+    | "blur"
+    | "elastic"
+    | "pulse"
+    | "zoom";
 
 export interface AnimatedDialogProps {
-    open: boolean
-    onOpenChange: (open: boolean) => void
-    trigger?: ReactNode
-    title: string
-    description?: string
-    children?: ReactNode
-    animation?: AnimationVariant
-    gradient?: string
-    icon?: ReactNode
-    originX?: number
-    originY?: number
+    open: boolean;
+    onOpenChange: (open: boolean) => void;
+    trigger?: ReactNode;
+    title: string;
+    description?: string;
+    children?: ReactNode;
+    animation?: AnimationVariant;
+    gradient?: string;
+    icon?: ReactNode;
+    originX?: number;
+    originY?: number;
 }
 
 export const overlayVariants: Variants = {
@@ -30,24 +31,24 @@ export const overlayVariants: Variants = {
         opacity: 1,
         transition: {
             duration: 0.3,
-            ease: 'easeOut',
+            ease: "easeOut",
         },
     },
     exit: {
         opacity: 0,
         transition: {
             duration: 0.2,
-            ease: 'easeIn',
+            ease: "easeIn",
         },
     },
-}
+};
 
 export const animationVariants: Record<
     AnimationVariant,
     {
-        hidden: Variant
-        visible: Variant
-        exit: Variant
+        hidden: Variant;
+        visible: Variant;
+        exit: Variant;
     }
 > = {
     ripple: {
@@ -56,7 +57,7 @@ export const animationVariants: Record<
             scale: 1,
             opacity: 1,
             transition: {
-                type: 'spring',
+                type: "spring",
                 stiffness: 260,
                 damping: 18,
                 mass: 0.8,
@@ -72,18 +73,18 @@ export const animationVariants: Record<
         },
     },
     slide: {
-        hidden: { y: '-100vh', opacity: 0 },
+        hidden: { y: "-100vh", opacity: 0 },
         visible: {
             y: 0,
             opacity: 1,
             transition: {
-                type: 'spring',
+                type: "spring",
                 stiffness: 100,
                 damping: 15,
             },
         },
         exit: {
-            y: '100vh',
+            y: "100vh",
             opacity: 0,
             transition: {
                 duration: 0.3,
@@ -96,7 +97,7 @@ export const animationVariants: Record<
             rotateX: 0,
             opacity: 1,
             transition: {
-                type: 'spring',
+                type: "spring",
                 stiffness: 200,
                 damping: 20,
             },
@@ -110,11 +111,11 @@ export const animationVariants: Record<
         },
     },
     blur: {
-        hidden: { scale: 0.8, opacity: 0, filter: 'blur(10px)' },
+        hidden: { scale: 0.8, opacity: 0, filter: "blur(10px)" },
         visible: {
             scale: 1,
             opacity: 1,
-            filter: 'blur(0px)',
+            filter: "blur(0px)",
             transition: {
                 duration: 0.4,
             },
@@ -122,7 +123,7 @@ export const animationVariants: Record<
         exit: {
             scale: 0.8,
             opacity: 0,
-            filter: 'blur(10px)',
+            filter: "blur(10px)",
             transition: {
                 duration: 0.3,
             },
@@ -134,7 +135,7 @@ export const animationVariants: Record<
             scale: 1,
             opacity: 1,
             transition: {
-                type: 'spring',
+                type: "spring",
                 stiffness: 400,
                 damping: 10,
                 mass: 0.5,
@@ -144,7 +145,7 @@ export const animationVariants: Record<
             scale: 0,
             opacity: 0,
             transition: {
-                type: 'spring',
+                type: "spring",
                 stiffness: 300,
                 damping: 20,
             },
@@ -174,7 +175,7 @@ export const animationVariants: Record<
             scale: 1,
             opacity: 1,
             transition: {
-                type: 'spring',
+                type: "spring",
                 stiffness: 200,
                 damping: 25,
             },
@@ -188,4 +189,4 @@ export const animationVariants: Record<
             },
         },
     },
-}
+};

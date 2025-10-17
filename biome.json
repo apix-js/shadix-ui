@@ -1,0 +1,81 @@
+{
+    "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+    "vcs": {
+        "enabled": true,
+        "clientKind": "git",
+        "useIgnoreFile": true
+    },
+    "files": {
+        "ignoreUnknown": false,
+        "includes": ["**/*/*", "!**/node_modules", "!**/.next", "!**/dist", "!**/build"]
+    },
+    "formatter": {
+        "enabled": true,
+        "formatWithErrors": false,
+        "indentStyle": "space",
+        "indentWidth": 4,
+        "lineEnding": "lf",
+        "lineWidth": 80,
+        "attributePosition": "auto",
+        "expand": "auto"
+    },
+    "assist": {
+        "includes": ["**/*/**", "!**/node_modules/**", "!**/.next/**", "!**/dist/**", "!**/build/**"],
+        "actions": {
+            "source": {
+                "organizeImports": {
+                    "level": "on",
+                    "options": {
+                        "groups": [
+                            {
+                                "type": false,
+                                "source": ["react", "react-dom"]
+                            },
+                            {
+                                "type": true,
+                                "source": ["react", "react-dom"]
+                            },
+                            ":BLANK_LINE:",
+                            {
+                                "type": false,
+                                "source": ["**", "!@/**/*", "!react", "!react-dom"]
+                            },
+                            {
+                                "type": true,
+                                "source": ["**"]
+                            },
+                            ":BLANK_LINE:",
+                            {
+                                "type": true,
+                                "source": [":PATH:", ":URL:"]
+                            },
+                            ":BLANK_LINE:",
+                            {
+                                "type": false,
+                                "source": ["**/*.css", "**/*.scss", "**/*.sass", "**/*.less", "**/*.styl", "**/*.pcss"]
+                            },
+                            ":BLANK_LINE:"
+                        ],
+                        "identifierOrder": "natural"
+                    }
+                }
+            }
+        }
+    },
+    "linter": {
+        "enabled": true,
+        "rules": {
+            "recommended": true,
+            "suspicious": {
+                "noUnknownAtRules": "off",
+                "noDuplicateProperties": "off"
+            },
+            "complexity": {
+                "noImportantStyles": "off"
+            },
+            "a11y": {
+                "useGenericFontNames": "off"
+            }
+        }
+    }
+}

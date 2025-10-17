@@ -9,7 +9,7 @@ export const ACTION_BUTTON_POPUP_VARIANTS = {
         scale: 1,
         opacity: 1,
         transition: {
-            type: 'spring',
+            type: "spring",
             stiffness: 300,
             damping: 30,
         },
@@ -21,10 +21,10 @@ export const ACTION_BUTTON_POPUP_VARIANTS = {
             duration: 0.2,
         },
     },
-}
+};
 
 export const ACTION_BUTTON_POPUP_BACKDROP_VARIANTS = {
     initial: { opacity: 0 },
     animate: { opacity: 1 },
     exit: { opacity: 0 },
-}
+};

@@ -1,73 +1,73 @@
-import { findNeighbour } from 'fumadocs-core/page-tree'
-import { createRelativeLink } from 'fumadocs-ui/mdx'
+import { findNeighbour } from "fumadocs-core/page-tree";
+import { createRelativeLink } from "fumadocs-ui/mdx";
 import {
     DocsBody,
     DocsDescription,
     DocsPage,
     DocsTitle,
-} from 'fumadocs-ui/page'
-import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react'
-import type { Metadata } from 'next'
-import Link from 'next/link'
-import { notFound } from 'next/navigation'
+} from "fumadocs-ui/page";
+import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 
-import { AIOpenButton } from '@/components/AIOpenButton'
-import { getPageImage, source } from '@/lib/source'
-import { getAbsoluteUrl } from '@/lib/utils'
-import { getMDXComponents } from '@/mdx-components'
-import { Button } from '@/shadcn/components/ui/button'
+import { AIOpenButton } from "@/components/AIOpenButton";
+import { getPageImage, source } from "@/lib/source";
+import { getAbsoluteUrl } from "@/lib/utils";
+import { getMDXComponents } from "@/mdx-components";
+import { Button } from "@/shadcn/components/ui/button";
 
-export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
-    const params = await props.params
-    const page = source.getPage(params.slug)
-    if (!page) notFound()
+export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
+    const params = await props.params;
+    const page = source.getPage(params.slug);
+    if (!page) notFound();
 
-    const MDX = page.data.body
-    const neighbours = await findNeighbour(source.pageTree, page.url)
+    const MDX = page.data.body;
+    const neighbours = await findNeighbour(source.pageTree, page.url);
 
     return (
         <DocsPage
             toc={page.data.toc}
             tableOfContent={{
                 enabled: true,
-                style: 'clerk',
+                style: "clerk",
             }}
             tableOfContentPopover={{
-                style: 'clerk',
+                style: "clerk",
             }}
             full={page.data.full}
         >
-            <div className='flex items-center gap-2 justify-between'>
-                <DocsTitle className='flex-1 text-4xl text-foreground'>
+            <div className="flex items-center gap-2 justify-between">
+                <DocsTitle className="flex-1 text-4xl text-foreground">
                     {page.data.title}
                 </DocsTitle>
 
-                <div className='flex h-full items-center gap-2'>
+                <div className="flex h-full items-center gap-2">
                     <AIOpenButton url={getAbsoluteUrl(page.url)} />
 
                     {neighbours.previous && (
                         <Button
-                            variant='secondary'
-                            size='icon'
-                            className='extend-touch-target ml-auto size-8 shadow-none md:size-7'
+                            variant="secondary"
+                            size="icon"
+                            className="extend-touch-target ml-auto size-8 shadow-none md:size-7"
                             asChild
                         >
                             <Link href={neighbours.previous.url}>
                                 <ArrowLeftIcon />
-                                <span className='sr-only'>Previous</span>
+                                <span className="sr-only">Previous</span>
                             </Link>
                         </Button>
                     )}
 
                     {neighbours.next && (
                         <Button
-                            variant='secondary'
-                            size='icon'
-                            className='extend-touch-target size-8 shadow-none md:size-7'
+                            variant="secondary"
+                            size="icon"
+                            className="extend-touch-target size-8 shadow-none md:size-7"
                             asChild
                         >
                             <Link href={neighbours.next.url}>
-                                <span className='sr-only'>Next</span>
+                                <span className="sr-only">Next</span>
                                 <ArrowRightIcon />
                             </Link>
                         </Button>
@@ -86,19 +86,19 @@ export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
                 />
             </DocsBody>
         </DocsPage>
-    )
+    );
 }
 
 export async function generateStaticParams() {
-    return source.generateParams()
+    return source.generateParams();
 }
 
 export async function generateMetadata(
-    props: PageProps<'/docs/[[...slug]]'>
+    props: PageProps<"/docs/[[...slug]]">,
 ): Promise<Metadata> {
-    const params = await props.params
-    const page = source.getPage(params.slug)
-    if (!page) notFound()
+    const params = await props.params;
+    const page = source.getPage(params.slug);
+    if (!page) notFound();
 
     return {
         title: page.data.title,
@@ -106,5 +106,5 @@ export async function generateMetadata(
         openGraph: {
             images: getPageImage(page).url,
         },
-    }
+    };
 }

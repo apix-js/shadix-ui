@@ -1,14 +1,14 @@
-import * as React from 'react'
+import type * as React from "react";
 
-import fs from 'node:fs/promises'
-import path from 'node:path'
+import fs from "node:fs/promises";
+import path from "node:path";
 
-import { CodeCollapsibleWrapper } from '@/components/CodeCollapsibleWrapper'
-import { CopyButton } from '@/components/CopyButton'
-import { getIconForLanguageExtension } from '@/components/Icons'
-import { highlightCode } from '@/lib/highlight-code'
-import { getRegistryItem } from '@/lib/registry'
-import { cn } from '@/shadcn/lib/utils'
+import { CodeCollapsibleWrapper } from "@/components/CodeCollapsibleWrapper";
+import { CopyButton } from "@/components/CopyButton";
+import { getIconForLanguageExtension } from "@/components/Icons";
+import { highlightCode } from "@/lib/highlight-code";
+import { getRegistryItem } from "@/lib/registry";
+import { cn } from "@/shadcn/lib/utils";
 
 export async function ComponentSource({
     name,
@@ -17,49 +17,49 @@ export async function ComponentSource({
     language,
     collapsible = true,
     className,
-}: React.ComponentProps<'div'> & {
-    name?: string
-    src?: string
-    title?: string
-    language?: string
-    collapsible?: boolean
+}: React.ComponentProps<"div"> & {
+    name?: string;
+    src?: string;
+    title?: string;
+    language?: string;
+    collapsible?: boolean;
 }) {
     if (!name && !src) {
-        return null
+        return null;
     }
 
-    let code: string | undefined
-    let githubUrl: string | undefined
+    let code: string | undefined;
+    let githubUrl: string | undefined;
 
     if (name) {
-        const item = await getRegistryItem(name)
-        code = item?.files?.[0]?.content
-        githubUrl = item?.files?.[0]?.githubUrl
+        const item = await getRegistryItem(name);
+        code = item?.files?.[0]?.content;
+        githubUrl = item?.files?.[0]?.githubUrl;
     }
 
     if (src) {
-        const file = await fs.readFile(path.join(process.cwd(), src), 'utf-8')
-        code = file
+        const file = await fs.readFile(path.join(process.cwd(), src), "utf-8");
+        code = file;
     }
 
     if (!code) {
-        return null
+        return null;
     }
 
     // Fix imports.
     // Replace @/registry/new-york-v4/ with @/components/.
-    code = code.replaceAll('@/registry/new-york/', '@/components/')
+    code = code.replaceAll("@/registry/new-york/", "@/components/");
 
     // Replace export default with export.
     // code = code.replaceAll('export default', 'export')
-    code = code.replaceAll('/* eslint-disable react/no-children-prop */\n', '')
+    code = code.replaceAll("/* eslint-disable react/no-children-prop */\n", "");
 
-    const lang = language ?? title?.split('.').pop() ?? 'tsx'
-    const highlightedCode = await highlightCode(code, lang)
+    const lang = language ?? title?.split(".").pop() ?? "tsx";
+    const highlightedCode = await highlightCode(code, lang);
 
     if (!collapsible) {
         return (
-            <div className={cn('relative', className)}>
+            <div className={cn("relative", className)}>
                 <ComponentCode
                     code={code}
                     highlightedCode={highlightedCode}
@@ -67,7 +67,7 @@ export async function ComponentSource({
                     title={title}
                 />
             </div>
-        )
+        );
     }
 
     return (
@@ -79,7 +79,7 @@ export async function ComponentSource({
                 title={title}
             />
         </CodeCollapsibleWrapper>
-    )
+    );
 }
 
 function ComponentCode({
@@ -88,17 +88,17 @@ function ComponentCode({
     language,
     title,
 }: {
-    code: string
-    highlightedCode: string
-    language: string
-    title: string | undefined
+    code: string;
+    highlightedCode: string;
+    language: string;
+    title: string | undefined;
 }) {
     return (
-        <figure data-rehype-pretty-code-figure='' className='[&>pre]:max-h-96'>
+        <figure data-rehype-pretty-code-figure="" className="[&>pre]:max-h-96">
             {title && (
                 <figcaption
-                    data-rehype-pretty-code-title=''
-                    className='text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70'
+                    data-rehype-pretty-code-title=""
+                    className="text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70"
                     data-language={language}
                 >
                     {getIconForLanguageExtension(language)}
@@ -108,7 +108,8 @@ function ComponentCode({
 
             <CopyButton value={code} />
 
+            {/** biome-ignore lint/security/noDangerouslySetInnerHtml: we need to set the inner html for the highlighted code */}
             <div dangerouslySetInnerHTML={{ __html: highlightedCode }} />
         </figure>
-    )
+    );
 }

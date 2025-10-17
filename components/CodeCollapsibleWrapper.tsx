@@ -1,23 +1,23 @@
-'use client'
+"use client";
 
-import * as React from 'react'
+import * as React from "react";
 
-import { FoldVertical, UnfoldVertical } from 'lucide-react'
+import { FoldVertical, UnfoldVertical } from "lucide-react";
 
-import { Icons } from '@/components/Icons'
-import { Button } from '@/shadcn/components/ui/button'
+import { Icons } from "@/components/Icons";
+import { Button } from "@/shadcn/components/ui/button";
 import {
     Collapsible,
     CollapsibleContent,
     CollapsibleTrigger,
-} from '@/shadcn/components/ui/collapsible'
-import { Separator } from '@/shadcn/components/ui/separator'
+} from "@/shadcn/components/ui/collapsible";
+import { Separator } from "@/shadcn/components/ui/separator";
 import {
     Tooltip,
     TooltipContent,
     TooltipTrigger,
-} from '@/shadcn/components/ui/tooltip'
-import { cn } from '@/shadcn/lib/utils'
+} from "@/shadcn/components/ui/tooltip";
+import { cn } from "@/shadcn/lib/utils";
 
 export function CodeCollapsibleWrapper({
     className,
@@ -25,25 +25,25 @@ export function CodeCollapsibleWrapper({
     githubUrl,
     ...props
 }: React.ComponentProps<typeof Collapsible> & {
-    githubUrl?: string
+    githubUrl?: string;
 }) {
-    const [isOpened, setIsOpened] = React.useState(false)
+    const [isOpened, setIsOpened] = React.useState(false);
 
     return (
         <Collapsible
             open={isOpened}
             onOpenChange={setIsOpened}
-            className={cn('group/collapsible relative md:-mx-1', className)}
+            className={cn("group/collapsible relative md:-mx-1", className)}
             {...props}
         >
             <CollapsibleTrigger asChild>
-                <div className='absolute top-3 right-9 z-10 flex items-center'>
+                <div className="absolute top-3 right-9 z-10 flex items-center">
                     <Tooltip>
                         <TooltipTrigger asChild>
                             <Button
-                                variant='ghost'
-                                size='sm'
-                                className='text-muted-foreground h-7 rounded-md px-2'
+                                variant="ghost"
+                                size="sm"
+                                className="text-muted-foreground h-7 rounded-md px-2"
                             >
                                 {isOpened ? (
                                     <FoldVertical />
@@ -53,18 +53,18 @@ export function CodeCollapsibleWrapper({
                             </Button>
                         </TooltipTrigger>
                         <TooltipContent>
-                            {isOpened ? 'Collapse' : 'Expand'}
+                            {isOpened ? "Collapse" : "Expand"}
                         </TooltipContent>
                     </Tooltip>
                     {githubUrl && (
                         <Tooltip>
                             <TooltipTrigger asChild>
                                 <Button
-                                    variant={'ghost'}
-                                    size={'sm'}
-                                    className='text-muted-foreground h-7 rounded-md px-2'
+                                    variant={"ghost"}
+                                    size={"sm"}
+                                    className="text-muted-foreground h-7 rounded-md px-2"
                                     onClick={() =>
-                                        window.open(githubUrl, '_blank')
+                                        window.open(githubUrl, "_blank")
                                     }
                                 >
                                     <Icons.gitHub />
@@ -73,18 +73,18 @@ export function CodeCollapsibleWrapper({
                             <TooltipContent>Open in GitHub</TooltipContent>
                         </Tooltip>
                     )}
-                    <Separator orientation='vertical' className='mx-1.5 !h-4' />
+                    <Separator orientation="vertical" className="mx-1.5 !h-4" />
                 </div>
             </CollapsibleTrigger>
             <CollapsibleContent
                 forceMount
-                className='relative mt-6 overflow-hidden data-[state=closed]:max-h-64 [&>figure]:mt-0 [&>figure]:md:!mx-0'
+                className="relative mt-6 overflow-hidden data-[state=closed]:max-h-64 [&>figure]:mt-0 [&>figure]:md:!mx-0"
             >
                 {children}
             </CollapsibleContent>
-            <CollapsibleTrigger className='from-code/70 to-code text-muted-foreground absolute inset-x-0 -bottom-2 flex h-20 items-center justify-center rounded-b-lg bg-gradient-to-b text-sm group-data-[state=open]/collapsible:hidden'>
-                {isOpened ? 'Collapse' : 'Expand'}
+            <CollapsibleTrigger className="from-code/70 to-code text-muted-foreground absolute inset-x-0 -bottom-2 flex h-20 items-center justify-center rounded-b-lg bg-gradient-to-b text-sm group-data-[state=open]/collapsible:hidden">
+                {isOpened ? "Collapse" : "Expand"}
             </CollapsibleTrigger>
         </Collapsible>
-    )
+    );
 }

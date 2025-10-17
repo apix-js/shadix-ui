@@ -1,8 +1,9 @@
-'use client'
-import React, { useTransition } from 'react'
+"use client";
+import { useTransition } from "react";
+import type React from "react";
 
-import { Loader2Icon } from 'lucide-react'
-import { toast } from 'sonner'
+import { Loader2Icon } from "lucide-react";
+import { toast } from "sonner";
 
 import {
     AlertDialog,
@@ -14,8 +15,8 @@ import {
     AlertDialogHeader,
     AlertDialogTitle,
     AlertDialogTrigger,
-} from '@/shadcn/components/ui/alert-dialog'
-import { Button } from '@/shadcn/components/ui/button'
+} from "@/shadcn/components/ui/alert-dialog";
+import { Button } from "@/shadcn/components/ui/button";
 
 const ActionButton: React.FC<ActionButtonProps> = ({
     children,
@@ -24,15 +25,15 @@ const ActionButton: React.FC<ActionButtonProps> = ({
     onConfirm,
     ...props
 }) => {
-    const [isLoading, startLoading] = useTransition()
+    const [isLoading, startLoading] = useTransition();
 
     const handleConfirm = () => {
         startLoading(async () => {
-            const data = await onConfirm()
-            if (data.error) toast.error(data.message ?? 'Something went wrong')
-            else toast.success(data.message ?? 'Action successful')
-        })
-    }
+            const data = await onConfirm();
+            if (data.error) toast.error(data.message ?? "Something went wrong");
+            else toast.success(data.message ?? "Action successful");
+        });
+    };
 
     return (
         <AlertDialog open={isLoading ? true : undefined}>
@@ -57,41 +58,41 @@ const ActionButton: React.FC<ActionButtonProps> = ({
                         onClick={handleConfirm}
                     >
                         {isLoading ? (
-                            <Loader2Icon className='size-4 animate-spin' />
+                            <Loader2Icon className="size-4 animate-spin" />
                         ) : (
-                            'Confirm'
+                            "Confirm"
                         )}
                     </AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>
-    )
-}
+    );
+};
 
 export interface ActionButtonProps extends React.ComponentProps<typeof Button> {
     /** @public Button content */
-    children: React.ReactNode
+    children: React.ReactNode;
     /** @public Content to show in popup */
-    popupContent: React.ReactNode
+    popupContent: React.ReactNode;
     /** @public Additional CSS class names */
-    className?: string
+    className?: string;
     /** @public Variant of the button */
     variant?:
-        | 'default'
-        | 'destructive'
-        | 'outline'
-        | 'secondary'
-        | 'ghost'
-        | 'link'
+        | "default"
+        | "destructive"
+        | "outline"
+        | "secondary"
+        | "ghost"
+        | "link";
     /** @public Size of the button */
-    size?: 'default' | 'sm' | 'lg' | 'icon' | 'icon-sm' | 'icon-lg'
+    size?: "default" | "sm" | "lg" | "icon" | "icon-sm" | "icon-lg";
     /** @public Whether the button is disabled */
-    disabled?: boolean
+    disabled?: boolean;
     /** @public Function to execute on confirmation */
     onConfirm: () => Promise<{
-        message?: string
-        error?: boolean
-    }>
+        message?: string;
+        error?: boolean;
+    }>;
 }
 
-export default ActionButton
+export default ActionButton;
