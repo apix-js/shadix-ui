@@ -7,7 +7,7 @@
         "dev": "next dev --turbo",
         "start": "next start",
         "postinstall": "fumadocs-mdx",
-        "registry:build": "shadcn build && tsx scripts/build-registry.ts",
+        "registry:build": "shadcn build && tsx scripts/build-registry.ts && biome format --write registry/__index__.tsx",
         "format": "biome format --write .",
         "format:check": "biome format .",
         "lint": "biome lint .",
@@ -70,7 +70,11 @@
         ],
         "registry.json": [
             "pnpm run registry:build"
-        ]
+        ],
+        "registry/__index__.tsx": [
+            "biome format --write"
+        ],
+        "public/r/*.json": []
     },
     "engines": {
         "node": ">=20"

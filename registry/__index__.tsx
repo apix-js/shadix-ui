@@ -84,25 +84,25 @@ export const Index: Record<string, RegistryIndexItem> = {
                 },
                 variant: {
                     description: "Variant of the button",
-                    type: "| 'default'        | 'destructive'        | 'outline'        | 'secondary'        | 'ghost'        | 'link'",
+                    type: '| "default"        | "destructive"        | "outline"        | "secondary"        | "ghost"        | "link"',
                     typeDescription:
-                        "| 'default'        | 'destructive'        | 'outline'        | 'secondary'        | 'ghost'        | 'link'",
+                        '| "default"        | "destructive"        | "outline"        | "secondary"        | "ghost"        | "link"',
                     required: false,
                     deprecated: false,
                 },
                 size: {
                     description: "Size of the button",
-                    type: "'default' | 'sm' | 'lg' | 'icon' | 'icon-sm' | 'icon-lg'",
+                    type: '"default" | "sm" | "lg" | "icon" | "icon-sm" | "icon-lg"',
                     typeDescription:
-                        "'default' | 'sm' | 'lg' | 'icon' | 'icon-sm' | 'icon-lg'",
+                        '"default" | "sm" | "lg" | "icon" | "icon-sm" | "icon-lg"',
                     required: false,
                     deprecated: false,
                 },
                 onConfirm: {
                     description: "Function to execute on confirmation",
-                    type: "() => Promise<{        message?: string        error?: boolean    }>",
+                    type: "() => Promise<{        message?: string;        error?: boolean;    }>",
                     typeDescription:
-                        "() => Promise<{        message?: string        error?: boolean    }>",
+                        "() => Promise<{        message?: string;        error?: boolean;    }>",
                     required: true,
                     deprecated: false,
                 },

@@ -7,7 +7,14 @@
     },
     "files": {
         "ignoreUnknown": false,
-        "includes": ["**/*/*", "!**/node_modules", "!**/.next", "!**/dist", "!**/build"]
+        "includes": [
+            "**/*/*",
+            "!**/node_modules",
+            "!**/.next",
+            "!**/dist",
+            "!**/build",
+            "!**/public/r"
+        ]
     },
     "formatter": {
         "enabled": true,
@@ -20,7 +27,14 @@
         "expand": "auto"
     },
     "assist": {
-        "includes": ["**/*/**", "!**/node_modules/**", "!**/.next/**", "!**/dist/**", "!**/build/**"],
+        "includes": [
+            "**/*/**",
+            "!**/node_modules/**",
+            "!**/.next/**",
+            "!**/dist/**",
+            "!**/build/**",
+            "!**/public/r/**"
+        ],
         "actions": {
             "source": {
                 "organizeImports": {
@@ -38,7 +52,12 @@
                             ":BLANK_LINE:",
                             {
                                 "type": false,
-                                "source": ["**", "!@/**/*", "!react", "!react-dom"]
+                                "source": [
+                                    "**",
+                                    "!@/**/*",
+                                    "!react",
+                                    "!react-dom"
+                                ]
                             },
                             {
                                 "type": true,
@@ -52,7 +71,14 @@
                             ":BLANK_LINE:",
                             {
                                 "type": false,
-                                "source": ["**/*.css", "**/*.scss", "**/*.sass", "**/*.less", "**/*.styl", "**/*.pcss"]
+                                "source": [
+                                    "**/*.css",
+                                    "**/*.scss",
+                                    "**/*.sass",
+                                    "**/*.less",
+                                    "**/*.styl",
+                                    "**/*.pcss"
+                                ]
                             },
                             ":BLANK_LINE:"
                         ],
