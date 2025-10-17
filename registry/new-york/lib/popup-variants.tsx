@@ -64,7 +64,7 @@ export const animationVariants: Record<
             },
         },
         exit: {
-            scale: 0,
+            // scale: 0,
             opacity: 0,
             transition: {
                 duration: 0.25,
@@ -170,7 +170,7 @@ export const animationVariants: Record<
         },
     },
     zoom: {
-        hidden: { scale: 5, opacity: 0 },
+        hidden: { scale: 2, opacity: 0 },
         visible: {
             scale: 1,
             opacity: 1,
@@ -181,11 +181,10 @@ export const animationVariants: Record<
             },
         },
         exit: {
-            scale: 0,
+            scale: 2,
             opacity: 0,
-            rotate: 180,
             transition: {
-                duration: 0.4,
+                duration: 0.3,
             },
         },
     },

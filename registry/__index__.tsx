@@ -145,4 +145,107 @@ export const Index: Record<string, RegistryIndexItem> = {
         categories: undefined,
         meta: undefined,
     },
+    "motion-dialog": {
+        name: "motion-dialog",
+        description: "A dialog with modern motion animations",
+        type: "registry:component",
+        registryDependencies: ["dialog"],
+        files: [
+            {
+                path: "registry/new-york/components/motion-dialog.tsx",
+                type: "registry:ui",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/motion-dialog.tsx",
+            },
+            {
+                path: "registry/new-york/lib/popup-variants.tsx",
+                type: "registry:lib",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/lib/popup-variants.tsx",
+            },
+        ],
+        component: React.lazy(async () => {
+            const mod = await import(
+                "@/registry/new-york/components/motion-dialog.tsx"
+            );
+            const exportName =
+                Object.keys(mod).find(
+                    (key) =>
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "function" ||
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "object",
+                ) || "motion-dialog";
+            return {
+                default: (mod as Record<string, unknown>)[
+                    exportName
+                ] as React.ComponentType<object>,
+            };
+        }),
+        dependencies: ["framer-motion"],
+        categories: undefined,
+        meta: {
+            api: {
+                animation: {
+                    description: "The animation variant to use",
+                    type: "AnimationVariant",
+                    typeDescription: "AnimationVariant",
+                    required: false,
+                    deprecated: false,
+                },
+                show: {
+                    description: "Whether the dialog is open",
+                    type: "boolean",
+                    typeDescription: "boolean",
+                    required: false,
+                    deprecated: false,
+                },
+                isAnimating: {
+                    description: "Whether the dialog is animating",
+                    type: "boolean",
+                    typeDescription: "boolean",
+                    required: false,
+                    deprecated: false,
+                },
+            },
+        },
+    },
+    "motion-dialog-demo": {
+        name: "motion-dialog-demo",
+        description: "",
+        type: "registry:demo",
+        registryDependencies: undefined,
+        files: [
+            {
+                path: "registry/new-york/demos/motion-dialog.demo.tsx",
+                type: "registry:demo",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/demos/motion-dialog.demo.tsx",
+            },
+        ],
+        component: React.lazy(async () => {
+            const mod = await import(
+                "@/registry/new-york/demos/motion-dialog.demo.tsx"
+            );
+            const exportName =
+                Object.keys(mod).find(
+                    (key) =>
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "function" ||
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "object",
+                ) || "motion-dialog-demo";
+            return {
+                default: (mod as Record<string, unknown>)[
+                    exportName
+                ] as React.ComponentType<object>,
+            };
+        }),
+        dependencies: undefined,
+        categories: undefined,
+        meta: undefined,
+    },
 };

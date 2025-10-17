@@ -1,37 +1,20 @@
 {
-    "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-    "name": "action-button",
-    "type": "registry:component",
-    "description": "A button that displays a popup when clicked",
-    "dependencies": ["class-variance-authority", "framer-motion"],
-    "registryDependencies": ["button"],
-    "files": [
-        {
-            "path": "registry/new-york/components/action-button.tsx",
-            "content": "\"use client\";\nimport { useTransition } from \"react\";\nimport type React from \"react\";\n\nimport { Loader2Icon } from \"lucide-react\";\nimport { toast } from \"sonner\";\n\nimport {\n    AlertDialog,\n    AlertDialogAction,\n    AlertDialogCancel,\n    AlertDialogContent,\n    AlertDialogDescription,\n    AlertDialogFooter,\n    AlertDialogHeader,\n    AlertDialogTitle,\n    AlertDialogTrigger,\n} from \"@/shadcn/components/ui/alert-dialog\";\nimport { Button } from \"@/shadcn/components/ui/button\";\n\nconst ActionButton: React.FC<ActionButtonProps> = ({\n    children,\n    popupContent,\n    title,\n    onConfirm,\n    ...props\n}) => {\n    const [isLoading, startLoading] = useTransition();\n\n    const handleConfirm = () => {\n        startLoading(async () => {\n            const data = await onConfirm();\n            if (data.error) toast.error(data.message ?? \"Something went wrong\");\n            else toast.success(data.message ?? \"Action successful\");\n        });\n    };\n\n    return (\n        <AlertDialog open={isLoading ? true : undefined}>\n            <AlertDialogTrigger asChild>\n                <Button {...props}>{children}</Button>\n            </AlertDialogTrigger>\n\n            <AlertDialogContent>\n                <AlertDialogHeader>\n                    <AlertDialogTitle>{title}</AlertDialogTitle>\n\n                    <AlertDialogDescription asChild>\n                        {popupContent}\n                    </AlertDialogDescription>\n                </AlertDialogHeader>\n\n                <AlertDialogFooter>\n                    <AlertDialogCancel>Cancel</AlertDialogCancel>\n\n                    <AlertDialogAction\n                        disabled={isLoading}\n                        onClick={handleConfirm}\n                    >\n                        {isLoading ? (\n                            <Loader2Icon className=\"size-4 animate-spin\" />\n                        ) : (\n                            \"Confirm\"\n                        )}\n                    </AlertDialogAction>\n                </AlertDialogFooter>\n            </AlertDialogContent>\n        </AlertDialog>\n    );\n};\n\nexport interface ActionButtonProps extends React.ComponentProps<typeof Button> {\n    /** @public Button content */\n    children: React.ReactNode;\n    /** @public Content to show in popup */\n    popupContent: React.ReactNode;\n    /** @public Additional CSS class names */\n    className?: string;\n    /** @public Variant of the button */\n    variant?:\n        | \"default\"\n        | \"destructive\"\n        | \"outline\"\n        | \"secondary\"\n        | \"ghost\"\n        | \"link\";\n    /** @public Size of the button */\n    size?: \"default\" | \"sm\" | \"lg\" | \"icon\" | \"icon-sm\" | \"icon-lg\";\n    /** @public Whether the button is disabled */\n    disabled?: boolean;\n    /** @public Function to execute on confirmation */\n    onConfirm: () => Promise<{\n        message?: string;\n        error?: boolean;\n    }>;\n}\n\nexport default ActionButton;\n",
-            "type": "registry:ui"
-        }
-    ],
-    "meta": {
-        "api": [
-            {
-                "name": "children",
-                "type": "React.ReactNode",
-                "description": "Button content",
-                "required": true
-            },
-            {
-                "name": "onConfirm",
-                "type": "() => Promise<{message?: string, error?: boolean}>",
-                "description": "Function to execute on confirmation",
-                "required": true
-            },
-            {
-                "name": "popupContent",
-                "type": "React.ReactNode",
-                "description": "Content to show in popup",
-                "required": true
-            }
-        ]
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "action-button",
+  "type": "registry:component",
+  "description": "A button that displays a popup when clicked",
+  "dependencies": [
+    "class-variance-authority",
+    "framer-motion"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york/components/action-button.tsx",
+      "content": "\"use client\";\nimport { useTransition } from \"react\";\nimport type React from \"react\";\n\nimport { Loader2Icon } from \"lucide-react\";\nimport { toast } from \"sonner\";\n\nimport {\n    AlertDialog,\n    AlertDialogAction,\n    AlertDialogCancel,\n    AlertDialogContent,\n    AlertDialogDescription,\n    AlertDialogFooter,\n    AlertDialogHeader,\n    AlertDialogTitle,\n    AlertDialogTrigger,\n} from \"@/shadcn/components/ui/alert-dialog\";\nimport { Button } from \"@/shadcn/components/ui/button\";\n\nconst ActionButton: React.FC<ActionButtonProps> = ({\n    children,\n    popupContent,\n    title,\n    onConfirm,\n    ...props\n}) => {\n    const [isLoading, startLoading] = useTransition();\n\n    const handleConfirm = () => {\n        startLoading(async () => {\n            const data = await onConfirm();\n            if (data.error) toast.error(data.message ?? \"Something went wrong\");\n            else toast.success(data.message ?? \"Action successful\");\n        });\n    };\n\n    return (\n        <AlertDialog open={isLoading ? true : undefined}>\n            <AlertDialogTrigger asChild>\n                <Button {...props}>{children}</Button>\n            </AlertDialogTrigger>\n\n            <AlertDialogContent>\n                <AlertDialogHeader>\n                    <AlertDialogTitle>{title}</AlertDialogTitle>\n\n                    <AlertDialogDescription asChild>\n                        {popupContent}\n                    </AlertDialogDescription>\n                </AlertDialogHeader>\n\n                <AlertDialogFooter>\n                    <AlertDialogCancel>Cancel</AlertDialogCancel>\n\n                    <AlertDialogAction\n                        disabled={isLoading}\n                        onClick={handleConfirm}\n                    >\n                        {isLoading ? (\n                            <Loader2Icon className=\"size-4 animate-spin\" />\n                        ) : (\n                            \"Confirm\"\n                        )}\n                    </AlertDialogAction>\n                </AlertDialogFooter>\n            </AlertDialogContent>\n        </AlertDialog>\n    );\n};\n\nexport interface ActionButtonProps extends React.ComponentProps<typeof Button> {\n    /** @public Button content */\n    children: React.ReactNode;\n    /** @public Content to show in popup */\n    popupContent: React.ReactNode;\n    /** @public Additional CSS class names */\n    className?: string;\n    /** @public Variant of the button */\n    variant?:\n        | \"default\"\n        | \"destructive\"\n        | \"outline\"\n        | \"secondary\"\n        | \"ghost\"\n        | \"link\";\n    /** @public Size of the button */\n    size?: \"default\" | \"sm\" | \"lg\" | \"icon\" | \"icon-sm\" | \"icon-lg\";\n    /** @public Whether the button is disabled */\n    disabled?: boolean;\n    /** @public Function to execute on confirmation */\n    onConfirm: () => Promise<{\n        message?: string;\n        error?: boolean;\n    }>;\n}\n\nexport default ActionButton;\n",
+      "type": "registry:ui"
     }
+  ]
 }

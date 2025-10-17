@@ -73,6 +73,11 @@ const extractProps = (name: string, filePath: string): PropsTableData => {
 
         const props: PropsTableData = {};
 
+        console.log(name, interfaceDeclaration.getProperties());
+        console.log(
+            interfaceDeclaration.getProperties().map((prop) => prop.getName()),
+        );
+
         for (const prop of interfaceDeclaration.getProperties()) {
             const jsDocTags = prop.getJsDocs();
             const hasPublicTag = jsDocTags.some((jsDoc) =>
@@ -157,8 +162,6 @@ const extractProps = (name: string, filePath: string): PropsTableData => {
                 };
             }
         }
-
-        console.log(props);
 
         return props;
     } catch (error) {
