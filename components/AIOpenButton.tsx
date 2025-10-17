@@ -13,7 +13,7 @@ import {
 } from '@/shadcn/components/ui/dropdown-menu'
 
 const getPromptUrl = (baseUrl: string, url: string) => {
-    return `${baseUrl}/?q=${encodeURIComponent(`Help me use this Shadix UI component: ${url}. Explain, show examples, and debug if needed.
+    return `${baseUrl}?q=${encodeURIComponent(`Help me use this Shadix UI component: ${url}. Explain, show examples, and debug if needed.
 `)}`
 }
 

@@ -1,5 +1,6 @@
 import { promises as fs } from 'fs'
 import path from 'path'
+import { Project } from 'ts-morph'
 
 type RegistryIndexFile = {
     path: string
@@ -31,11 +32,170 @@ type RegistryMeta = {
     items: RegistryItem[]
 }
 
+type TypeNode = {
+    /** Additional description of the field */
+    description?: string
+    /** type signature (short) */
+    type: string
+    /** type signature (full) */
+    typeDescription?: string
+    /** Optional href for the type */
+    typeDescriptionLink?: string
+    default?: string
+    required?: boolean
+    deprecated?: boolean
+    parameters?: Array<{
+        name: string
+        description: string
+    }>
+    returns?: string
+}
+
+type PropsTableData = Record<string, TypeNode>
+
 const toPosix = (path: string): string => path.replaceAll('\\', '/')
 
 const readJson = async <T>(file: string): Promise<T> => {
     const content = await fs.readFile(file, 'utf8')
     return JSON.parse(content) as T
+}
+
+const extractProps = (name: string, filePath: string): PropsTableData => {
+    try {
+        const project = new Project()
+        const sourceFile = project.addSourceFileAtPath(filePath)
+
+        const interfaceDeclaration = sourceFile.getInterface(name)
+        if (!interfaceDeclaration) {
+            console.warn(`Interface ${name} not found in ${filePath}`)
+            return {} as PropsTableData
+        }
+
+        const props: PropsTableData = {}
+
+        for (const prop of interfaceDeclaration.getProperties()) {
+            const jsDocTags = prop.getJsDocs()
+            const hasPublicTag = jsDocTags.some((jsDoc) =>
+                jsDoc.getTags().some((tag) => tag.getTagName() === 'public')
+            )
+            const hasInternalTag = jsDocTags.some((jsDoc) =>
+                jsDoc.getTags().some((tag) => tag.getTagName() === 'internal')
+            )
+
+            if (
+                hasPublicTag &&
+                !hasInternalTag &&
+                !isInheritedProp(prop.getName())
+            ) {
+                const comment = prop
+                    .getJsDocs()[0]
+                    .getInnerText()
+                    .replace('@public', '')
+                    .trim()
+                const typeNode = prop.getTypeNode()
+                const typeText =
+                    typeNode?.getText().replaceAll('\n', '').trim() ?? 'unknown'
+
+                const parameters: Array<{ name: string; description: string }> =
+                    []
+                const paramTags = jsDocTags.filter((jsDoc) =>
+                    jsDoc.getTags().some((tag) => tag.getTagName() === 'param')
+                )
+
+                for (const paramTag of paramTags) {
+                    const paramComment = paramTag
+                        .getInnerText()
+                        .replace('@param', '')
+                        .trim()
+                    if (paramComment) {
+                        const match = paramComment.match(/^(\w+)\s*-\s*(.*)$/)
+                        if (match) {
+                            parameters.push({
+                                name: match[1],
+                                description: match[2].trim(),
+                            })
+                        }
+                    }
+                }
+
+                const returnTag = jsDocTags.find((jsDoc) =>
+                    jsDoc
+                        .getTags()
+                        .some((tag) => tag.getTagName() === 'returns')
+                )
+                const returns = returnTag
+                    ?.getInnerText()
+                    .replace('@returns', '')
+                    .trim()
+
+                const isDeprecated = jsDocTags.some((jsDoc) =>
+                    jsDoc
+                        .getTags()
+                        .some((tag) => tag.getTagName() === 'deprecated')
+                )
+
+                const defaultTag = jsDocTags.find((jsDoc) =>
+                    jsDoc
+                        .getTags()
+                        .some((tag) => tag.getTagName() === 'default')
+                )
+                const defaultValue = defaultTag
+                    ?.getInnerText()
+                    .replace('@default', '')
+                    .trim()
+
+                props[prop.getName()] = {
+                    description: comment,
+                    type: typeText,
+                    typeDescription: typeText,
+                    required: !prop.hasQuestionToken(),
+                    deprecated: isDeprecated,
+                    parameters: parameters.length > 0 ? parameters : undefined,
+                    returns: returns || undefined,
+                    default: defaultValue || undefined,
+                }
+            }
+        }
+
+        console.log(props)
+
+        return props
+    } catch (error) {
+        console.error(
+            `Error extracting props for ${name} from ${filePath}:`,
+            error
+        )
+        return {} as PropsTableData
+    }
+}
+
+const isInheritedProp = (propName: string): boolean => {
+    const inheritedProps = [
+        'key',
+        'ref',
+        'onMouseEnter',
+        'onMouseLeave',
+        'onFocus',
+        'onBlur',
+        'disabled',
+        'role',
+        'tabIndex',
+    ]
+
+    return (
+        inheritedProps.includes(propName) ||
+        propName.startsWith('aria-') ||
+        propName.startsWith('data-')
+    )
+}
+
+const generateInterfaceName = (componentName: string): string => {
+    return (
+        componentName
+            .split('-')
+            .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+            .join('') + 'Props'
+    )
 }
 
 const recursiveFilesList = async (
@@ -119,6 +279,15 @@ const main = async (): Promise<void> => {
             ? createTSXLazyComponent(firstImport, item.name)
             : 'null'
 
+        const componentPath = item.files?.[0]?.path
+        let extractedProps: PropsTableData = {}
+
+        if (componentPath) {
+            const fullPath = path.join(rootDir, componentPath)
+            const interfaceName = generateInterfaceName(item.name)
+            extractedProps = extractProps(interfaceName, fullPath)
+        }
+
         const record: RegistryIndexItem = {
             name: item.name,
             description: item.description ?? '',
@@ -128,7 +297,9 @@ const main = async (): Promise<void> => {
             files: filesMeta,
             component: component,
             categories: item.categories,
-            meta: item.meta,
+            meta: {
+                api: extractedProps,
+            },
         }
 
         entries.set(item.name, record)
@@ -218,6 +389,8 @@ const main = async (): Promise<void> => {
 
     await fs.mkdir(registryDir, { recursive: true })
     await fs.writeFile(path.join(registryDir, '__index__.tsx'), out, 'utf8')
+
+    console.log('✅ Registry built successfully')
 }
 
 main().catch((err) => {

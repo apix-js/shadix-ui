@@ -1,23 +1,18 @@
 import * as React from 'react'
-
-import { createGenerator } from 'fumadocs-typescript'
-import { AutoTypeTable } from 'fumadocs-typescript/ui'
+import { TypeTable } from 'fumadocs-ui/components/type-table'
 
 import { Index } from '@/registry/__index__'
-
-const genrator = createGenerator()
 
 const PropsTable: React.FC<PropsTableProps> = ({ filename, ...props }) => {
     const meta = Index[filename]
 
     const filePath = './' + meta?.files?.[0]?.path
-
-    if (!filePath) {
-        return <div>No file path found for {props.name}</div>
+    // feat: Use pre-extracted props in TypeTable format (fastest approach)
+    if (meta?.meta?.api && typeof meta.meta.api === 'object') {
+        return <TypeTable type={meta.meta.api as Record<string, any>} />
     }
 
-    // return <></>
-    return <AutoTypeTable {...props} generator={genrator} path={filePath} />
+    return <div>No props found for {props.name}</div>
 }
 
 interface PropsTableProps {

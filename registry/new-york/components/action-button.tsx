@@ -69,9 +69,13 @@ const ActionButton: React.FC<ActionButtonProps> = ({
 }
 
 export interface ActionButtonProps extends React.ComponentProps<typeof Button> {
-    children: React.ReactNode // Button content
-    popupContent: React.ReactNode // Content to show in popup
+    /** @public Button content */
+    children: React.ReactNode
+    /** @public Content to show in popup */
+    popupContent: React.ReactNode
+    /** @public Additional CSS class names */
     className?: string
+    /** @public Variant of the button */
     variant?:
         | 'default'
         | 'destructive'
@@ -79,8 +83,11 @@ export interface ActionButtonProps extends React.ComponentProps<typeof Button> {
         | 'secondary'
         | 'ghost'
         | 'link'
+    /** @public Size of the button */
     size?: 'default' | 'sm' | 'lg' | 'icon' | 'icon-sm' | 'icon-lg'
+    /** @public Whether the button is disabled */
     disabled?: boolean
+    /** @public Function to execute on confirmation */
     onConfirm: () => Promise<{
         message?: string
         error?: boolean
