@@ -84,9 +84,9 @@ export const Index: Record<string, RegistryIndexItem> = {
                 },
                 variant: {
                     description: "Variant of the button",
-                    type: '| "default"        | "destructive"        | "outline"        | "secondary"        | "ghost"        | "link"',
+                    type: '| "default"\r        | "destructive"\r        | "outline"\r        | "secondary"\r        | "ghost"\r        | "link"',
                     typeDescription:
-                        '| "default"        | "destructive"        | "outline"        | "secondary"        | "ghost"        | "link"',
+                        '| "default"\r        | "destructive"\r        | "outline"\r        | "secondary"\r        | "ghost"\r        | "link"',
                     required: false,
                     deprecated: false,
                 },
@@ -100,9 +100,9 @@ export const Index: Record<string, RegistryIndexItem> = {
                 },
                 onConfirm: {
                     description: "Function to execute on confirmation",
-                    type: "() => Promise<{        message?: string;        error?: boolean;    }>",
+                    type: "() => Promise<{\r        message?: string;\r        error?: boolean;\r    }>",
                     typeDescription:
-                        "() => Promise<{        message?: string;        error?: boolean;    }>",
+                        "() => Promise<{\r        message?: string;\r        error?: boolean;\r    }>",
                     required: true,
                     deprecated: false,
                 },

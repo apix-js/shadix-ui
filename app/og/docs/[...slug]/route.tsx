@@ -67,24 +67,34 @@ export async function GET(
                 </p>
             </div>
 
-            <div tw="flex items-center justify-center absolute bottom-10 right-10 text-white">
-                <picture tw="w-12 h-12 rounded-full overflow-hidden">
-                    <source srcSet={page.data?.authorImage} type="image/png" />
-                    <img
-                        src={page.data.authorImage}
-                        alt={page.data.author}
-                        width={48}
-                        height={48}
-                    />
-                </picture>
+            {/* Author section - only show if author data is available */}
+            {page.data?.author && (
+                <div tw="flex items-center justify-center absolute bottom-10 right-10 text-white">
+                    {page.data.authorImage && (
+                        <picture tw="w-12 h-12 rounded-full overflow-hidden">
+                            <source
+                                srcSet={page.data.authorImage}
+                                type="image/png"
+                            />
+                            <img
+                                src={page.data.authorImage}
+                                alt={page.data.author}
+                                width={48}
+                                height={48}
+                            />
+                        </picture>
+                    )}
 
-                <div tw="flex flex-col ml-4">
-                    <span tw="text-sm font-medium">{page.data.author}</span>
-                    <span tw="text-xs text-gray-300">
-                        {page.data.authorUrl}
-                    </span>
+                    <div tw="flex flex-col ml-4">
+                        <span tw="text-sm font-medium">{page.data.author}</span>
+                        {page.data.authorUrl && (
+                            <span tw="text-xs text-gray-300">
+                                {page.data.authorUrl}
+                            </span>
+                        )}
+                    </div>
                 </div>
-            </div>
+            )}
         </div>,
         {
             width: 1200,
