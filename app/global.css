@@ -140,6 +140,16 @@
     --code-number: oklch(0.72 0 0);
     --selection: oklch(0.922 0 0);
     --selection-foreground: oklch(0.205 0 0);
+
+    /* feat: Background image variables for dark theme */
+    --bg-image-dark: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cg id='stars'%3E%3Ccircle cx='20' cy='20' r='0.5' fill='%23ffffff' opacity='0.4'/%3E%3Ccircle cx='60' cy='40' r='0.8' fill='%23ffffff' opacity='0.6'/%3E%3Ccircle cx='100' cy='20' r='0.3' fill='%23ffffff' opacity='0.3'/%3E%3Ccircle cx='140' cy='60' r='0.6' fill='%23ffffff' opacity='0.5'/%3E%3Ccircle cx='180' cy='30' r='0.4' fill='%23ffffff' opacity='0.35'/%3E%3Ccircle cx='30' cy='80' r='0.7' fill='%23ffffff' opacity='0.45'/%3E%3Ccircle cx='80' cy='100' r='0.5' fill='%23ffffff' opacity='0.4'/%3E%3Ccircle cx='120' cy='80' r='0.9' fill='%23ffffff' opacity='0.7'/%3E%3Ccircle cx='160' cy='120' r='0.3' fill='%23ffffff' opacity='0.3'/%3E%3Ccircle cx='40' cy='140' r='0.6' fill='%23ffffff' opacity='0.5'/%3E%3Ccircle cx='90' cy='160' r='0.4' fill='%23ffffff' opacity='0.4'/%3E%3Ccircle cx='130' cy='140' r='0.8' fill='%23ffffff' opacity='0.6'/%3E%3Ccircle cx='170' cy='180' r='0.5' fill='%23ffffff' opacity='0.4'/%3E%3Ccircle cx='10' cy='180' r='0.7' fill='%23ffffff' opacity='0.45'/%3E%3Ccircle cx='50' cy='200' r='0.3' fill='%23ffffff' opacity='0.3'/%3E%3Ccircle cx='110' cy='200' r='0.6' fill='%23ffffff' opacity='0.4'/%3E%3Ccircle cx='150' cy='200' r='0.4' fill='%23ffffff' opacity='0.3'/%3E%3C/g%3E%3C/defs%3E%3Cuse href='%23stars'/%3E%3Cuse href='%23stars' transform='translate(100,0)'/%3E%3Cuse href='%23stars' transform='translate(0,100)'/%3E%3Cuse href='%23stars' transform='translate(100,100)'/%3E%3C/svg%3E");
+    --bg-overlay-dark: linear-gradient(
+        180deg,
+        color-mix(in oklab, var(--color-zinc-900) 90%, transparent) 20%,
+        transparent 50%,
+        transparent 50%,
+        color-mix(in oklab, var(--color-zinc-900) 90%, transparent) 90%
+    );
 }
 
 @layer base {
@@ -235,6 +245,46 @@
         > h3 + p {
             @apply !mt-2;
         }
+    }
+
+    /* feat: Background image utilities for theme support */
+    .bg-pattern {
+        background: transparent;
+        background-size: 300px 300px;
+        background-repeat: repeat;
+        background-position: 0 0;
+        background-attachment: fixed;
+    }
+
+    .dark .bg-pattern {
+        background-image: var(--bg-image-dark);
+    }
+
+    .bg-pattern-overlay {
+        position: relative;
+    }
+
+    .bg-pattern-overlay::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: none;
+        pointer-events: none;
+        background-attachment: fixed;
+        z-index: 0;
+        height: 100vh;
+    }
+
+    .dark .bg-pattern-overlay::before {
+        background: var(--bg-overlay-dark);
+    }
+
+    .bg-pattern-overlay > * {
+        position: relative;
+        z-index: 1;
     }
 
     [data-rehype-pretty-code-figure] {

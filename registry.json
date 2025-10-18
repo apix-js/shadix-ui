@@ -3,7 +3,7 @@
     "name": "shadix-ui",
     "displayName": "Shadix UI",
     "description": "A custom shadcn/ui registry",
-    "homepage": "https://shadix-ui.gihanrangana.dev",
+    "homepage": "https://shadix-ui.vercel.app",
     "version": "1.0.0",
     "items": [
         {

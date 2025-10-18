@@ -1,0 +1,336 @@
+---
+title: Contributing
+description: How to contribute to Shadix UI
+---
+
+# Contributing to Shadix UI
+
+Thank you for your interest in contributing to Shadix UI! We welcome contributions from the open source community and appreciate your help in making this project better for everyone.
+
+## Ways to Contribute
+
+There are many ways you can contribute to Shadix UI:
+
+-   🐛 **Report bugs** - Help us identify and fix issues
+-   ✨ **Suggest features** - Propose new components or improvements
+-   🎨 **Add components** - Create new animated components
+-   📝 **Improve documentation** - Help others understand how to use Shadix UI
+-   🔧 **Fix issues** - Submit pull requests for bug fixes
+-   💬 **Community support** - Help other users in discussions
+
+## Getting Started
+
+### Prerequisites
+
+Before contributing, make sure you have:
+
+-   Node.js 20 or higher
+-   pnpm package manager
+-   Git installed
+-   A GitHub account
+
+### Setting Up the Development Environment
+
+1. **Fork the repository** on GitHub
+2. **Clone your fork** locally:
+
+    ```bash
+    git clone https://github.com/YOUR_USERNAME/shadix-ui.git
+    cd shadix-ui
+    ```
+
+3. **Install dependencies**:
+
+    ```bash
+    pnpm install
+    ```
+
+4. **Build the registry**:
+
+    ```bash
+    pnpm run registry:build
+    ```
+
+5. **Start the development server**:
+    ```bash
+    pnpm dev
+    ```
+
+## Development Workflow
+
+### Branch Naming
+
+Use descriptive branch names that indicate the type of change:
+
+-   `feat/component-name` - For new components
+-   `fix/issue-description` - For bug fixes
+-   `docs/update-description` - For documentation updates
+-   `refactor/component-name` - For refactoring existing code
+
+### Commit Messages
+
+Follow conventional commit format:
+
+```
+type(scope): description
+
+feat(action-button): add hover animation variant
+fix(motion-dialog): resolve z-index issue
+docs(readme): update installation instructions
+```
+
+**Types:**
+
+-   `feat` - New features
+-   `fix` - Bug fixes
+-   `docs` - Documentation changes
+-   `style` - Code style changes
+-   `refactor` - Code refactoring
+-   `test` - Adding or updating tests
+-   `chore` - Maintenance tasks
+
+## Adding New Components
+
+### Component Structure
+
+When adding a new component, follow this structure:
+
+```
+registry/new-york/
+├── components/
+│   └── your-component.tsx
+└── demos/
+    └── your-component.demo.tsx
+```
+
+### Component Requirements
+
+All components must:
+
+1. **Follow shadcn/ui patterns** - Use the same conventions and structure
+2. **Include TypeScript types** - Full type safety and IntelliSense support
+3. **Use Framer Motion** - Add smooth animations and transitions
+4. **Be accessible** - Follow ARIA guidelines and keyboard navigation
+5. **Include variants** - Provide multiple styling options using CVA
+6. **Have documentation** - Clear usage examples and props documentation
+
+### Component Template
+
+Here's a basic template for new components:
+
+```tsx
+import * as React from 'react';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { cn } from '@/lib/utils';
+
+const yourComponentVariants = cva('base-styles', {
+    variants: {
+        variant: {
+            default: 'default-styles',
+            secondary: 'secondary-styles'
+        },
+        size: {
+            default: 'default-size',
+            sm: 'small-size',
+            lg: 'large-size'
+        }
+    },
+    defaultVariants: {
+        variant: 'default',
+        size: 'default'
+    }
+});
+
+export interface YourComponentProps
+    extends React.HTMLAttributes<HTMLDivElement>,
+        VariantProps<typeof yourComponentVariants> {
+    // Add custom props here
+}
+
+const YourComponent = React.forwardRef<HTMLDivElement, YourComponentProps>(
+    ({ className, variant, size, ...props }, ref) => {
+        return <div className={cn(yourComponentVariants({ variant, size, className }))} ref={ref} {...props} />;
+    }
+);
+YourComponent.displayName = 'YourComponent';
+
+export { YourComponent, yourComponentVariants };
+```
+
+### Demo Component
+
+Create a demo component to showcase your component:
+
+```tsx
+import { YourComponent } from '@/components/ui/your-component';
+
+export function YourComponentDemo() {
+    return (
+        <div className="space-y-4">
+            <YourComponent variant="default" size="default">
+                Default variant
+            </YourComponent>
+            <YourComponent variant="secondary" size="sm">
+                Secondary small
+            </YourComponent>
+        </div>
+    );
+}
+```
+
+### Registry Configuration
+
+Add your component to `registry.json`:
+
+```json
+{
+    "name": "your-component",
+    "description": "Brief description of your component",
+    "type": "registry:component",
+    "registryDependencies": ["button"], // Required shadcn/ui components
+    "dependencies": ["framer-motion"], // Additional dependencies
+    "files": [
+        {
+            "path": "registry/new-york/components/your-component.tsx",
+            "type": "registry:ui"
+        }
+    ]
+}
+```
+
+## Code Standards
+
+### TypeScript
+
+-   Use strict TypeScript configuration
+-   Avoid `any` types - use proper type definitions
+-   Export interfaces and types for external use
+-   Use `React.forwardRef` for components that need ref forwarding
+
+### Styling
+
+-   Use Tailwind CSS classes
+-   Follow the existing design system
+-   Use `cn()` utility for conditional classes
+-   Implement responsive design patterns
+
+### Animation
+
+-   Use Framer Motion for animations
+-   Keep animations smooth and performant
+-   Provide animation variants for customization
+-   Consider accessibility (respect `prefers-reduced-motion`)
+
+### Accessibility
+
+-   Include proper ARIA attributes
+-   Ensure keyboard navigation works
+-   Test with screen readers
+-   Follow WCAG guidelines
+
+## Testing
+
+### Manual Testing
+
+Before submitting a PR, test your component:
+
+1. **Visual testing** - Check all variants and sizes
+2. **Responsive testing** - Test on different screen sizes
+3. **Accessibility testing** - Use keyboard navigation and screen readers
+4. **Animation testing** - Verify smooth animations
+5. **Integration testing** - Test with existing components
+
+### Code Quality
+
+Run these commands before submitting:
+
+```bash
+# Format code
+pnpm run format
+
+# Check for linting issues
+pnpm run lint
+
+# Run type checking
+pnpm run check:ci
+```
+
+## Submitting Changes
+
+### Pull Request Process
+
+1. **Create a feature branch** from `main`
+2. **Make your changes** following the guidelines above
+3. **Test thoroughly** - Ensure everything works as expected
+4. **Update documentation** if needed
+5. **Submit a pull request** with a clear description
+
+### Pull Request Template
+
+When submitting a PR, include:
+
+-   **Description** - What changes you made and why
+-   **Type of change** - Bug fix, new feature, documentation, etc.
+-   **Testing** - How you tested your changes
+-   **Screenshots** - Visual changes should include before/after images
+-   **Breaking changes** - Any breaking changes should be clearly noted
+
+### Review Process
+
+-   All PRs require review before merging
+-   Address feedback promptly
+-   Keep PRs focused and reasonably sized
+-   Respond to review comments constructively
+
+## Reporting Issues
+
+### Bug Reports
+
+When reporting bugs, include:
+
+-   **Clear description** of the issue
+-   **Steps to reproduce** the problem
+-   **Expected behavior** vs actual behavior
+-   **Environment details** (OS, browser, Node version)
+-   **Screenshots** or videos if applicable
+
+### Feature Requests
+
+For feature requests, provide:
+
+-   **Use case** - Why this feature would be useful
+-   **Proposed solution** - How you envision it working
+-   **Alternatives considered** - Other approaches you've thought about
+-   **Additional context** - Any other relevant information
+
+## Community Guidelines
+
+### Code of Conduct
+
+We are committed to providing a welcoming and inclusive environment. Please:
+
+-   Be respectful and constructive
+-   Focus on what's best for the community
+-   Show empathy towards other community members
+-   Accept constructive criticism gracefully
+-   Help create a positive environment for everyone
+
+### Getting Help
+
+If you need help:
+
+-   Check existing issues and discussions
+-   Ask questions in GitHub Discussions
+-   Join our community conversations
+-   Be patient - maintainers are volunteers
+
+## Recognition
+
+Contributors will be recognized in:
+
+-   GitHub contributor list
+-   Release notes for significant contributions
+-   Community highlights
+-   Contributor hall of fame
+
+Thank you for contributing to Shadix UI! Your efforts help make this project better for everyone. 🎉

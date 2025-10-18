@@ -6,11 +6,140 @@ authorUrl: https://github.com/gihanrangana
 authorImage: https://github.com/gihanrangana.png
 ---
 
-Welcome to the docs! You can start writing documents in `/content/docs`.
+Welcome to **Shadix UI** - an **open source** custom shadcn/ui component registry featuring enhanced components with modern animations and interactions.
 
-## What is Next?
+## What is Shadix UI?
+
+Shadix UI is a curated collection of React components built on top of shadcn/ui, enhanced with Framer Motion animations and custom variants. Our components are designed to provide a seamless developer experience while maintaining the flexibility and customization options you expect from shadcn/ui.
+
+## Open Source Philosophy
+
+🚀 **Shadix UI is completely open source!** Following the shadcn/ui philosophy, our components are designed for maximum adaptability:
+
+-   **Copy & Paste Approach** - Components are distributed as source code, not npm packages
+-   **Full Customization** - Modify styles, adjust logic, or integrate with other tools
+-   **No Dependencies** - Free from the limitations of traditional component libraries
+-   **Community Driven** - Built by developers, for developers
+-   **MIT Licensed** - Use in personal and commercial projects
+
+## Why Choose Shadix UI?
+
+While shadcn/ui provides excellent core components, it lacks animated variants and motion customization options. Shadix UI fills this gap by offering:
+
+-   **Smooth Animations** - Enhanced components with Framer Motion integration
+-   **Custom Variants** - Diverse styling options beyond standard shadcn/ui
+-   **Modern Interactions** - Popup animations, transitions, and micro-interactions
+-   **Easy Integration** - Works seamlessly with existing shadcn/ui projects
+-   **TypeScript Support** - Full type safety and IntelliSense
+
+## Getting Started
+
+### Prerequisites
+
+Before using Shadix UI components, ensure you have:
+
+-   Node.js 20 or higher
+-   A React project with TypeScript
+-   Tailwind CSS configured
+-   shadcn/ui base components installed
+
+### Installation
+
+1. **Install the registry CLI** (if not already installed):
+
+    ```bash
+    pnpm add -D shadcn@latest
+    ```
+
+2. **Initialize shadcn/ui** in your project:
+
+    ```bash
+    npx shadcn@latest init
+    ```
+
+3. **Add Shadix UI registry** to your `components.json`:
+
+    ```json
+    {
+        "name": "shadix-ui",
+        "url": "https://shadix-ui.vercel.app/r/{component}.json"
+    }
+    ```
+
+4. **Install components**:
+    ```bash
+    npx shadcn@latest add action-button
+    npx shadcn@latest add motion-dialog
+    ```
+
+### Usage
+
+Once installed, you can import and use the components in your React application:
+
+```tsx
+import { ActionButton } from '@/components/ui/action-button';
+import { MotionDialog } from '@/components/ui/motion-dialog';
+
+export function MyComponent() {
+    return (
+        <div>
+            <ActionButton />
+            <MotionDialog />
+        </div>
+    );
+}
+```
+
+## Features
+
+-   🎨 **Custom Variants** - Enhanced styling options beyond standard shadcn/ui
+-   🎭 **Framer Motion** - Smooth animations and transitions
+-   📱 **Responsive Design** - Mobile-first approach
+-   ♿ **Accessibility** - Built with accessibility in mind
+-   🎯 **TypeScript** - Full TypeScript support
+-   🎨 **Tailwind CSS** - Utility-first styling
+
+## Frequently Asked Questions
+
+### Is Shadix UI free to use?
+
+Yes! Shadix UI is completely free and open source with no licensing fees or restrictions.
+
+### Can I use Shadix UI with my existing shadcn/ui project?
+
+Absolutely! Shadix UI components are designed to work seamlessly with existing shadcn/ui projects and follow the same patterns.
+
+### How do I install Shadix UI components?
+
+Use the shadcn CLI to add components directly to your project. See the Installation section above for detailed steps.
+
+### Can I modify the components after installation?
+
+Yes! That's the beauty of the copy-and-paste approach. Once installed, the code is yours to customize however you need.
+
+### What license does Shadix UI use?
+
+Shadix UI is licensed under the MIT License, allowing use in both personal and commercial projects.
+
+## Contributing
+
+🌟 **We welcome contributions from the open source community!**
+
+Whether you're fixing bugs, adding new components, improving documentation, or suggesting features - your contributions help make Shadix UI better for everyone.
+
+Please see our [Contributing Guide](/CONTRIBUTING.md) for details on how to:
+
+-   Submit bug reports and feature requests
+-   Contribute new components
+-   Improve existing components
+-   Help with documentation
+-   Join our community discussions
+
+## Resources
 
 <Cards>
-    <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-    <Card title="Learn more about Fumadocs" href="https://fumadocs.dev" />
+    <Card title="shadcn/ui Documentation" href="https://ui.shadcn.com" />
+    <Card title="Framer Motion Docs" href="https://www.framer.com/motion/" />
+    <Card title="Tailwind CSS" href="https://tailwindcss.com/docs" />
+    <Card title="GitHub Repository" href="https://github.com/gihanrangana/shadix-ui" />
 </Cards>
