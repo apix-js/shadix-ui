@@ -5,7 +5,7 @@ import { docs } from "@/.source";
 import { Index } from "@/registry/__index__";
 
 // Dynamic domain detection for registry URLs
-function getRegistryBaseUrl(): string {
+export function getRegistryBaseUrl(): string {
     // Priority order:
     // 1. Environment variable (for production)
     // 2. Vercel URL (for preview deployments)
