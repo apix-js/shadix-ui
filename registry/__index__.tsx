@@ -159,11 +159,11 @@ export const Index: Record<string, RegistryIndexItem> = {
                     "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/motion-dialog.tsx",
             },
             {
-                path: "registry/new-york/lib/popup-variants.tsx",
+                path: "registry/new-york/lib/popup-variants.ts",
                 type: "registry:lib",
                 target: "",
                 githubUrl:
-                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/lib/popup-variants.tsx",
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/lib/popup-variants.ts",
             },
         ],
         component: React.lazy(async () => {

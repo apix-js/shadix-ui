@@ -31,7 +31,7 @@
                     "type": "registry:ui"
                 },
                 {
-                    "path": "registry/new-york/lib/popup-variants.tsx",
+                    "path": "registry/new-york/lib/popup-variants.ts",
                     "type": "registry:lib"
                 }
             ]

@@ -34,6 +34,7 @@ export default function Layout({ children }: LayoutProps<"/">) {
                             defaultTheme: "dark",
                             enabled: true,
                             enableSystem: true,
+                            enableColorScheme: true,
                         }}
                         search={{
                             enabled: true,
