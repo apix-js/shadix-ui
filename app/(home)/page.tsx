@@ -77,7 +77,7 @@ export default function HomePage() {
                             asChild
                         >
                             <Link
-                                href="https://github.com"
+                                href="https://github.com/apix-js/shadix-ui"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
