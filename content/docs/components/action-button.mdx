@@ -1,69 +1,61 @@
 ---
 title: Action Button
 description: A button component that displays a popup when clicked with smooth animations
+author: Gihan Rangana
+authorUrl: https://github.com/gihanrangana
+authorImage: https://github.com/gihanrangana.png
 ---
 
-<ComponentPreview name='action-button-demo' />
+<ComponentPreview name="action-button-demo" />
 
 ## Installation
 
-<InstalationDocs name='action-button' filepath='components/ui' />
+<InstalationDocs name="action-button" filepath="components/ui" />
 
 ## Usage
 
 ### Basic Usage
 
 ```tsx
-import ActionButton from '@/registry/new-york/components/action-button/action-button'
+import ActionButton from '@/registry/new-york/components/action-button/action-button';
 
 const ActionButtonDemo = () => {
     return (
-        <ActionButton
-            onConfirm={() => {}}
-            popupContent={<div>This is a popup</div>}
-        >
+        <ActionButton onConfirm={() => {}} popupContent={<div>This is a popup</div>}>
             Click Me
         </ActionButton>
-    )
-}
+    );
+};
 ```
 
 ### With Variants
 
 ```tsx
-import ActionButton from '@/components/ui/action-button'
+import ActionButton from '@/components/ui/action-button';
 
 const ActionButtonDemo = () => {
     return (
-        <ActionButton
-            variant='outline'
-            onConfirm={() => {}}
-            popupContent={<div>This is a popup</div>}
-        >
+        <ActionButton variant="outline" onConfirm={() => {}} popupContent={<div>This is a popup</div>}>
             Click Me
         </ActionButton>
-    )
-}
+    );
+};
 ```
 
 ### Disabled
 
 ```tsx
-import ActionButton from '@/components/ui/action-button'
+import ActionButton from '@/components/ui/action-button';
 
 const ActionButtonDemo = () => {
     return (
-        <ActionButton
-            onConfirm={() => {}}
-            popupContent={<div>This is a popup</div>}
-            disabled
-        >
+        <ActionButton onConfirm={() => {}} popupContent={<div>This is a popup</div>} disabled>
             Click Me
         </ActionButton>
-    )
-}
+    );
+};
 ```
 
 ## Props
 
-<PropsTable name='ActionButtonProps' filename='action-button' />
+<PropsTable name="ActionButtonProps" filename="action-button" />

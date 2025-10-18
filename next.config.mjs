@@ -10,6 +10,10 @@ const config = {
             {
                 source: '/docs/:path*.mdx',
                 destination: '/llms.mdx/:path*',
+            },
+            {
+                source: '/docs/:path*.png',
+                destination: '/og/docs/:path*/image.png',
             }
         ]
     }
