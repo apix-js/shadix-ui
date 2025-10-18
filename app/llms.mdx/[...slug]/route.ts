@@ -20,5 +20,10 @@ export async function GET(
 }
 
 export function generateStaticParams() {
-    return source.generateParams();
+    return source
+        .generateParams()
+        .filter((params) => params.slug && params.slug.length > 0)
+        .map((params) => ({
+            slug: params.slug,
+        }));
 }

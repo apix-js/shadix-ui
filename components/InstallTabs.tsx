@@ -34,7 +34,7 @@ const InstallTabs: React.FC<InstallTabsProps> = ({ pkg, external = false }) => {
         }
     }, []);
 
-    let command = `shadcn@latest add ${origin}/${pkg}`;
+    let command = `shadcn@latest add ${origin}/r/${pkg}`;
 
     if (external) {
         const packages = Array.isArray(pkg) ? pkg.join(" ") : pkg;
