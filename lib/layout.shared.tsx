@@ -1,4 +1,3 @@
-import Image from "next/image";
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
 
 /**
@@ -28,6 +27,7 @@ export function baseOptions(): BaseLayoutProps {
                 </>
             ),
         },
+        githubUrl: "https://github.com/apix-js/shadix-ui",
         // see https://fumadocs.dev/docs/ui/navigation/links
         links: [],
     };

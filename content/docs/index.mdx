@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-description: Custom shadcn/ui registry
+description: Custom registry for shadcn/ui components
 author: Gihan Rangana
 authorUrl: https://github.com/gihanrangana
 authorImage: https://github.com/gihanrangana.png
@@ -34,15 +34,19 @@ While shadcn/ui provides excellent core components, it lacks animated variants a
 
 ## Getting Started
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+Ready to enhance your React application with animated components? Get started with Shadix UI in just a few minutes.
+
+### Quick Start
+
+1. **Configure the registry** in your `components.json`: <<<<<<< Updated upstream <<<<<<< Updated upstream
+
 ### Prerequisites
-=======
-Ready to enhance your React application with shadix-ui components? Get started with just a few minutes.
->>>>>>> Stashed changes
-=======
-Ready to enhance your React application with shadix-ui components? Get started with just a few minutes.
->>>>>>> Stashed changes
+
+======= Ready to enhance your React application with shadix-ui components? Get started with just a few minutes.
+
+> > > > > > > # Stashed changes
+> > > > > > >
+> > > > > > > Ready to enhance your React application with shadix-ui components? Get started with just a few minutes. Stashed changes
 
 Before using Shadix UI components, ensure you have:
 
@@ -69,34 +73,18 @@ Before using Shadix UI components, ensure you have:
 
     ```json
     {
-        "name": "shadix-ui",
-        "url": "https://shadix-ui.vercel.app/r/{component}.json"
+        "registries": {
+            "@shadix-ui": "https://shadix-ui.vercel.app/r/{name}.json"
+        }
     }
     ```
 
-4. **Install components**:
+4. **Install components** using the shadcn CLI:
     ```bash
-    npx shadcn@latest add action-button
-    npx shadcn@latest add motion-dialog
+    npx shadcn@latest add @shadix-ui/action-button
     ```
 
-### Usage
-
-Once installed, you can import and use the components in your React application:
-
-```tsx
-import { ActionButton } from '@/components/ui/action-button';
-import { MotionDialog } from '@/components/ui/motion-dialog';
-
-export function MyComponent() {
-    return (
-        <div>
-            <ActionButton />
-            <MotionDialog />
-        </div>
-    );
-}
-```
+For detailed installation instructions, prerequisites, and troubleshooting, see the [Installation Guide](/docs/installation).
 
 ## Features
 
