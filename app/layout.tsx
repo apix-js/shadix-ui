@@ -2,6 +2,7 @@ import { RootProvider } from "fumadocs-ui/provider/next";
 import { Fira_Code, Inter } from "next/font/google";
 import type { Metadata } from "next";
 
+import { OrganizationSchema } from "@/components/StructuredData";
 import { ScrollArea } from "@/shadcn/components/ui/scroll-area";
 import { Toaster } from "@/shadcn/components/ui/sonner";
 
@@ -37,11 +38,41 @@ export const metadata: Metadata = {
         "tailwind",
         "framer-motion",
         "registry",
+        "typescript",
+        "nextjs",
+        "frontend",
+        "web development",
     ],
     authors: [
         { name: "apix-js", url: "https://github.com/apix-js" },
         { name: "Gihan Rangana", url: "https://github.com/gihanrangana" },
     ],
+    creator: "Gihan Rangana",
+    publisher: "Shadix UI",
+    category: "Technology",
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            "max-video-preview": -1,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+        },
+    },
+    // feat: Verification meta tags (placeholders for user to fill in)
+    verification: {
+        // google: "your-google-verification-code",
+        // yandex: "your-yandex-verification-code",
+        // yahoo: "your-yahoo-verification-code",
+        // other: {
+        //     "msvalidate.01": "your-bing-verification-code",
+        // },
+    },
+    alternates: {
+        canonical: "https://shadix-ui.vercel.app",
+    },
     openGraph: {
         type: "website",
         locale: "en_US",
@@ -65,6 +96,7 @@ export const metadata: Metadata = {
         description:
             "Beautiful, accessible, and customizable React components built on top of shadcn/ui.",
         images: ["/og"],
+        creator: "@gihanrangana",
     },
 };
 
@@ -75,6 +107,9 @@ export default function Layout({ children }: LayoutProps<"/">) {
             className={`${inter.variable} ${jetbrainsMono.variable}`}
             suppressHydrationWarning
         >
+            <head>
+                <OrganizationSchema />
+            </head>
             <body
                 className={`headless flex flex-col min-h-screen ${inter.className}`}
                 suppressHydrationWarning

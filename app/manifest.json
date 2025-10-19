@@ -1,21 +1,25 @@
 {
-    "name": "MyWebSite",
-    "short_name": "MySite",
+    "name": "Shadix UI - Custom shadcn/ui Registry",
+    "short_name": "Shadix UI",
+    "description": "Beautiful, accessible, and customizable React components built on top of shadcn/ui. Enhanced with modern animations and advanced interactions.",
+    "start_url": "/",
+    "scope": "/",
     "icons": [
         {
-            "src": "/favicon.ico/web-app-manifest-192x192.png",
+            "src": "/web-app-manifest-192x192.png",
             "sizes": "192x192",
             "type": "image/png",
             "purpose": "maskable"
         },
         {
-            "src": "/favicon.ico/web-app-manifest-512x512.png",
+            "src": "/web-app-manifest-512x512.png",
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "maskable"
         }
     ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
-    "display": "standalone"
+    "theme_color": "#0f172a",
+    "background_color": "#0f172a",
+    "display": "standalone",
+    "orientation": "portrait-primary"
 }

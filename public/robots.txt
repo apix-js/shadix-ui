@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Disallow API routes and internal files
+Disallow: /api/
+Disallow: /_next/
+Disallow: /node_modules/
+Disallow: /.*
+Disallow: /llms.mdx/
+
+# Allow registry JSON files for component discovery
+Allow: /r/*.json
+
+# Sitemap location
+Sitemap: https://shadix-ui.vercel.app/sitemap.xml
