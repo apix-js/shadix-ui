@@ -1,4 +1,10 @@
 {
     "title": "Shadix UI",
-    "pages": ["index", "contributing", "---Components---", "...components"]
+    "pages": [
+        "index",
+        "installation",
+        "contributing",
+        "---Components---",
+        "...components"
+    ]
 }

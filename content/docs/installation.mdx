@@ -1,0 +1,154 @@
+---
+title: Installation
+description: How to install and use Shadix UI components in your project
+---
+
+## Prerequisites
+
+Before using Shadix UI components, ensure you have:
+
+-   Node.js 20 or higher
+-   A React project with TypeScript
+-   Tailwind CSS configured
+-   shadcn/ui base components installed
+
+## Installation
+
+### 1. Install the shadcn CLI
+
+If you don't have the shadcn CLI installed, add it to your project:
+
+```bash
+pnpm add -D shadcn@latest
+```
+
+### 2. Initialize shadcn/ui
+
+Initialize shadcn/ui in your project if you haven't already:
+
+```bash
+npx shadcn@latest init
+```
+
+### 3. Configure the Shadix UI Registry
+
+Add the Shadix UI registry to your `components.json` file:
+
+```json
+{
+    "registries": {
+        "@shadix-ui": "https://shadix-ui.vercel.app/r/{name}.json"
+    }
+}
+```
+
+Your complete `components.json` should look something like this:
+
+```json
+{
+    "$schema": "https://ui.shadcn.com/schema.json",
+    "style": "new-york",
+    "rsc": true,
+    "tsx": true,
+    "tailwind": {
+        "config": "tailwind.config.ts",
+        "css": "app/globals.css",
+        "baseColor": "neutral",
+        "cssVariables": true
+    },
+    "aliases": {
+        "components": "@/components",
+        "utils": "@/lib/utils"
+    },
+    "registries": {
+        "@shadix-ui": "https://shadix-ui.vercel.app/r/{name}.json"
+    }
+}
+```
+
+### 4. Install Components
+
+#### Option A: Using the Namespace (Recommended)
+
+Install components using the `@shadix-ui` namespace:
+
+```bash
+npx shadcn@latest add @shadix-ui/action-button
+```
+
+Or install multiple components at once:
+
+```bash
+npx shadcn@latest add @shadix-ui/action-button @shadix-ui/motion-dialog
+```
+
+#### Option B: Direct Registry URL (Optional)
+
+If you prefer not to configure the namespace, you can install components directly using the registry URL:
+
+```bash
+npx shadcn@latest add --registry https://shadix-ui.vercel.app/r/action-button.json
+```
+
+This method is useful for:
+
+-   Testing components without modifying your `components.json`
+-   One-time installations
+-   CI/CD environments where you don't want to persist registry configuration
+
+## Usage
+
+Once installed, you can import and use the components in your React application:
+
+```tsx
+import { ActionButton } from '@/components/ui/action-button';
+import { MotionDialog } from '@/components/ui/motion-dialog';
+
+export function MyComponent() {
+    return (
+        <div>
+            <ActionButton
+                variant="destructive"
+                onConfirm={async () => {
+                    // Handle confirmation
+                    return { message: 'Action completed!' };
+                }}
+                title="Confirm Action"
+                popupContent={<p>Are you sure?</p>}>
+                Click Me
+            </ActionButton>
+
+            <MotionDialog animation="ripple">{/* Dialog content */}</MotionDialog>
+        </div>
+    );
+}
+```
+
+## Available Components
+
+View all available components in the [Components](/docs/components) section.
+
+## Troubleshooting
+
+### Registry not configured
+
+If you see an error about the registry not being configured, make sure you've added the `@shadix-ui` registry to your `components.json` file as shown in step 3.
+
+### Component not found
+
+If a component fails to install, verify that:
+
+-   The component name is correct
+-   Your internet connection is active
+-   The registry URL is accessible
+
+### Dependencies issues
+
+Shadix UI components may have dependencies on base shadcn/ui components. The CLI will automatically install these dependencies, but if you encounter issues:
+
+1. Make sure shadcn/ui is properly initialized
+2. Check that your `components.json` is correctly configured
+3. Try installing the base component manually first
+4. For more information, please refer to the [shadcn/ui documentation](https://ui.shadcn.com/docs/installation)
+
+For more help, please [open an issue](https://github.com/apix-js/shadix-ui/issues) on GitHub.

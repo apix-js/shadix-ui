@@ -1,19 +1,17 @@
 "use client";
 
-import { useState } from "react";
-
 import { motion } from "framer-motion";
 import {
     ArrowRightIcon,
     CodeIcon,
     ExternalLinkIcon,
-    GithubIcon,
     PaletteIcon,
     SparklesIcon,
     ZapIcon,
 } from "lucide-react";
 import Link from "next/link";
 
+import { Icons } from "@/components/Icons";
 import ActionButton from "@/registry/new-york/components/action-button";
 import {
     MotionDialog,
@@ -81,7 +79,7 @@ export default function HomePage() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                <GithubIcon className="mr-2 w-5 h-5" />
+                                <Icons.gitHub className="mr-2 w-5 h-5" />
                                 View on GitHub
                             </Link>
                         </Button>
