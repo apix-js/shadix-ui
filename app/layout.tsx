@@ -63,12 +63,12 @@ export const metadata: Metadata = {
     },
     // feat: Verification meta tags (placeholders for user to fill in)
     verification: {
-        // google: "your-google-verification-code",
+        google: "IJMcaRBOMLON6GxLivFF_ClgAEGlTwuRZPDXbuQQ7og",
         // yandex: "your-yandex-verification-code",
         // yahoo: "your-yahoo-verification-code",
-        // other: {
-        //     "msvalidate.01": "your-bing-verification-code",
-        // },
+        other: {
+            "msvalidate.01": "9AF17421AA5AB5CB32DF3F596F48B686",
+        },
     },
     alternates: {
         canonical: "https://shadix-ui.vercel.app",
