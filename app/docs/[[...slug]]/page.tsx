@@ -12,6 +12,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
 import { AIOpenButton } from "@/components/AIOpenButton";
+import AuthorCard from "@/components/AuthorCard";
 import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { TechArticleSchema } from "@/components/StructuredData";
 import { getPageImage, source } from "@/lib/source";
@@ -119,6 +120,16 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
                 </div>
 
                 <DocsDescription>{page.data.description}</DocsDescription>
+
+                {page.data.author && (
+                    <AuthorCard
+                        author={{
+                            name: page.data.author,
+                            url: page.data.authorUrl || "",
+                            image: page.data.authorImage || "",
+                        }}
+                    />
+                )}
 
                 <DocsBody>
                     <MDX
