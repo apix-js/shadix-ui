@@ -5,6 +5,8 @@ import type { MetadataRoute } from "next";
 import { getRegistryBaseUrl, source } from "@/lib/source";
 import { Index } from "@/registry/__index__";
 
+export const dynamic = "force-dynamic";
+
 // feat: Get file modification date for better sitemap accuracy
 function getFileLastModified(filePath: string): Date {
     try {
