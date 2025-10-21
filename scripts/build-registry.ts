@@ -361,9 +361,7 @@ const main = async (): Promise<void> => {
                 (f) =>
                     `{ path: "${f.path}", type: "${f.type}", target: "${
                         f.target ?? ""
-                    }", githubUrl: "https://github.com/apix-js/shadix-ui/tree/main/${
-                        f.path
-                    }" }`,
+                    }", githubUrl: "https://github.com/apix-js/shadix-ui/tree/main/${f.path}" }`,
             )
             .join(", ")}]`;
 
@@ -371,9 +369,7 @@ const main = async (): Promise<void> => {
         out += `    name: ${JSON.stringify(item.name)},\n`;
         out += `    description: ${JSON.stringify(item.description ?? "")},\n`;
         out += `    type: ${JSON.stringify(item.type)},\n`;
-        out += `    registryDependencies: ${JSON.stringify(
-            item.registryDependencies,
-        )},\n`;
+        out += `    registryDependencies: ${JSON.stringify(item.registryDependencies)},\n`;
         out += `    files: ${filesArray},\n`;
         out += `    component: ${item.component},\n`;
         out += `    dependencies: ${JSON.stringify(item.dependencies)},\n`;
@@ -386,6 +382,11 @@ const main = async (): Promise<void> => {
 
     await fs.mkdir(registryDir, { recursive: true });
     await fs.writeFile(path.join(registryDir, "__index__.tsx"), out, "utf8");
+
+    // Copy registry.json to public/r/
+    const publicRDir = path.join(rootDir, "public", "r");
+    await fs.mkdir(publicRDir, { recursive: true });
+    await fs.copyFile(registryJsonPath, path.join(publicRDir, "registry.json"));
 
     console.log("✅ Registry built successfully");
 };
