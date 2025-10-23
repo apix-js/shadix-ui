@@ -1,25 +1,13 @@
 "use client";
 
-import { AnimatePresence } from "framer-motion";
-
-import {
-    MotionDialog,
-    MotionDialogBody,
-    MotionDialogClose,
-    MotionDialogContent,
-    MotionDialogDescription,
-    MotionDialogFooter,
-    MotionDialogHeader,
-    MotionDialogTitle,
-    MotionDialogTrigger,
-} from "@/registry/new-york/components/motion-dialog";
-import { Button } from "@/shadcn/components/ui/button";
+import DateTimePickerDemo from "@/registry/new-york/demos/datetimepicker.demo";
 
 // feat: Create demo component showcasing all animation variants
 export default function AnimatedDialogDemo() {
     return (
         <div className="mt-10 flex items-center justify-center h-auto">
-            <AnimatePresence mode="wait">
+            <DateTimePickerDemo />
+            {/* <AnimatePresence mode="wait">
                 <MotionDialog animation="elastic">
                     <MotionDialogTrigger asChild>
                         <Button>Open Dialog</Button>
@@ -43,6 +31,7 @@ export default function AnimatedDialogDemo() {
                     </MotionDialogContent>
                 </MotionDialog>
             </AnimatePresence>
+             */}
         </div>
     );
 }

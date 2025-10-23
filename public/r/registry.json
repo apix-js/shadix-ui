@@ -35,6 +35,82 @@
                     "type": "registry:lib"
                 }
             ]
+        },
+        {
+            "name": "datetimepicker",
+            "description": "A datetime picker component",
+            "type": "registry:component",
+            "registryDependencies": ["input-group", "button", "@ncdai/wheel-picker"],
+            "dependencies": ["date-fns", "framer-motion"],
+            "files": [
+                {
+                    "path": "registry/new-york/components/datetimepicker/datetimepicker.tsx",
+                    "type": "registry:ui",
+                    "target": "datetimepicker/datetimepicker.tsx"
+                },
+                {
+                    "path": "registry/new-york/components/datetimepicker/index.ts",
+                    "type": "registry:ui",
+                    "target": "datetimepicker/index.ts"
+                },
+                {
+                    "path": "registry/new-york/components/datetimepicker/calendar-grid.tsx",
+                    "type": "registry:ui",
+                    "target": "datetimepicker/calendar-grid.tsx"
+                },
+                {
+                    "path": "registry/new-york/components/datetimepicker/datepicker-view.tsx",
+                    "type": "registry:ui",
+                    "target": "datetimepicker/datepicker-view.tsx"
+                },
+                {
+                    "path": "registry/new-york/components/datetimepicker/datetimepicker-context.tsx",
+                    "type": "registry:ui",
+                    "target": "datetimepicker/datetimepicker-context.tsx"
+                },
+                {
+                    "path": "registry/new-york/components/datetimepicker/datetimepicker-types.ts",
+                    "type": "registry:ui",
+                    "target": "datetimepicker/datetimepicker-types.ts"
+                },
+                {
+                    "path": "registry/new-york/components/datetimepicker/datetimepicker-utils.ts",
+                    "type": "registry:ui",
+                    "target": "datetimepicker/datetimepicker-utils.ts"
+                },
+                {
+                    "path": "registry/new-york/components/datetimepicker/timepicker-view.tsx",
+                    "type": "registry:ui",
+                    "target": "datetimepicker/timepicker-view.tsx"
+                },
+                {
+                    "path": "registry/new-york/components/datetimepicker/wheel-month-picker.tsx",
+                    "type": "registry:ui",
+                    "target": "datetimepicker/wheel-month-picker.tsx"
+                },
+                {
+                    "path": "registry/new-york/components/datetimepicker/wheel-time-picker.tsx",
+                    "type": "registry:ui",
+                    "target": "datetimepicker/wheel-time-picker.tsx"
+                },
+                {
+                    "path": "registry/new-york/components/datetimepicker/wheel-year-picker.tsx",
+                    "type": "registry:ui",
+                    "target": "datetimepicker/wheel-year-picker.tsx"
+                },
+                {
+                    "path": "registry/new-york/hooks/useClickOutside.ts",
+                    "type": "registry:hook"
+                },
+                {
+                    "path": "registry/new-york/hooks/useEventListener.ts",
+                    "type": "registry:hook"
+                },
+                {
+                    "path": "registry/new-york/hooks/useIsomorphicLayoutEffect.ts",
+                    "type": "registry:hook"
+                }
+            ]
         }
     ]
 }

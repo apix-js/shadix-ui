@@ -2,9 +2,9 @@
 import { useEffect, useState } from "react";
 import type React from "react";
 
-import { Badge, Calendar, Github } from "lucide-react";
+import { Github } from "lucide-react";
 
-import { getRoleBadgeColor, getUsernameFromUrl } from "@/lib/github";
+import { getUsernameFromUrl } from "@/lib/github";
 import { Button } from "@/shadcn/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/shadcn/components/ui/card";
 import { Separator } from "@/shadcn/components/ui/separator";

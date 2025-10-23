@@ -84,9 +84,9 @@ export const Index: Record<string, RegistryIndexItem> = {
                 },
                 variant: {
                     description: "Variant of the button",
-                    type: '| "default"\r        | "destructive"\r        | "outline"\r        | "secondary"\r        | "ghost"\r        | "link"',
+                    type: '| "default"        | "destructive"        | "outline"        | "secondary"        | "ghost"        | "link"',
                     typeDescription:
-                        '| "default"\r        | "destructive"\r        | "outline"\r        | "secondary"\r        | "ghost"\r        | "link"',
+                        '| "default"        | "destructive"        | "outline"        | "secondary"        | "ghost"        | "link"',
                     required: false,
                     deprecated: false,
                 },
@@ -100,9 +100,9 @@ export const Index: Record<string, RegistryIndexItem> = {
                 },
                 onConfirm: {
                     description: "Function to execute on confirmation",
-                    type: "() => Promise<{\r        message?: string;\r        error?: boolean;\r    }>",
+                    type: "() => Promise<{        message?: string;        error?: boolean;    }>",
                     typeDescription:
-                        "() => Promise<{\r        message?: string;\r        error?: boolean;\r    }>",
+                        "() => Promise<{        message?: string;        error?: boolean;    }>",
                     required: true,
                     deprecated: false,
                 },
@@ -135,6 +135,169 @@ export const Index: Record<string, RegistryIndexItem> = {
                         typeof (mod as Record<string, unknown>)[key] ===
                             "object",
                 ) || "action-button-demo";
+            return {
+                default: (mod as Record<string, unknown>)[
+                    exportName
+                ] as React.ComponentType<object>,
+            };
+        }),
+        dependencies: undefined,
+        categories: undefined,
+        meta: undefined,
+    },
+    datetimepicker: {
+        name: "datetimepicker",
+        description: "A datetime picker component",
+        type: "registry:component",
+        registryDependencies: ["input-group", "button", "@ncdai/wheel-picker"],
+        files: [
+            {
+                path: "registry/new-york/components/datetimepicker/datetimepicker.tsx",
+                type: "registry:ui",
+                target: "datetimepicker/datetimepicker.tsx",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/datetimepicker/datetimepicker.tsx",
+            },
+            {
+                path: "registry/new-york/components/datetimepicker/index.ts",
+                type: "registry:ui",
+                target: "datetimepicker/index.ts",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/datetimepicker/index.ts",
+            },
+            {
+                path: "registry/new-york/components/datetimepicker/calendar-grid.tsx",
+                type: "registry:ui",
+                target: "datetimepicker/calendar-grid.tsx",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/datetimepicker/calendar-grid.tsx",
+            },
+            {
+                path: "registry/new-york/components/datetimepicker/datepicker-view.tsx",
+                type: "registry:ui",
+                target: "datetimepicker/datepicker-view.tsx",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/datetimepicker/datepicker-view.tsx",
+            },
+            {
+                path: "registry/new-york/components/datetimepicker/datetimepicker-context.tsx",
+                type: "registry:ui",
+                target: "datetimepicker/datetimepicker-context.tsx",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/datetimepicker/datetimepicker-context.tsx",
+            },
+            {
+                path: "registry/new-york/components/datetimepicker/datetimepicker-types.ts",
+                type: "registry:ui",
+                target: "datetimepicker/datetimepicker-types.ts",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/datetimepicker/datetimepicker-types.ts",
+            },
+            {
+                path: "registry/new-york/components/datetimepicker/datetimepicker-utils.ts",
+                type: "registry:ui",
+                target: "datetimepicker/datetimepicker-utils.ts",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/datetimepicker/datetimepicker-utils.ts",
+            },
+            {
+                path: "registry/new-york/components/datetimepicker/timepicker-view.tsx",
+                type: "registry:ui",
+                target: "datetimepicker/timepicker-view.tsx",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/datetimepicker/timepicker-view.tsx",
+            },
+            {
+                path: "registry/new-york/components/datetimepicker/wheel-month-picker.tsx",
+                type: "registry:ui",
+                target: "datetimepicker/wheel-month-picker.tsx",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/datetimepicker/wheel-month-picker.tsx",
+            },
+            {
+                path: "registry/new-york/components/datetimepicker/wheel-time-picker.tsx",
+                type: "registry:ui",
+                target: "datetimepicker/wheel-time-picker.tsx",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/datetimepicker/wheel-time-picker.tsx",
+            },
+            {
+                path: "registry/new-york/components/datetimepicker/wheel-year-picker.tsx",
+                type: "registry:ui",
+                target: "datetimepicker/wheel-year-picker.tsx",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/datetimepicker/wheel-year-picker.tsx",
+            },
+            {
+                path: "registry/new-york/hooks/useClickOutside.ts",
+                type: "registry:hook",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/hooks/useClickOutside.ts",
+            },
+            {
+                path: "registry/new-york/hooks/useEventListener.ts",
+                type: "registry:hook",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/hooks/useEventListener.ts",
+            },
+            {
+                path: "registry/new-york/hooks/useIsomorphicLayoutEffect.ts",
+                type: "registry:hook",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/hooks/useIsomorphicLayoutEffect.ts",
+            },
+        ],
+        component: React.lazy(async () => {
+            const mod = await import(
+                "@/registry/new-york/components/datetimepicker/datetimepicker.tsx"
+            );
+            const exportName =
+                Object.keys(mod).find(
+                    (key) =>
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "function" ||
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "object",
+                ) || "datetimepicker";
+            return {
+                default: (mod as Record<string, unknown>)[
+                    exportName
+                ] as React.ComponentType<object>,
+            };
+        }),
+        dependencies: ["date-fns", "framer-motion"],
+        categories: undefined,
+        meta: { api: {} },
+    },
+    "datetimepicker-demo": {
+        name: "datetimepicker-demo",
+        description: "",
+        type: "registry:demo",
+        registryDependencies: undefined,
+        files: [
+            {
+                path: "registry/new-york/demos/datetimepicker.demo.tsx",
+                type: "registry:demo",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/demos/datetimepicker.demo.tsx",
+            },
+        ],
+        component: React.lazy(async () => {
+            const mod = await import(
+                "@/registry/new-york/demos/datetimepicker.demo.tsx"
+            );
+            const exportName =
+                Object.keys(mod).find(
+                    (key) =>
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "function" ||
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "object",
+                ) || "datetimepicker-demo";
             return {
                 default: (mod as Record<string, unknown>)[
                     exportName
