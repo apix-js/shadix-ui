@@ -1,0 +1,73 @@
+---
+title: DateTime Picker Input
+description: A datetime picker input component with modern animations
+author: Gihan Rangana
+authorUrl: https://github.com/gihanrangana
+authorImage: https://github.com/gihanrangana.png
+---
+
+<ComponentPreview name="datetimepicker-input-demo" />
+
+## Installation
+
+<InstalationDocs name="datetimepicker-input" filepath="components/ui" />
+
+## Usage
+
+### Import the component
+
+```tsx
+import { DateTimePickerInput } from '@/components/ui/datetimepicker-input';
+```
+
+### Basic Usage
+
+```tsx
+const DateTimePickerInputDemo = () => {
+    return (
+        <DateTimePickerInput
+            mode="single"
+            value={new Date()}
+            onValueChange={(date) => {
+                console.log(date);
+            }}
+            placeholder="Select date"
+        />
+    );
+};
+```
+
+#### With Range Mode
+
+```tsx
+const DateTimePickerDemo = () => {
+    return (
+        <DateTimePickerInput
+            mode="range"
+            onValueChange={(date) => {
+                console.log(date);
+            }}
+            placeholder="Select date range"
+        />
+    );
+};
+```
+
+#### With Time Mode
+
+```tsx
+const DateTimePickerDemo = () => {
+    return (
+        <DateTimePickerInput
+            mode="single"
+            enableTime={true}
+            timeFormat="24h" // 12h or 24h
+            value={new Date()}
+            onValueChange={(date) => {
+                console.log(date);
+            }}
+            placeholder="Select date and time"
+        />
+    );
+};
+```

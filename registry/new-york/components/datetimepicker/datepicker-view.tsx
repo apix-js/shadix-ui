@@ -1,3 +1,4 @@
+"use client";
 import { memo, useMemo, useState } from "react";
 
 import { format } from "date-fns";

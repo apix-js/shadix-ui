@@ -4,19 +4,19 @@ import type React from "react";
 
 import { format } from "date-fns";
 
-import { DateTimePicker } from "@/registry/new-york/components/datetimepicker";
+import { DateTimeInput } from "@/registry/new-york/components/datetimepicker-input";
 
 const DateTimePickerDemo: React.FC<DateTimePickerDemoProps> = () => {
     const [singleDate, setSingleDate] = useState<Date>(new Date());
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen gap-6 p-4">
-            <DateTimePicker
+            <DateTimeInput
                 mode="single"
                 enableTime={true}
                 timeFormat="24h"
                 value={singleDate}
-                onDateChange={(date) => {
+                onValueChange={(date) => {
                     setSingleDate(date as Date);
                 }}
                 placeholder="Select date and time"

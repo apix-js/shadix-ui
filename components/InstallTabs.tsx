@@ -25,16 +25,17 @@ const getCommands = (command: string): Record<PackageManager, string> => {
 
 const InstallTabs: React.FC<InstallTabsProps> = ({ pkg, external = false }) => {
     const [value, setValue] = React.useState<PackageManager>("pnpm");
-    const [origin, setOrigin] = React.useState<string>("");
+    // const [origin, setOrigin] = React.useState<string>('');
 
     // fix: Handle window access safely for SSR
-    React.useEffect(() => {
-        if (typeof window !== "undefined") {
-            setOrigin(window.location.origin);
-        }
-    }, []);
+    // React.useEffect(() => {
+    //     if (typeof window !== 'undefined') {
+    //         setOrigin(window.location.origin);
+    //     }
+    // }, []);
 
-    let command = `shadcn@latest add ${origin}/r/${pkg}`;
+    let command = `shadcn@latest add @shadix-ui/${pkg}`;
+    // let command = `shadcn@latest add ${origin}/r/${pkg}`;
 
     if (external) {
         const packages = Array.isArray(pkg) ? pkg.join(" ") : pkg;
@@ -65,17 +66,6 @@ const InstallTabs: React.FC<InstallTabsProps> = ({ pkg, external = false }) => {
                         </TabsList>
 
                         <CopyButton value={getCommands(command)[value]} />
-
-                        {/* <Button
-                            variant='ghost'
-                            size='icon'
-                            onClick={handleCopy}
-                            title='Copy command'
-                            className='h-7 w-7 text-muted-foreground hover:text-foreground'
-                        >
-                            <Clipboard className='h-4 w-4' />
-                            <span className='sr-only'>Copy command</span>
-                        </Button> */}
                     </div>
                 </div>
 

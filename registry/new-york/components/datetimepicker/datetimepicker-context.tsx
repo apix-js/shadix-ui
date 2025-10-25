@@ -1,3 +1,4 @@
+"use client";
 import { createContext, type ReactNode, useContext, useReducer } from "react";
 
 import { addMonths, subMonths } from "date-fns";

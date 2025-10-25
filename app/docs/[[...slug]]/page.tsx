@@ -80,6 +80,11 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
                     style: "clerk",
                 }}
                 full={page.data.full}
+                breadcrumb={{
+                    enabled: true,
+                    includePage: true,
+                    includeRoot: true,
+                }}
             >
                 <div className="flex items-center gap-2 justify-between">
                     <DocsTitle className="flex-1 text-4xl text-foreground">

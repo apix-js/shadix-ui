@@ -19,6 +19,7 @@
     "hooks": "@/shadcn/hooks"
   },
   "registries": {
-    "@ncdai": "https://chanhdai.com/r/{name}.json"
+    "@ncdai": "https://chanhdai.com/r/{name}.json",
+    "@shadix-ui": "https://shadix-ui.vercel.app/r/{name}.json"
   }
 }

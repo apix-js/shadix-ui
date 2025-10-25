@@ -1,6 +1,6 @@
 import type React from "react";
 
-import { ChevronDown, MessageCircleIcon } from "lucide-react";
+import { Bot, ChevronDown, MessageCircleIcon } from "lucide-react";
 
 import { Icons } from "@/components/Icons";
 import { Button } from "@/shadcn/components/ui/button";
@@ -79,7 +79,8 @@ const AIOpenButton: React.FC<AIOpenButtonProps> = ({ url }) => {
                     variant={"secondary"}
                     className="extend-touch-target ml-auto shadow-none h-8 md:h-7"
                 >
-                    Open
+                    <Bot />
+                    Ask AI
                     <ChevronDown />
                 </Button>
             </DropdownMenuTrigger>
