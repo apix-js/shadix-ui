@@ -567,4 +567,141 @@ export const Index: Record<string, RegistryIndexItem> = {
         categories: undefined,
         meta: undefined,
     },
+    "signature-pad": {
+        name: "signature-pad",
+        description: "A signature pad component for capturing signatures",
+        type: "registry:component",
+        registryDependencies: ["button"],
+        files: [
+            {
+                path: "registry/new-york/components/signature-pad.tsx",
+                type: "registry:ui",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/signature-pad.tsx",
+            },
+            {
+                path: "registry/new-york/styles/signature-pad.css",
+                type: "registry:style",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/styles/signature-pad.css",
+            },
+        ],
+        component: React.lazy(async () => {
+            const mod = await import(
+                "@/registry/new-york/components/signature-pad.tsx"
+            );
+            const exportName =
+                Object.keys(mod).find(
+                    (key) =>
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "function" ||
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "object",
+                ) || "signature-pad";
+            return {
+                default: (mod as Record<string, unknown>)[
+                    exportName
+                ] as React.ComponentType<object>,
+            };
+        }),
+        dependencies: ["class-variance-authority", "lucide-react"],
+        categories: undefined,
+        meta: {
+            api: {
+                penColor: {
+                    description:
+                        '(optional) - Tailwind color utility class for the pen color (e.g. "text-black", "text-primary-500")',
+                    type: "string",
+                    typeDescription: "string",
+                    required: false,
+                    deprecated: false,
+                },
+                lineWidth: {
+                    description: "(optional) - Line width in pixels",
+                    type: "number",
+                    typeDescription: "number",
+                    required: false,
+                    deprecated: false,
+                },
+                showButtons: {
+                    description: "(optional) - Whether to show the buttons",
+                    type: "boolean",
+                    typeDescription: "boolean",
+                    required: false,
+                    deprecated: false,
+                },
+                saveButtonIcon: {
+                    description:
+                        "(optional) - The icon to display for the save button",
+                    type: "React.ReactNode",
+                    typeDescription: "React.ReactNode",
+                    required: false,
+                    deprecated: false,
+                },
+                clearButtonIcon: {
+                    description:
+                        "(optional) - The icon to display for the clear button",
+                    type: "React.ReactNode",
+                    typeDescription: "React.ReactNode",
+                    required: false,
+                    deprecated: false,
+                },
+                onSave: {
+                    description:
+                        "(optional) - Callback function to be called when the signature is saved",
+                    type: "(signature: Base64URLString) => void",
+                    typeDescription: "(signature: Base64URLString) => void",
+                    required: false,
+                    deprecated: false,
+                },
+                onChange: {
+                    description:
+                        "(optional) - Callback function to be called when the signature is changed",
+                    type: "(signature: Base64URLString | null) => void",
+                    typeDescription:
+                        "(signature: Base64URLString | null) => void",
+                    required: false,
+                    deprecated: false,
+                },
+            },
+        },
+    },
+    "signature-pad-demo": {
+        name: "signature-pad-demo",
+        description: "",
+        type: "registry:demo",
+        registryDependencies: undefined,
+        files: [
+            {
+                path: "registry/new-york/demos/signature-pad.demo.tsx",
+                type: "registry:demo",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/demos/signature-pad.demo.tsx",
+            },
+        ],
+        component: React.lazy(async () => {
+            const mod = await import(
+                "@/registry/new-york/demos/signature-pad.demo.tsx"
+            );
+            const exportName =
+                Object.keys(mod).find(
+                    (key) =>
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "function" ||
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "object",
+                ) || "signature-pad-demo";
+            return {
+                default: (mod as Record<string, unknown>)[
+                    exportName
+                ] as React.ComponentType<object>,
+            };
+        }),
+        dependencies: undefined,
+        categories: undefined,
+        meta: undefined,
+    },
 };

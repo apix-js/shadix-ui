@@ -16,7 +16,8 @@
     "utils": "@/shadcn/lib/utils",
     "ui": "@/shadcn/components/ui",
     "lib": "@/shadcn/lib",
-    "hooks": "@/shadcn/hooks"
+    "hooks": "@/shadcn/hooks",
+    "styles": "@/shadcn/styles"
   },
   "registries": {
     "@ncdai": "https://chanhdai.com/r/{name}.json",

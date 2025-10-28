@@ -141,6 +141,23 @@
                     "type": "registry:hook"
                 }
             ]
+        },
+        {
+            "name": "signature-pad",
+            "description": "A signature pad component for capturing signatures",
+            "type": "registry:component",
+            "registryDependencies": ["button"],
+            "dependencies": ["class-variance-authority", "lucide-react"],
+            "files": [
+                {
+                    "path": "registry/new-york/components/signature-pad.tsx",
+                    "type": "registry:ui"
+                },
+                {
+                    "path": "registry/new-york/styles/signature-pad.css",
+                    "type": "registry:style"
+                }
+            ]
         }
     ]
 }

@@ -1,0 +1,57 @@
+---
+title: Signature Pad
+description: Signature pad component for capturing signatures
+author: Gihan Rangana
+authorUrl: https://github.com/gihanrangana
+authorImage: https://github.com/gihanrangana.png
+---
+
+<ComponentPreview name="signature-pad-demo" />
+
+## Installation
+
+<InstalationDocs name="signature-pad" filepath="components/ui" />
+
+## Usage
+
+### Basic Usage
+
+#### Import the component
+
+```tsx
+import { SignaturePad } from '@/registry/new-york/components/signature-pad';
+```
+
+#### Import the styles
+
+```css
+@import '@styles/signature-pad.css' // or relative path to the styles file based on your components.json file;;
+```
+
+Or add this to your tailwind.config.ts:
+
+```ts
+theme: {
+    extend: {
+        cursor: {
+            pencil: 'url("data:image/svg+xml...") 0 24, pointer'; // copy the value from the styles file
+        }
+    }
+}
+```
+
+#### Use the component
+
+```tsx
+<SignaturePad
+    penColor="hsl(var(--foreground))"
+    lineWidth={4}
+    showButtons={true}
+    saveButtonIcon={<Save />}
+    clearButtonIcon={<BrushCleaning />}
+/>
+```
+
+#### Props
+
+<PropsTable name="SignaturePadProps" filename="signature-pad" />
