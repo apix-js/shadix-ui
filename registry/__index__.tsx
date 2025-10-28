@@ -385,6 +385,85 @@ export const Index: Record<string, RegistryIndexItem> = {
         categories: undefined,
         meta: undefined,
     },
+    "expandable-card": {
+        name: "expandable-card",
+        description: "A card component with an expandable content",
+        type: "registry:component",
+        registryDependencies: ["button"],
+        files: [
+            {
+                path: "registry/new-york/components/expandable-card.tsx",
+                type: "registry:ui",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/expandable-card.tsx",
+            },
+            {
+                path: "registry/new-york/hooks/useClickOutside.ts",
+                type: "registry:hook",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/hooks/useClickOutside.ts",
+            },
+        ],
+        component: React.lazy(async () => {
+            const mod = await import(
+                "@/registry/new-york/components/expandable-card.tsx"
+            );
+            const exportName =
+                Object.keys(mod).find(
+                    (key) =>
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "function" ||
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "object",
+                ) || "expandable-card";
+            return {
+                default: (mod as Record<string, unknown>)[
+                    exportName
+                ] as React.ComponentType<object>,
+            };
+        }),
+        dependencies: ["framer-motion"],
+        categories: undefined,
+        meta: { api: {} },
+    },
+    "expandable-card-demo": {
+        name: "expandable-card-demo",
+        description: "",
+        type: "registry:demo",
+        registryDependencies: undefined,
+        files: [
+            {
+                path: "registry/new-york/demos/expandable-card.demo.tsx",
+                type: "registry:demo",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/demos/expandable-card.demo.tsx",
+            },
+        ],
+        component: React.lazy(async () => {
+            const mod = await import(
+                "@/registry/new-york/demos/expandable-card.demo.tsx"
+            );
+            const exportName =
+                Object.keys(mod).find(
+                    (key) =>
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "function" ||
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "object",
+                ) || "expandable-card-demo";
+            return {
+                default: (mod as Record<string, unknown>)[
+                    exportName
+                ] as React.ComponentType<object>,
+            };
+        }),
+        dependencies: undefined,
+        categories: undefined,
+        meta: undefined,
+    },
     "motion-dialog": {
         name: "motion-dialog",
         description: "A dialog with modern motion animations",
