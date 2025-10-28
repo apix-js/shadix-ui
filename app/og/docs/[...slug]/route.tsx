@@ -13,13 +13,9 @@ export async function GET(
 
     let path = slug.slice(0, -1);
 
-    console.log(path);
-
     if (path.length === 0 && path[0] === "components") {
         path = [];
     }
-
-    console.log(path);
 
     const page = source.getPage(path);
     if (!page) notFound();

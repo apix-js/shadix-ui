@@ -112,16 +112,6 @@ const ExpandableCardBody = forwardRef<HTMLDivElement, IExpandableCardBodyProps>(
             setIsOpen(true);
         }, [setIsOpen]);
 
-        const handleKeyDown = useCallback(
-            (event: React.KeyboardEvent<HTMLDivElement>) => {
-                if (event.key === "Enter" || event.key === " ") {
-                    event.preventDefault();
-                    setIsOpen((prev) => !prev);
-                }
-            },
-            [setIsOpen],
-        );
-
         return (
             <motion.div
                 ref={ref}
@@ -129,13 +119,17 @@ const ExpandableCardBody = forwardRef<HTMLDivElement, IExpandableCardBodyProps>(
                 layoutId={`card-${uniqueId}`}
                 className={cn(
                     "relative bg-card text-card-foreground flex flex-col rounded-xl overflow-hidden shadow-sm pb-2",
+                    "cursor-pointer select-none",
                     className,
                 )}
                 onClick={() => handleClick()}
-                onKeyDown={(event) => handleKeyDown(event)}
                 aira-haspopup="dialog"
                 aria-expanded={isOpen}
                 aria-controls={`shadix-ui-expandable-card-${uniqueId}`}
+                style={{
+                    willChange: "transform, opacity",
+                    transform: "translateZ(0)",
+                }}
                 {...props}
             >
                 {children}
@@ -158,26 +152,27 @@ const ExpandableCardContent: React.FC<IExpandableCardContentProps> = ({
     const { uniqueId } = useExpandableCardContext();
 
     return (
-        <AnimatePresence mode="wait">
-            <motion.div
-                layoutId={`card-content-${uniqueId}`}
-                className={cn("overflow-hidden p-4", className)}
-                aria-modal="true"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 10 }}
-                transition={{
-                    ease: "easeIn",
-                    duration: 0.3,
-                    delay: 0.2,
-                }}
-                aria-labelledby={`shadix-ui-expandable-card-${uniqueId}-title`}
-                aria-describedby={`shadix-ui-expandable-card-${uniqueId}-description`}
-                {...props}
-            >
-                {children}
-            </motion.div>
-        </AnimatePresence>
+        // <AnimatePresence mode="wait">
+        <motion.div
+            layoutId={`card-content-${uniqueId}`}
+            className={cn("overflow-hidden p-4", className)}
+            aria-modal="true"
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 6 }}
+            transition={{
+                ease: "easeIn",
+                duration: 0.3,
+                delay: 0.2,
+            }}
+            style={{ willChange: "transform, opacity" }}
+            aria-labelledby={`shadix-ui-expandable-card-${uniqueId}-title`}
+            aria-describedby={`shadix-ui-expandable-card-${uniqueId}-description`}
+            {...props}
+        >
+            {children}
+        </motion.div>
+        // </AnimatePresence>
     );
 };
 
@@ -209,6 +204,35 @@ const ExpandableCardExpandContainer: React.FC<
 
     if (!mounted) return null;
 
+    // return createPortal(
+    //     <AnimatePresence initial={false} mode="sync">
+    //         {isOpen && (
+    //             <>
+    //                 <motion.div
+    //                     data-slot="expandable-card-expand-container"
+    //                     key={`expandable-backdrop-${uniqueId}`}
+    //                     className="fixed inset-0 h-full w-full bg-white/40 backdrop-blur-xs dark:bg-black/40 z-40"
+    //                     initial={{ opacity: 0 }}
+    //                     animate={{ opacity: 1 }}
+    //                     exit={{ opacity: 0 }}
+    //                     transition={{ duration: 0.2 }}
+    //                 />
+
+    //                 <div className="fixed inset-0 z-50 flex items-center justify-center max-w-2xl mx-auto h-fit my-auto pointer-events-none ">
+    //                     <ExpandableCardBody
+    //                         ref={containerRef}
+    //                         className={cn("pointer-events-auto", className)}
+    //                     >
+    //                         {children}
+    //                     </ExpandableCardBody>
+
+    //                     <ExpandableCardCloseButton />
+    //                 </div>
+    //             </>
+    //         )}
+    //     </AnimatePresence>,
+    //     document.body,
+    // );
     return createPortal(
         <AnimatePresence initial={false} mode="sync">
             {isOpen && (
@@ -216,14 +240,14 @@ const ExpandableCardExpandContainer: React.FC<
                     <motion.div
                         data-slot="expandable-card-expand-container"
                         key={`expandable-backdrop-${uniqueId}`}
-                        className="fixed inset-0 h-full w-full bg-white/40 backdrop-blur-xs dark:bg-black/40 z-40"
+                        className="fixed inset-0 h-full w-full bg-white/40 dark:bg-black/40 z-40"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.2 }}
                     />
 
-                    <div className="fixed inset-0 z-50 flex items-center justify-center max-w-2xl mx-auto h-fit my-auto pointer-events-none ">
+                    <div className="fixed inset-0 z-50 flex items-center justify-center max-w-2xl mx-auto h-fit my-auto pointer-events-none">
                         <ExpandableCardBody
                             ref={containerRef}
                             className={cn("pointer-events-auto", className)}
@@ -303,11 +327,12 @@ const ExpandableCardImage: React.FC<IExpandableCardImageProps> = ({
     className,
     ...props
 }) => {
-    const { uniqueId } = useExpandableCardContext();
+    // const { uniqueId } = useExpandableCardContext();
     return (
         <motion.img
-            layoutId={`card-image-${uniqueId}`}
-            layout
+            // layoutId={`card-image-${uniqueId}`}
+            // layout="position"
+            style={{ willChange: "transform,scale" }}
             className={cn(
                 "w-full h-full object-cover object-top not-prose",
                 className,

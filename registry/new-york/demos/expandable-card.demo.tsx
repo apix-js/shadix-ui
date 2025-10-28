@@ -16,7 +16,7 @@ const ExpandableCardDemo: React.FC = () => {
             <ExpandableCard>
                 <ExpandableCardBody className="w-[250px]">
                     <ExpandableCardImage
-                        src="http://localhost:3000/images/card-1.jpg"
+                        src="/images/card-1.jpg"
                         alt="Shadix-UI"
                     />
 
@@ -28,7 +28,7 @@ const ExpandableCardDemo: React.FC = () => {
                 </ExpandableCardBody>
                 <ExpandableCardExpandContainer>
                     <ExpandableCardImage
-                        src="http://localhost:3000/images/card-1.jpg"
+                        src="/images/card-1.jpg"
                         alt="Shadix-UI"
                     />
 
