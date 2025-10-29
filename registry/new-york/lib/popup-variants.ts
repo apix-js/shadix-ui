@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import type { Variant, Variants } from "framer-motion";
+import type { Variant, Variants } from "motion";
 
 export type AnimationVariant =
     | "ripple"

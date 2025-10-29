@@ -1,7 +1,7 @@
 "use client";
 import { memo, useEffect, useRef } from "react";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import type { CalendarDay } from "@/registry/new-york/components/datetimepicker/datetimepicker-types";
 
 import { Button } from "@/shadcn/components/ui/button";

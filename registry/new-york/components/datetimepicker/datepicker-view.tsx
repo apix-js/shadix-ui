@@ -2,8 +2,8 @@
 import { memo, useMemo, useState } from "react";
 
 import { format } from "date-fns";
-import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import type {
     CalendarDay,
     DatePickerMode,

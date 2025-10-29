@@ -1,6 +1,6 @@
 import { memo } from "react";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import type { TimeFormat } from "@/registry/new-york/components/datetimepicker/datetimepicker-types";
 
 import { WheelTimePicker } from "@/registry/new-york/components/datetimepicker/wheel-time-picker";

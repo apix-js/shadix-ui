@@ -13,13 +13,13 @@ import React, {
 } from "react";
 import { createPortal } from "react-dom";
 
+import { XIcon } from "lucide-react";
 import {
     AnimatePresence,
     MotionConfig,
     motion,
     type Transition,
-} from "framer-motion";
-import { XIcon } from "lucide-react";
+} from "motion/react";
 
 import { useClickOutside } from "@/registry/new-york/hooks/useClickOutside";
 import { Button } from "@/shadcn/components/ui/button";

@@ -9,8 +9,8 @@ import {
 import type React from "react";
 
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import { AnimatePresence, motion } from "framer-motion";
 import { XIcon } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 
 import {
     type AnimationVariant,

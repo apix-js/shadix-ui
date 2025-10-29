@@ -5,7 +5,7 @@
   "description": "A button that displays a popup when clicked",
   "dependencies": [
     "class-variance-authority",
-    "framer-motion"
+    "motion"
   ],
   "registryDependencies": [
     "button"

@@ -11,7 +11,7 @@
             "description": "A button that displays a popup when clicked",
             "type": "registry:component",
             "registryDependencies": ["button"],
-            "dependencies": ["class-variance-authority", "framer-motion"],
+            "dependencies": ["class-variance-authority", "motion"],
             "files": [
                 {
                     "path": "registry/new-york/components/action-button.tsx",
@@ -24,7 +24,7 @@
             "description": "A dialog with modern motion animations",
             "type": "registry:component",
             "registryDependencies": ["dialog"],
-            "dependencies": ["framer-motion"],
+            "dependencies": ["motion"],
             "files": [
                 {
                     "path": "registry/new-york/components/motion-dialog.tsx",
@@ -41,7 +41,7 @@
             "description": "A datetime picker component",
             "type": "registry:component",
             "registryDependencies": ["input-group", "button", "@ncdai/wheel-picker"],
-            "dependencies": ["date-fns", "framer-motion"],
+            "dependencies": ["date-fns", "motion"],
             "files": [
                 {
                     "path": "registry/new-york/components/datetimepicker/datetimepicker.tsx",
@@ -117,7 +117,7 @@
             "description": "A datetime picker input component",
             "type": "registry:component",
             "registryDependencies": ["input-group", "button", "@ncdai/wheel-picker", "@shadix-ui/datetimepicker"],
-            "dependencies": ["date-fns", "framer-motion"],
+            "dependencies": ["date-fns", "motion"],
             "files": [
                 {
                     "path": "registry/new-york/components/datetimepicker-input.tsx",
@@ -130,7 +130,7 @@
             "description": "A card component with an expandable content",
             "type": "registry:component",
             "registryDependencies": ["button"],
-            "dependencies": ["framer-motion"],
+            "dependencies": ["motion"],
             "files": [
                 {
                     "path": "registry/new-york/components/expandable-card.tsx",

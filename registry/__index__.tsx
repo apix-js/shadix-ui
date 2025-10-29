@@ -57,7 +57,7 @@ export const Index: Record<string, RegistryIndexItem> = {
                 ] as React.ComponentType<object>,
             };
         }),
-        dependencies: ["class-variance-authority", "framer-motion"],
+        dependencies: ["class-variance-authority", "motion"],
         categories: undefined,
         meta: {
             api: {
@@ -268,7 +268,7 @@ export const Index: Record<string, RegistryIndexItem> = {
                 ] as React.ComponentType<object>,
             };
         }),
-        dependencies: ["date-fns", "framer-motion"],
+        dependencies: ["date-fns", "motion"],
         categories: undefined,
         meta: { api: {} },
     },
@@ -345,7 +345,7 @@ export const Index: Record<string, RegistryIndexItem> = {
                 ] as React.ComponentType<object>,
             };
         }),
-        dependencies: ["date-fns", "framer-motion"],
+        dependencies: ["date-fns", "motion"],
         categories: undefined,
         meta: { api: {} },
     },
@@ -424,7 +424,7 @@ export const Index: Record<string, RegistryIndexItem> = {
                 ] as React.ComponentType<object>,
             };
         }),
-        dependencies: ["framer-motion"],
+        dependencies: ["motion"],
         categories: undefined,
         meta: { api: {} },
     },
@@ -503,7 +503,7 @@ export const Index: Record<string, RegistryIndexItem> = {
                 ] as React.ComponentType<object>,
             };
         }),
-        dependencies: ["framer-motion"],
+        dependencies: ["motion"],
         categories: undefined,
         meta: {
             api: {

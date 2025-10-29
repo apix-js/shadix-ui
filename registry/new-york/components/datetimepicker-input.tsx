@@ -1,8 +1,8 @@
 "use client";
 import { memo, useCallback, useRef, useState } from "react";
 
-import { AnimatePresence, motion } from "framer-motion";
 import { Calendar, XIcon } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import type {
     DateRange,
     DateTimePickerProps,
