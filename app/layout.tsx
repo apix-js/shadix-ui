@@ -8,6 +8,8 @@ import { Toaster } from "@/shadcn/components/ui/sonner";
 
 import "@/app/global.css";
 
+import Script from "next/script";
+
 const inter = Inter({
     subsets: ["latin"],
     variable: "--font-sans",
@@ -109,6 +111,22 @@ export default function Layout({ children }: LayoutProps<"/">) {
         >
             <head>
                 <OrganizationSchema />
+
+                <Script
+                    src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
+                    strategy="afterInteractive"
+                />
+                {/** biome-ignore lint/correctness/useUniqueElementIds: this is required for google analytics */}
+                <Script id="google-analytics" strategy="afterInteractive">
+                    {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}', {
+            page_path: window.location.pathname,
+          });
+        `}
+                </Script>
             </head>
             <body
                 className={`headless flex flex-col min-h-screen ${inter.className}`}
