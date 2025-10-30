@@ -158,6 +158,22 @@
                     "type": "registry:style"
                 }
             ]
+        },
+        {
+            "name": "reorder-list",
+            "description": "A list component with reordering functionality",
+            "type": "registry:component",
+            "dependencies": ["motion"],
+            "files": [
+                {
+                    "path": "registry/new-york/components/reorder-list.tsx",
+                    "type": "registry:ui"
+                },
+                {
+                    "path": "registry/new-york/hooks/useRaisedShadow.ts",
+                    "type": "registry:hook"
+                }
+            ]
         }
     ]
 }

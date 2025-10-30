@@ -103,7 +103,8 @@
                 "noImportantStyles": "off"
             },
             "a11y": {
-                "useGenericFontNames": "off"
+                "useGenericFontNames": "off",
+                "useSemanticElements": "off"
             }
         }
     }

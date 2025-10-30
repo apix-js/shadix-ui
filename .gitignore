@@ -29,3 +29,4 @@ next-env.d.ts
 .env
 .cursor
 *.plan.md
+pnpm-lock.yaml

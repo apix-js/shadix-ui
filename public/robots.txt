@@ -1,15 +1,17 @@
 User-agent: *
+# Allow everything for all crawlers (Googlebot needs to fetch /_next/ to render the page content)
 Allow: /
 
-# Disallow API routes and internal files
+# Only disallow specific paths that truly should not be indexed or crawled,
+# like API routes. Do NOT disallow /_next/.
 Disallow: /api/
-Disallow: /_next/
 Disallow: /node_modules/
-Disallow: /.*
-Disallow: /llms.mdx/
 
-# Allow registry JSON files for component discovery
+# Remove the /.* and /llms.mdx/ disallows. If you want to block the file,
+# use a noindex tag on the page or ensure it's not linked.
+
+# Allow registry JSON files for component discovery (This is a good, specific rule)
 Allow: /r/*.json
 
-# Sitemap location - Next.js automatically generates sitemap.xml
+# Sitemap location
 Sitemap: https://shadix-ui.vercel.app/sitemap.xml

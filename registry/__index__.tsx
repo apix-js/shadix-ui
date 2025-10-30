@@ -567,6 +567,123 @@ export const Index: Record<string, RegistryIndexItem> = {
         categories: undefined,
         meta: undefined,
     },
+    "reorder-list": {
+        name: "reorder-list",
+        description: "A list component with reordering functionality",
+        type: "registry:component",
+        registryDependencies: undefined,
+        files: [
+            {
+                path: "registry/new-york/components/reorder-list.tsx",
+                type: "registry:ui",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/reorder-list.tsx",
+            },
+            {
+                path: "registry/new-york/hooks/useRaisedShadow.ts",
+                type: "registry:hook",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/hooks/useRaisedShadow.ts",
+            },
+        ],
+        component: React.lazy(async () => {
+            const mod = await import(
+                "@/registry/new-york/components/reorder-list.tsx"
+            );
+            const exportName =
+                Object.keys(mod).find(
+                    (key) =>
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "function" ||
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "object",
+                ) || "reorder-list";
+            return {
+                default: (mod as Record<string, unknown>)[
+                    exportName
+                ] as React.ComponentType<object>,
+            };
+        }),
+        dependencies: ["motion"],
+        categories: undefined,
+        meta: {
+            api: {
+                children: {
+                    description: "(required) - The children of the list",
+                    type: "React.ReactElement[]",
+                    typeDescription: "React.ReactElement[]",
+                    required: true,
+                    deprecated: false,
+                },
+                className: {
+                    description: "(optional) - The className of the list",
+                    type: "string",
+                    typeDescription: "string",
+                    required: false,
+                    deprecated: false,
+                },
+                itemClassName: {
+                    description: "(optional) - The className of the item",
+                    type: "string",
+                    typeDescription: "string",
+                    required: false,
+                    deprecated: false,
+                },
+                withDragHandle: {
+                    description: "(optional) - With drag handle",
+                    type: "boolean",
+                    typeDescription: "boolean",
+                    required: false,
+                    deprecated: false,
+                },
+                onReorderFinish: {
+                    description: "(optional) - When the list is reordered",
+                    type: "(newOrder: React.ReactElement[]) => void",
+                    typeDescription: "(newOrder: React.ReactElement[]) => void",
+                    required: false,
+                    deprecated: false,
+                },
+            },
+        },
+    },
+    "reorder-list-demo": {
+        name: "reorder-list-demo",
+        description: "",
+        type: "registry:demo",
+        registryDependencies: undefined,
+        files: [
+            {
+                path: "registry/new-york/demos/reorder-list.demo.tsx",
+                type: "registry:demo",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/demos/reorder-list.demo.tsx",
+            },
+        ],
+        component: React.lazy(async () => {
+            const mod = await import(
+                "@/registry/new-york/demos/reorder-list.demo.tsx"
+            );
+            const exportName =
+                Object.keys(mod).find(
+                    (key) =>
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "function" ||
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "object",
+                ) || "reorder-list-demo";
+            return {
+                default: (mod as Record<string, unknown>)[
+                    exportName
+                ] as React.ComponentType<object>,
+            };
+        }),
+        dependencies: undefined,
+        categories: undefined,
+        meta: undefined,
+    },
     "signature-pad": {
         name: "signature-pad",
         description: "A signature pad component for capturing signatures",

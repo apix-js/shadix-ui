@@ -11,7 +11,6 @@ import { cn } from "@/shadcn/lib/utils";
 
 function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
     return (
-        // biome-ignore lint/a11y/useSemanticElements: we need to use div for the input group
         <div
             data-slot="input-group"
             role="group"
@@ -66,7 +65,6 @@ function InputGroupAddon({
 }: React.ComponentProps<"div"> & VariantProps<typeof inputGroupAddonVariants>) {
     return (
         // biome-ignore lint/a11y/useKeyWithClickEvents: we need to use div for the input group
-        // biome-ignore lint/a11y/useSemanticElements: we need to use div for the input group
         <div
             role="group"
             data-slot="input-group-addon"

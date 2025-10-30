@@ -1,0 +1,71 @@
+---
+title: Reorder List
+description: A list component with reordering functionality
+author: Gihan Rangana
+authorUrl: https://github.com/gihanrangana
+authorImage: https://github.com/gihanrangana.png
+---
+
+<ComponentPreview name="reorder-list-demo" />
+
+## Installation
+
+<InstalationDocs name="reorder-list" filepath="components/ui" />
+
+## Usage
+
+### Basic Usage
+
+#### Import the component
+
+```tsx
+import { ReorderList } from '@/registry/new-york/components/reorder-list';
+```
+
+#### Default Usage
+
+```tsx
+<ReorderList>
+    <Item variant={'outline'} size={'sm'}>
+        <ItemContent>
+            <ItemTitle>Reorder List Item 1</ItemTitle>
+        </ItemContent>
+    </Item>
+    <Item variant={'outline'} size={'sm'}>
+        <ItemContent>
+            <ItemTitle>Reorder List Item 2</ItemTitle>
+        </ItemContent>
+    </Item>
+    <Item variant={'outline'} size={'sm'}>
+        <ItemContent>
+            <ItemTitle>Reorder List Item 3</ItemTitle>
+        </ItemContent>
+    </Item>
+</ReorderList>
+```
+
+#### With Drag Handle
+
+```tsx
+<ReorderList withDragHandle>
+    <Item variant={'outline'} size={'sm'}>
+        <ItemContent>
+            <ItemTitle>Reorder List Item 1</ItemTitle>
+        </ItemContent>
+    </Item>
+    <Item variant={'outline'} size={'sm'}>
+        <ItemContent>
+            <ItemTitle>Reorder List Item 2</ItemTitle>
+        </ItemContent>
+    </Item>
+    <Item variant={'outline'} size={'sm'}>
+        <ItemContent>
+            <ItemTitle>Reorder List Item 3</ItemTitle>
+        </ItemContent>
+    </Item>
+</ReorderList>
+```
+
+## Props
+
+<PropsTable name="ReorderListProps" filename="reorder-list" />

@@ -2,7 +2,8 @@
 
 import { notFound } from "next/navigation";
 
-import SignaturePadDemo from "@/registry/new-york/demos/signature-pad.demo";
+import ReorderListDemo from "@/registry/new-york/demos/reorder-list.demo";
+// import SignaturePadDemo from "@/registry/new-york/demos/signature-pad.demo";
 
 // import ExpandableCardDemo from "@/registry/new-york/demos/expandable-card.demo";
 
@@ -16,7 +17,8 @@ export default function AnimatedDialogDemo() {
         <div className="mt-10 flex items-center justify-center h-auto">
             {/* <DateTimePickerDemo /> */}
             {/* <ExpandableCardDemo /> */}
-            <SignaturePadDemo />
+            {/* <SignaturePadDemo /> */}
+            <ReorderListDemo />
         </div>
     );
 }
