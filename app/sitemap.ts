@@ -100,61 +100,6 @@ function generateSitemapData(): MetadataRoute.Sitemap {
         console.warn("Error generating sitemap for pages:", error);
     }
 
-    // Add component registry JSON files with validation
-    try {
-        if (Index && typeof Index === "object") {
-            Object.keys(Index).forEach((componentName) => {
-                if (componentName.endsWith("-demo") || !componentName) return;
-
-                // feat: Component registry JSON file with proper modification date
-                const componentPath = join(
-                    process.cwd(),
-                    "public",
-                    "r",
-                    `${componentName}.json`,
-                );
-                const lastModified = getFileLastModified(componentPath);
-
-                const componentUrl = `${baseUrl}/r/${componentName}.json`;
-                if (isValidUrl(componentUrl)) {
-                    sitemap.push({
-                        url: componentUrl,
-                        lastModified,
-                        changeFrequency: "monthly",
-                        priority: 0.6,
-                    });
-                }
-            });
-        }
-    } catch (error) {
-        console.warn("Error generating sitemap for components:", error);
-    }
-
-    // Add API endpoints and other important pages with validation
-    const additionalUrls = [
-        {
-            url: `${baseUrl}/api/search`,
-            changeFrequency: "weekly" as const,
-            priority: 0.7,
-        },
-        {
-            url: `${baseUrl}/llms-full.txt`,
-            changeFrequency: "weekly" as const,
-            priority: 0.8,
-        },
-    ];
-
-    additionalUrls.forEach(({ url, changeFrequency, priority }) => {
-        if (isValidUrl(url)) {
-            sitemap.push({
-                url,
-                lastModified: new Date(),
-                changeFrequency,
-                priority,
-            });
-        }
-    });
-
     return sitemap;
 }
 
