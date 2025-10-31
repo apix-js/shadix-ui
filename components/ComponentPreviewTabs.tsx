@@ -65,15 +65,17 @@ export function ComponentPreviewTabs({
                     data-active={tab === "preview"}
                     className="invisible data-[active=true]:visible"
                 >
-                    <ScrollArea
-                        className={cn(
-                            "preview flex w-full justify-center data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start",
-                            chromeLessOnMobile
-                                ? "sm:p-10"
-                                : "h-[450px] p-4 md:p-10",
-                        )}
-                    >
-                        <div data-align={align}>{component}</div>
+                    <ScrollArea>
+                        <div
+                            className={cn(
+                                "preview flex w-full items-center justify-center data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start",
+                                chromeLessOnMobile
+                                    ? "sm:p-10"
+                                    : "h-[450px] p-4 md:p-10",
+                            )}
+                        >
+                            {component}
+                        </div>
                     </ScrollArea>
                 </div>
                 <div

@@ -413,12 +413,6 @@
         font-family: var(--font-mono);
         font-size: 0.8rem;
     }
-
-    @media (min-width: 48rem) {
-        [data-line-numbers] [data-line]:before {
-            display: inline-block !important;
-        }
-    }
 }
 
 @layer base {
@@ -427,5 +421,11 @@
     }
     body {
         @apply bg-background text-foreground;
+    }
+
+    @media (min-width: 48rem) {
+        [data-line-numbers] [data-line]:before {
+            display: inline-block !important;
+        }
     }
 }
