@@ -57,7 +57,7 @@ export function ComponentPreviewTabs({
             <div
                 data-tab={tab}
                 data-chrome-less-on-mobile={chromeLessOnMobile}
-                className="data-[tab=code]:border-code relative rounded-lg border data-[chrome-less-on-mobile=true]:border-0 sm:data-[chrome-less-on-mobile=true]:border md:-mx-1"
+                className="data-[tab=code]:border-code relative rounded-lg border data-[chrome-less-on-mobile=true]:border-0 sm:data-[chrome-less-on-mobile=true]:border"
             >
                 <div
                     data-slot="preview"
@@ -68,7 +68,9 @@ export function ComponentPreviewTabs({
                         data-align={align}
                         className={cn(
                             "preview flex w-full justify-center data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start",
-                            chromeLessOnMobile ? "sm:p-10" : "h-[450px] p-10",
+                            chromeLessOnMobile
+                                ? "sm:p-10"
+                                : "min-h-[300px] md:h-[450px] p-4 md:p-10",
                         )}
                     >
                         {component}

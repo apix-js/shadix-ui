@@ -4,6 +4,7 @@ import type * as React from "react";
 
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 
+import { ScrollArea } from "@/shadcn/components/ui/scroll-area";
 import { cn } from "@/shadcn/lib/utils";
 
 function Tabs({
@@ -53,6 +54,7 @@ function TabsTrigger({
 
 function TabsContent({
     className,
+    children,
     ...props
 }: React.ComponentProps<typeof TabsPrimitive.Content>) {
     return (
@@ -60,7 +62,9 @@ function TabsContent({
             data-slot="tabs-content"
             className={cn("flex-1 outline-none", className)}
             {...props}
-        />
+        >
+            <ScrollArea className="w-full">{children}</ScrollArea>
+        </TabsPrimitive.Content>
     );
 }
 

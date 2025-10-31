@@ -49,7 +49,7 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
     breadcrumbs.push({ name: page.data.title, url: getAbsoluteUrl(page.url) });
 
     return (
-        <>
+        <div className="max-w-screen mx-auto overflow-auto">
             <TechArticleSchema
                 title={page.data.title}
                 description={page.data.description as string}
@@ -73,11 +73,11 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
             <DocsPage
                 toc={page.data.toc}
                 tableOfContent={{
-                    enabled: true,
                     style: "clerk",
                 }}
                 tableOfContentPopover={{
                     style: "clerk",
+                    header: "Table of Contents",
                 }}
                 full={page.data.full}
                 breadcrumb={{
@@ -87,7 +87,7 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
                 }}
             >
                 <div className="flex items-center gap-2 justify-between">
-                    <DocsTitle className="flex-1 text-4xl text-foreground">
+                    <DocsTitle className="flex-1 text-2xl md:text-4xl text-foreground">
                         {page.data.title}
                     </DocsTitle>
 
@@ -145,7 +145,7 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
                     />
                 </DocsBody>
             </DocsPage>
-        </>
+        </div>
     );
 }
 

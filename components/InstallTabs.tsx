@@ -2,6 +2,7 @@
 
 import * as React from "react";
 
+import { Pre } from "fumadocs-ui/components/codeblock";
 import { TerminalSquare } from "lucide-react";
 
 import { CopyButton } from "@/components/CopyButton";
@@ -71,9 +72,9 @@ const InstallTabs: React.FC<InstallTabsProps> = ({ pkg, external = false }) => {
 
                 {Object.entries(getCommands(command)).map(([key, cmd]) => (
                     <TabsContent key={key} value={key}>
-                        <pre className="rounded-md p-3 text-sm font-mono text-muted-foreground">
+                        <Pre className="rounded-md p-3 text-sm font-mono text-muted-foreground">
                             {cmd}
-                        </pre>
+                        </Pre>
                     </TabsContent>
                 ))}
             </Tabs>

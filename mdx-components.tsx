@@ -1,10 +1,11 @@
 import * as TabsComponents from "fumadocs-ui/components/tabs";
 import defaultMdxComponents from "fumadocs-ui/mdx";
 import type { MDXComponents } from "mdx/types";
-import { Suspense, lazy } from "react";
+import { ComponentProps, Suspense, lazy } from "react";
 
 import { ComponentPreview } from "@/components/ComponentPreview";
 import { ComponentSource } from "@/components/ComponentSource";
+import { CustomCode, CustomPre } from "@/components/CustomCodeBlock";
 import { InstalationDocs } from "@/components/InstalationDocs";
 
 const LazyPropsTable = lazy(() =>
@@ -31,5 +32,8 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
         ComponentSource,
         InstalationDocs,
         PropsTable: PropsTableWithSuspense,
+        // feat: Custom code block components for better mobile responsiveness
+        pre: CustomPre,
+        code: CustomCode,
     };
 }

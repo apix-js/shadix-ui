@@ -3,7 +3,6 @@ import { join } from "node:path";
 import type { MetadataRoute } from "next";
 
 import { getRegistryBaseUrl, source } from "@/lib/source";
-import { Index } from "@/registry/__index__";
 
 export const dynamic = "force-dynamic";
 

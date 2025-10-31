@@ -1,6 +1,6 @@
 import { RootProvider } from "fumadocs-ui/provider/next";
 import { Fira_Code, Inter } from "next/font/google";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 
 import { OrganizationSchema } from "@/components/StructuredData";
 import { ScrollArea } from "@/shadcn/components/ui/scroll-area";
@@ -19,6 +19,14 @@ const jetbrainsMono = Fira_Code({
     subsets: ["latin"],
     variable: "--font-mono",
 });
+
+export const viewport: Viewport = {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+    viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
     metadataBase: new URL(
@@ -146,7 +154,7 @@ export default function Layout({ children }: LayoutProps<"/">) {
                 className={`headless flex flex-col min-h-screen ${inter.className}`}
                 suppressHydrationWarning
             >
-                <ScrollArea className="h-screen">
+                <ScrollArea className="h-screen w-screen">
                     <RootProvider
                         theme={{
                             themes: ["dark", "light"],

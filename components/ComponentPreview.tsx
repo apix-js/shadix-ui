@@ -36,7 +36,7 @@ export function ComponentPreview({
 
     if (type === "block") {
         return (
-            <div className="relative aspect-[4/2.5] w-full overflow-hidden rounded-md border md:-mx-1">
+            <div className="relative aspect-[4/2.5] w-full overflow-hidden rounded-md border">
                 <Image
                     src={`/r/styles/new-york-v4/${name}-light.png`}
                     alt={name}
