@@ -10,8 +10,6 @@ export default function Layout({ children }: LayoutProps<"/docs">) {
         <DocsLayout
             {...base}
             tree={source.pageTree}
-            // just icon items
-            // links={linkItems.filter((item) => item.type === 'icon')}
             nav={{
                 ...base.nav,
             }}

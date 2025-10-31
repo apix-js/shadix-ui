@@ -5,7 +5,7 @@ import SignaturePad from "@/registry/new-york/components/signature-pad";
 
 const SignaturePadDemo: React.FC = () => {
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen gap-6 p-4">
+        <div className="flex flex-col items-center justify-center gap-6 p-4">
             <SignaturePad
                 variant="default"
                 size="md"

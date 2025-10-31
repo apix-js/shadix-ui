@@ -10,7 +10,7 @@ const DateTimePickerDemo: React.FC<DateTimePickerDemoProps> = () => {
     const [singleDate, setSingleDate] = useState<Date>(new Date());
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen gap-6 p-4">
+        <div className="flex flex-col items-center justify-center gap-6 p-4">
             <DateTimePicker
                 mode="single"
                 enableTime={true}
