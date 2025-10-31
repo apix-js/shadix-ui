@@ -2,6 +2,7 @@
 
 import * as React from "react";
 
+import { ScrollArea } from "@/shadcn/components/ui/scroll-area";
 import { Tabs, TabsList, TabsTrigger } from "@/shadcn/components/ui/tabs";
 import { cn } from "@/shadcn/lib/utils";
 
@@ -64,17 +65,16 @@ export function ComponentPreviewTabs({
                     data-active={tab === "preview"}
                     className="invisible data-[active=true]:visible"
                 >
-                    <div
-                        data-align={align}
+                    <ScrollArea
                         className={cn(
                             "preview flex w-full justify-center data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start",
                             chromeLessOnMobile
                                 ? "sm:p-10"
-                                : "min-h-[300px] md:h-[450px] p-4 md:p-10",
+                                : "h-[450px] p-4 md:p-10",
                         )}
                     >
-                        {component}
-                    </div>
+                        <div data-align={align}>{component}</div>
+                    </ScrollArea>
                 </div>
                 <div
                     data-slot="code"

@@ -76,7 +76,10 @@ const ReorderListItem: React.FC<{
                 <div className="relative flex items-center gap-2">
                     {React.isValidElement<{ className?: string }>(item)
                         ? React.cloneElement(item, {
-                              className: cn("pr-12", item.props.className),
+                              className: cn(
+                                  "pr-12 w-full",
+                                  item.props.className,
+                              ),
                           })
                         : item}
                     <Grip

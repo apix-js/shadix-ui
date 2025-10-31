@@ -177,14 +177,14 @@
     button:active {
         @apply opacity-60 md:opacity-100;
     }
-
+    /*
     * {
         box-sizing: border-box;
     }
 
     [data-docs-container] {
         @apply px-2 sm:px-4 md:px-6;
-    }
+    } */
 }
 
 @utility border-grid {
@@ -237,7 +237,7 @@
 }
 
 @layer components {
-    .docs-body,
+    /* .docs-body,
     [data-docs-body] {
         @apply px-2 sm:px-4 md:px-6 w-full max-w-none;
     }
@@ -248,7 +248,7 @@
 
     .prose > * {
         @apply px-0;
-    }
+    } */
 
     .steps {
         &:first-child {
@@ -315,7 +315,7 @@
         border-width: 0px;
         border-color: var(--border);
         margin-top: calc(var(--spacing) * 6);
-        overflow: visible;
+        overflow: hidden;
         font-size: var(--text-sm);
         outline: none;
         position: relative;
@@ -324,12 +324,6 @@
         &:has([data-rehype-pretty-code-title]) [data-slot="copy-button"] {
             top: calc(var(--spacing) * 1.5) !important;
         }
-    }
-
-    [data-rehype-pretty-code-figure] pre {
-        overflow-x: auto;
-        overflow-y: hidden;
-        @apply px-0 md:px-0;
     }
 
     [data-rehype-pretty-code-title] {
@@ -379,7 +373,7 @@
         min-height: calc(var(--spacing) * 1);
         width: 100%;
         display: inline-block;
-        @apply px-4 md:px-4;
+        /* @apply px-4 md:px-4; */
     }
 
     [data-line] span {
@@ -420,8 +414,10 @@
         font-size: 0.8rem;
     }
 
-    [data-docs-page] {
-        @apply w-full overflow-x-hidden;
+    @media (min-width: 48rem) {
+        [data-line-numbers] [data-line]:before {
+            display: inline-block !important;
+        }
     }
 }
 

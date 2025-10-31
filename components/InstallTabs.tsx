@@ -2,10 +2,10 @@
 
 import * as React from "react";
 
-import { Pre } from "fumadocs-ui/components/codeblock";
 import { TerminalSquare } from "lucide-react";
 
 import { CopyButton } from "@/components/CopyButton";
+import { ScrollArea } from "@/shadcn/components/ui/scroll-area";
 import {
     Tabs,
     TabsContent,
@@ -72,9 +72,11 @@ const InstallTabs: React.FC<InstallTabsProps> = ({ pkg, external = false }) => {
 
                 {Object.entries(getCommands(command)).map(([key, cmd]) => (
                     <TabsContent key={key} value={key}>
-                        <Pre className="rounded-md p-3 text-sm font-mono text-muted-foreground">
-                            {cmd}
-                        </Pre>
+                        <ScrollArea>
+                            <pre className="rounded-md p-3 text-sm font-mono text-muted-foreground">
+                                {cmd}
+                            </pre>
+                        </ScrollArea>
                     </TabsContent>
                 ))}
             </Tabs>

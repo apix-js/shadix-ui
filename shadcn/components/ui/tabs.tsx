@@ -63,7 +63,7 @@ function TabsContent({
             className={cn("flex-1 outline-none", className)}
             {...props}
         >
-            <ScrollArea className="w-full">{children}</ScrollArea>
+            {children}
         </TabsPrimitive.Content>
     );
 }

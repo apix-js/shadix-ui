@@ -27,6 +27,7 @@ const ReorderListDemo: React.FC = () => {
                 <ReorderList
                     onReorderFinish={handleReorderFinish}
                     itemClassName="rounded-lg"
+                    className="min-w-[200px]"
                 >
                     <Item variant={"outline"} size={"sm"}>
                         <ItemContent>
@@ -65,6 +66,7 @@ const ReorderListDemo: React.FC = () => {
                     onReorderFinish={handleReorderFinish}
                     withDragHandle
                     itemClassName="rounded-lg"
+                    className="min-w-[300px]"
                 >
                     <Item variant={"outline"} size={"sm"}>
                         <ItemContent>
