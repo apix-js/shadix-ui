@@ -464,6 +464,103 @@ export const Index: Record<string, RegistryIndexItem> = {
         categories: undefined,
         meta: undefined,
     },
+    loader: {
+        name: "loader",
+        description: "A loader component with various variants",
+        type: "registry:component",
+        registryDependencies: undefined,
+        files: [
+            {
+                path: "registry/new-york/components/loader.tsx",
+                type: "registry:ui",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/loader.tsx",
+            },
+        ],
+        component: React.lazy(async () => {
+            const mod = await import(
+                "@/registry/new-york/components/loader.tsx"
+            );
+            const exportName =
+                Object.keys(mod).find(
+                    (key) =>
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "function" ||
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "object",
+                ) || "loader";
+            return {
+                default: (mod as Record<string, unknown>)[
+                    exportName
+                ] as React.ComponentType<object>,
+            };
+        }),
+        dependencies: ["motion", "class-variance-authority"],
+        categories: undefined,
+        meta: {
+            api: {
+                className: {
+                    description:
+                        "(optional) - The className of the loader container",
+                    type: "string",
+                    typeDescription: "string",
+                    required: false,
+                    deprecated: false,
+                },
+                variant: {
+                    description: "(optional) - The variant of the loader",
+                    type: "LoaderVariant",
+                    typeDescription: "LoaderVariant",
+                    required: false,
+                    deprecated: false,
+                },
+                size: {
+                    description: "(optional) - The size of the loader",
+                    type: 'VariantProps<typeof loaderSizes>["size"]',
+                    typeDescription: 'VariantProps<typeof loaderSizes>["size"]',
+                    required: false,
+                    deprecated: false,
+                },
+            },
+        },
+    },
+    "loader-demo": {
+        name: "loader-demo",
+        description: "",
+        type: "registry:demo",
+        registryDependencies: undefined,
+        files: [
+            {
+                path: "registry/new-york/demos/loader.demo.tsx",
+                type: "registry:demo",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/demos/loader.demo.tsx",
+            },
+        ],
+        component: React.lazy(async () => {
+            const mod = await import(
+                "@/registry/new-york/demos/loader.demo.tsx"
+            );
+            const exportName =
+                Object.keys(mod).find(
+                    (key) =>
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "function" ||
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "object",
+                ) || "loader-demo";
+            return {
+                default: (mod as Record<string, unknown>)[
+                    exportName
+                ] as React.ComponentType<object>,
+            };
+        }),
+        dependencies: undefined,
+        categories: undefined,
+        meta: undefined,
+    },
     "motion-dialog": {
         name: "motion-dialog",
         description: "A dialog with modern motion animations",

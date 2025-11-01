@@ -80,7 +80,9 @@ const AuthorCard: React.FC<AuthorCardProps> = ({ author }) => {
     if (loading) {
         return (
             <>
-                <h3 className="text-md font-semibold">Developed By:</h3>
+                <h3 className="text-md font-semibold">
+                    Who Developed This Component:
+                </h3>
                 <div className="flex flex-row items-center justify-between gap-4 py-2">
                     <div className="flex items-center gap-3">
                         <Skeleton className="h-12 w-12 rounded-full" />
@@ -136,7 +138,9 @@ const AuthorCard: React.FC<AuthorCardProps> = ({ author }) => {
 
     return (
         <>
-            <h3 className="text-md font-semibold">Developed By:</h3>
+            <h3 className="text-md font-semibold">
+                Who Developed This Component:
+            </h3>
             <div className="flex flex-row items-center justify-between gap-4 py-2">
                 {/* User Informations */}
                 <div className="flex items-center gap-3">
