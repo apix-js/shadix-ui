@@ -15,15 +15,6 @@ import {
 
 type PackageManager = "pnpm" | "npm" | "yarn" | "bun";
 
-const getCommands = (command: string): Record<PackageManager, string> => {
-    return {
-        pnpm: `pnpm add ${command}`,
-        npm: `npm install ${command}`,
-        yarn: `yarn add ${command}`,
-        bun: `bun add ${command}`,
-    };
-};
-
 const InstallTabs: React.FC<InstallTabsProps> = ({ pkg, external = false }) => {
     const [value, setValue] = React.useState<PackageManager>("pnpm");
     // const [origin, setOrigin] = React.useState<string>('');
@@ -35,12 +26,21 @@ const InstallTabs: React.FC<InstallTabsProps> = ({ pkg, external = false }) => {
     //     }
     // }, []);
 
-    let command = `shadcn@latest add @shadix-ui/${pkg}`;
-    // let command = `shadcn@latest add ${origin}/r/${pkg}`;
+    let commands: Record<PackageManager, string> = {
+        pnpm: `pnpm dlx shadcn@latest add @shadix-ui/${pkg}`,
+        npm: `npx shadcn@latest add @shadix-ui/${pkg}`,
+        yarn: `yarn dlx shadcn@latest add @shadix-ui/${pkg}`,
+        bun: `bun x shadcn@latest add @shadix-ui/${pkg}`,
+    };
 
     if (external) {
         const packages = Array.isArray(pkg) ? pkg.join(" ") : pkg;
-        command = `${packages}`;
+        commands = {
+            pnpm: `pnpm add ${packages}`,
+            npm: `npm install ${packages}`,
+            yarn: `yarn add ${packages}`,
+            bun: `bun add ${packages}`,
+        };
     }
 
     return (
@@ -55,7 +55,7 @@ const InstallTabs: React.FC<InstallTabsProps> = ({ pkg, external = false }) => {
 
                     <div className="flex flex-1 items-center justify-between">
                         <TabsList className="h-9 space-x-1 bg-transparent p-0">
-                            {Object.keys(getCommands(command)).map((c) => (
+                            {Object.keys(commands).map((c) => (
                                 <TabsTrigger
                                     value={c}
                                     key={c}
@@ -66,11 +66,11 @@ const InstallTabs: React.FC<InstallTabsProps> = ({ pkg, external = false }) => {
                             ))}
                         </TabsList>
 
-                        <CopyButton value={getCommands(command)[value]} />
+                        <CopyButton value={commands[value]} />
                     </div>
                 </div>
 
-                {Object.entries(getCommands(command)).map(([key, cmd]) => (
+                {Object.entries(commands).map(([key, cmd]) => (
                     <TabsContent key={key} value={key}>
                         <ScrollArea>
                             <pre className="rounded-md p-3 text-sm font-mono text-muted-foreground">

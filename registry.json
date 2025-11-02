@@ -186,6 +186,18 @@
                     "type": "registry:ui"
                 }
             ]
+        },
+        {
+            "name": "segment-layout",
+            "description": "A segment layout component for shadcn/ui. Easily create a segment layout with left and right items and a content area",
+            "type": "registry:component",
+            "dependencies": ["motion","clsx"],
+            "files": [
+                {
+                    "path": "registry/new-york/components/segment-layout.tsx",
+                    "type": "registry:ui"
+                }
+            ]
         }
     ]
 }

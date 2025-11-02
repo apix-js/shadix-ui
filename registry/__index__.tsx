@@ -781,6 +781,122 @@ export const Index: Record<string, RegistryIndexItem> = {
         categories: undefined,
         meta: undefined,
     },
+    "segment-layout": {
+        name: "segment-layout",
+        description:
+            "A segment layout component for shadcn/ui. Easily create a segment layout with left and right items and a content area",
+        type: "registry:component",
+        registryDependencies: undefined,
+        files: [
+            {
+                path: "registry/new-york/components/segment-layout.tsx",
+                type: "registry:ui",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/segment-layout.tsx",
+            },
+        ],
+        component: React.lazy(async () => {
+            const mod = await import(
+                "@/registry/new-york/components/segment-layout.tsx"
+            );
+            const exportName =
+                Object.keys(mod).find(
+                    (key) =>
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "function" ||
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "object",
+                ) || "segment-layout";
+            return {
+                default: (mod as Record<string, unknown>)[
+                    exportName
+                ] as React.ComponentType<object>,
+            };
+        }),
+        dependencies: ["motion", "clsx"],
+        categories: undefined,
+        meta: {
+            api: {
+                leftItems: {
+                    description:
+                        "(required) - The left side items of the segment layout",
+                    type: "ItemType[]",
+                    typeDescription: "ItemType[]",
+                    required: true,
+                    deprecated: false,
+                },
+                rightItems: {
+                    description:
+                        "(required) - The right side items of the segment layout",
+                    type: "ItemType[]",
+                    typeDescription: "ItemType[]",
+                    required: true,
+                    deprecated: false,
+                },
+                children: {
+                    description:
+                        "(required) - The content of the segment layout",
+                    type: "React.ReactNode",
+                    typeDescription: "React.ReactNode",
+                    required: true,
+                    deprecated: false,
+                },
+                defaultValue: {
+                    description:
+                        "(optional) - The className of the segment layout",
+                    type: "string",
+                    typeDescription: "string",
+                    required: false,
+                    deprecated: false,
+                },
+                classNames: {
+                    description:
+                        "(optional) - The className of the segment layout container",
+                    type: "ClassNamesType",
+                    typeDescription: "ClassNamesType",
+                    required: false,
+                    deprecated: false,
+                },
+            },
+        },
+    },
+    "segment-layout-demo": {
+        name: "segment-layout-demo",
+        description: "",
+        type: "registry:demo",
+        registryDependencies: undefined,
+        files: [
+            {
+                path: "registry/new-york/demos/segment-layout.demo.tsx",
+                type: "registry:demo",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/demos/segment-layout.demo.tsx",
+            },
+        ],
+        component: React.lazy(async () => {
+            const mod = await import(
+                "@/registry/new-york/demos/segment-layout.demo.tsx"
+            );
+            const exportName =
+                Object.keys(mod).find(
+                    (key) =>
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "function" ||
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "object",
+                ) || "segment-layout-demo";
+            return {
+                default: (mod as Record<string, unknown>)[
+                    exportName
+                ] as React.ComponentType<object>,
+            };
+        }),
+        dependencies: undefined,
+        categories: undefined,
+        meta: undefined,
+    },
     "signature-pad": {
         name: "signature-pad",
         description: "A signature pad component for capturing signatures",
