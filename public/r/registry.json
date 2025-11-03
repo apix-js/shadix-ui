@@ -198,6 +198,26 @@
                     "type": "registry:ui"
                 }
             ]
+        },
+        {
+            "name": "morph-image",
+            "description": "A morph image component for shadcn/ui. Easily create a morph image with a thumbnail and a modal",
+            "type": "registry:component",
+            "dependencies": ["motion"],
+            "files": [
+                {
+                    "path": "registry/new-york/components/morph-image.tsx",
+                    "type": "registry:ui"
+                },
+                {
+                    "path": "registry/new-york/hooks/useClickOutside.ts",
+                    "type": "registry:hook"
+                },
+                {
+                    "path": "registry/new-york/hooks/useEventListener.ts",
+                    "type": "registry:hook"
+                }
+            ]
         }
     ]
 }
