@@ -63,7 +63,7 @@ export function ComponentPreviewTabs({
                 <div
                     data-slot="preview"
                     data-active={tab === "preview"}
-                    className="invisible data-[active=true]:visible"
+                    className="invisible data-[active=true]:visible bg-secondary rounded-lg !border-0"
                 >
                     <ScrollArea>
                         <div

@@ -103,7 +103,7 @@ export const DatePickerView = memo(
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 1.5 }}
                 transition={{ duration: 0.2, ease: "easeInOut" }}
-                className="flex flex-col transition-all duration-200 justify-between gap-4 w-full max-w-md mx-auto p-3 bg-background"
+                className="flex flex-col transition-all duration-200 justify-between gap-4 w-fit max-w-md mx-auto p-3 bg-background"
             >
                 {/* picker header */}
                 <div className="">

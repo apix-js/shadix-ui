@@ -142,7 +142,7 @@ export const DateTimeInput = memo(
                                 duration: 0.3,
                                 ease: "easeInOut",
                             }}
-                            className="absolute z-50 mt-2 top-full bg-background rounded-lg shadow-lg left-0 w-full"
+                            className="absolute z-50 mt-2 top-full bg-transparent rounded-lg shadow-lg left-0 w-full"
                         >
                             <DateTimePicker
                                 mode={mode ?? "single"}

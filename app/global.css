@@ -177,6 +177,29 @@
     button:active {
         @apply opacity-60 md:opacity-100;
     }
+
+    #nd-sidebar {
+        --color-fd-card: transparent;
+
+        & [data-radix-scroll-area-viewport] {
+            @apply !pt-12;
+        }
+
+        & p {
+            @apply text-base font-semibold;
+        }
+
+        & > div:nth-child(1) {
+            @apply shadow-lg;
+        }
+    }
+
+    #nd-subnav {
+        & > div {
+            @apply !border-0 shadow-lg;
+        }
+    }
+
     /*
     * {
         box-sizing: border-box;
@@ -237,19 +260,6 @@
 }
 
 @layer components {
-    /* .docs-body,
-    [data-docs-body] {
-        @apply px-2 sm:px-4 md:px-6 w-full max-w-none;
-    }
-
-    .prose {
-        @apply w-full;
-    }
-
-    .prose > * {
-        @apply px-0;
-    } */
-
     .steps {
         &:first-child {
             @apply !mt-0;
@@ -266,6 +276,10 @@
         > h3 + p {
             @apply !mt-2;
         }
+    }
+
+    .border-e {
+        border-color: transparent !important;
     }
 
     /* feat: Background image utilities for theme support */
