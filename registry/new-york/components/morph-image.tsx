@@ -17,9 +17,13 @@ const transition: Transition = {
     damping: 15,
 };
 
-const MorphImage: React.FC<
-    Omit<React.ComponentProps<typeof motion.img>, "onClick">
-> = ({ src, className, alt, ...props }) => {
+const MorphImage: React.FC<React.ComponentProps<typeof motion.img>> = ({
+    src,
+    className,
+    alt,
+    onClick,
+    ...props
+}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [mounted, setMounted] = useState(false);
 
@@ -41,6 +45,7 @@ const MorphImage: React.FC<
     const handleClick = (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
         e.stopPropagation();
         setIsOpen((prev) => !prev);
+        onClick?.(e);
     };
 
     if (!mounted) return null;
@@ -66,17 +71,15 @@ const MorphImage: React.FC<
                 <>
                     <motion.div
                         key="backdrop"
-                        className="fixed inset-0 z-40 bg-black/80"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-40 bg-black/80 cursor-pointer"
+                        initial={{ opacity: 0, pointerEvents: "none" }}
+                        animate={{ opacity: 1, pointerEvents: "auto" }}
+                        exit={{ opacity: 0, pointerEvents: "none" }}
                         transition={transition}
-
-                        // onClick={handleClick}
                     />
                     <motion.div
                         key="container"
-                        className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none"
+                        className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none "
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
@@ -86,9 +89,9 @@ const MorphImage: React.FC<
                             ref={imageRef as React.RefObject<HTMLImageElement>}
                             src={src}
                             alt={alt}
-                            layoutId="morph-image"
+                            layoutId={props.layoutId || "morph-image"}
                             className={cn(
-                                "object-cover object-center max-w-[90vw] max-h-[90vh] pointer-events-auto cursor-zoom-out",
+                                "object-cover object-center max-w-[90vw] max-h-[90vh] pointer-events-auto cursor-zoom-out rounded-lg overflow-hidden",
                             )}
                             onClick={(e) => handleClick(e)}
                             transition={transition}
@@ -101,8 +104,8 @@ const MorphImage: React.FC<
     );
 
     return (
-        <div className="w-fit flex items-center justify-center">
-            <picture>{thumbnail}</picture>
+        <div className="w-full h-full flex items-center justify-center">
+            <picture className="w-full h-full">{thumbnail}</picture>
             {modal}
         </div>
     );

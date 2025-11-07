@@ -464,6 +464,161 @@ export const Index: Record<string, RegistryIndexItem> = {
         categories: undefined,
         meta: undefined,
     },
+    "image-gallery": {
+        name: "image-gallery",
+        description:
+            "A image gallery component for shadcn/ui. Easily create a image gallery with a list of images",
+        type: "registry:component",
+        registryDependencies: ["@shadix-ui/morph-image"],
+        files: [
+            {
+                path: "registry/new-york/components/image-gallery.tsx",
+                type: "registry:ui",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/image-gallery.tsx",
+            },
+            {
+                path: "registry/new-york/hooks/useMasonry.ts",
+                type: "registry:hook",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/hooks/useMasonry.ts",
+            },
+            {
+                path: "registry/new-york/hooks/useWindowSize.ts",
+                type: "registry:hook",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/hooks/useWindowSize.ts",
+            },
+        ],
+        component: React.lazy(async () => {
+            const mod = await import(
+                "@/registry/new-york/components/image-gallery.tsx"
+            );
+            const exportName =
+                Object.keys(mod).find(
+                    (key) =>
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "function" ||
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "object",
+                ) || "image-gallery";
+            return {
+                default: (mod as Record<string, unknown>)[
+                    exportName
+                ] as React.ComponentType<object>,
+            };
+        }),
+        dependencies: ["motion"],
+        categories: undefined,
+        meta: {
+            api: {
+                images: {
+                    description:
+                        "(required) - Array of images to display in the gallery",
+                    type: "ImageItem[]",
+                    typeDescription: "ImageItem[]",
+                    required: true,
+                    deprecated: false,
+                },
+                gap: {
+                    description:
+                        "(optional) - Space between images in pixels (default: 16)",
+                    type: "number",
+                    typeDescription: "number",
+                    required: false,
+                    deprecated: false,
+                },
+                columns: {
+                    description:
+                        "(optional) - Columns to display in each screen size",
+                    type: "{        desktop?: number;        tablet?: number;        mobile?: number;    }",
+                    typeDescription:
+                        "{        desktop?: number;        tablet?: number;        mobile?: number;    }",
+                    required: false,
+                    deprecated: false,
+                },
+                lazyLoading: {
+                    description:
+                        "(optional) - Enable laxy loading of images (default: true)",
+                    type: "boolean",
+                    typeDescription: "boolean",
+                    required: false,
+                    deprecated: false,
+                },
+                className: {
+                    description: "(optional) - class name for the container",
+                    type: "string",
+                    typeDescription: "string",
+                    required: false,
+                    deprecated: false,
+                },
+                onImageClick: {
+                    description:
+                        "(optional) - Callback when an image is clicked",
+                    type: "(image: ImageItem, index: number) => void",
+                    typeDescription:
+                        "(image: ImageItem, index: number) => void",
+                    required: false,
+                    deprecated: false,
+                },
+                filterImages: {
+                    description:
+                        "(optional) - Callback to filter images before rendering",
+                    type: "(images: ImageItem, index: number) => boolean",
+                    typeDescription:
+                        "(images: ImageItem, index: number) => boolean",
+                    required: false,
+                    deprecated: false,
+                },
+                sortImages: {
+                    description: "(optional) - Callback sort images",
+                    type: "(a: ImageItem, b: ImageItem) => number",
+                    typeDescription: "(a: ImageItem, b: ImageItem) => number",
+                    required: false,
+                    deprecated: false,
+                },
+            },
+        },
+    },
+    "image-gallery-demo": {
+        name: "image-gallery-demo",
+        description: "",
+        type: "registry:demo",
+        registryDependencies: undefined,
+        files: [
+            {
+                path: "registry/new-york/demos/image-gallery.demo.tsx",
+                type: "registry:demo",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/demos/image-gallery.demo.tsx",
+            },
+        ],
+        component: React.lazy(async () => {
+            const mod = await import(
+                "@/registry/new-york/demos/image-gallery.demo.tsx"
+            );
+            const exportName =
+                Object.keys(mod).find(
+                    (key) =>
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "function" ||
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "object",
+                ) || "image-gallery-demo";
+            return {
+                default: (mod as Record<string, unknown>)[
+                    exportName
+                ] as React.ComponentType<object>,
+            };
+        }),
+        dependencies: undefined,
+        categories: undefined,
+        meta: undefined,
+    },
     loader: {
         name: "loader",
         description: "A loader component with various variants",

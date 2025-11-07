@@ -218,6 +218,27 @@
                     "type": "registry:hook"
                 }
             ]
+        },
+        {
+            "name": "image-gallery",
+            "description": "A image gallery component for shadcn/ui. Easily create a image gallery with a list of images",
+            "type": "registry:component",
+            "dependencies": ["motion"],
+            "registryDependencies": ["@shadix-ui/morph-image"],
+            "files": [
+                {
+                    "path": "registry/new-york/components/image-gallery.tsx",
+                    "type": "registry:ui"
+                },
+                {
+                    "path": "registry/new-york/hooks/useMasonry.ts",
+                    "type": "registry:hook"
+                },
+                {
+                    "path": "registry/new-york/hooks/useWindowSize.ts",
+                    "type": "registry:hook"
+                }
+            ]
         }
     ]
 }

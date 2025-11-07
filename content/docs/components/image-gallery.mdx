@@ -1,0 +1,92 @@
+---
+title: Image Gallery
+description: A responsive masonry image gallery component with lazy loading and lightbox integration.
+author: 'Gihan Rangana'
+authorUrl: 'https://github.com/gihanrangana'
+authorImage: 'https://github.com/gihanrangana.png'
+---
+
+<ComponentPreview name="image-gallery-demo" />
+
+## Installation
+
+<InstalationDocs name="image-gallery" filepath="components" />
+
+## Usage
+
+### Basic Usage
+
+#### Import the Component
+
+```tsx
+import { ImageGallery, type ImageItem } from '@/components/image-gallery';
+```
+
+#### Use the Component
+
+```tsx
+import { ImageGallery, type ImageItem } from '@/components/image-gallery';
+
+const images: ImageItem[] = [
+    {
+        src: '/image1.jpg',
+        alt: 'Image 1'
+    },
+    {
+        src: '/image2.jpg',
+        alt: 'Image 2'
+    }
+    // ... more images
+];
+
+export default function MyGallery() {
+    return <ImageGallery images={images} />;
+}
+```
+
+#### With Custom Columns
+
+```tsx
+<ImageGallery
+    images={images}
+    columns={{
+        desktop: 4,
+        tablet: 2,
+        mobile: 1
+    }}
+    gap={20}
+/>
+```
+
+#### With Filtering
+
+```tsx
+<ImageGallery images={images} filterImages={(image) => !image.alt.includes('private')} />
+```
+
+#### With Sorting
+
+```tsx
+<ImageGallery images={images} sortImages={(a, b) => a.alt.localeCompare(b.alt)} />
+```
+
+#### With Click Handler
+
+```tsx
+<ImageGallery
+    images={images}
+    onImageClick={(image, index) => {
+        console.log(`Clicked: ${image.alt}`);
+    }}
+/>
+```
+
+#### Disable Lazy Loading
+
+```tsx
+<ImageGallery images={images} lazyLoading={false} />
+```
+
+## Props
+
+<PropsTable name="ImageGalleryProps" filename="image-gallery" />

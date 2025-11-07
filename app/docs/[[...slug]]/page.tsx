@@ -28,7 +28,6 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
     const MDX = page.data.body;
     const neighbours = await findNeighbour(source.pageTree, page.url);
 
-    // feat: Generate breadcrumbs for structured data
     const breadcrumbs = [
         { name: "Home", url: "https://shadix-ui.vercel.app" },
         { name: "Documentation", url: "https://shadix-ui.vercel.app/docs" },
@@ -70,6 +69,7 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
                 breadcrumbs={breadcrumbs}
             />
             <BreadcrumbSchema breadcrumbs={breadcrumbs} />
+
             <DocsPage
                 toc={page.data.toc}
                 tableOfContent={{

@@ -63,15 +63,19 @@ export function ComponentPreviewTabs({
                 <div
                     data-slot="preview"
                     data-active={tab === "preview"}
-                    className="invisible data-[active=true]:visible bg-secondary rounded-lg !border-0"
+                    className="invisible data-[active=true]:visible bg-background rounded-lg !border-0"
                 >
-                    <ScrollArea>
+                    <ScrollArea
+                        className={cn(
+                            chromeLessOnMobile ? "sm:p-10" : "h-[450px] p2",
+                        )}
+                    >
                         <div
                             className={cn(
-                                "preview flex w-full items-center justify-center data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start",
+                                "preview flex w-full h-full items-center justify-center data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start",
                                 chromeLessOnMobile
                                     ? "sm:p-10"
-                                    : "h-[450px] p-4 md:p-10",
+                                    : "min-h-[450px] p2",
                             )}
                         >
                             {component}
