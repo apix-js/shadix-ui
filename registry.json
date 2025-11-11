@@ -239,6 +239,56 @@
                     "type": "registry:hook"
                 }
             ]
+        },
+        {
+            "name": "video-player",
+            "description": "A video player component for shadcn/ui. Easily create a video player with a progress bar, volume control, and fullscreen toggle.",
+            "type": "registry:component",
+            "dependencies": ["motion","lucide-react"],
+            "registryDependencies": ["button","slider"],
+            "files": [
+                {
+                    "path": "registry/new-york/components/video-player/video-player.tsx",
+                    "type": "registry:ui",
+                    "target": "components/video-player/video-player.tsx"
+                },
+                {
+                    "path": "registry/new-york/components/video-player/video-player-buffer.tsx",
+                    "type": "registry:ui",
+                    "target": "components/video-player/video-player-buffer.tsx"
+                },
+                {
+                    "path": "registry/new-york/components/video-player/video-player-controls.tsx",
+                    "type": "registry:ui",
+                    "target": "components/video-player/video-player-controls.tsx"
+                },
+                {
+                    "path": "registry/new-york/components/video-player/video-player-indicator.tsx",
+                    "type": "registry:ui",
+                    "target": "components/video-player/video-player-indicator.tsx"
+                },
+                {
+                    "path": "registry/new-york/components/video-player/video-player-progress-bar.tsx",
+                    "type": "registry:ui",
+                    "target": "components/video-player/video-player-progress-bar.tsx"
+                },
+                {
+                    "path": "registry/new-york/hooks/useVideoPlayer.ts",
+                    "type": "registry:hook"
+                },
+                {
+                    "path": "registry/new-york/hooks/useEventListener.ts",
+                    "type": "registry:hook"
+                },
+                {
+                    "path": "registry/new-york/hooks/useWindowSize.ts",
+                    "type": "registry:hook"
+                },
+                {
+                    "path": "registry/new-york/styles/video-player.css",
+                    "type": "registry:style"
+                }
+            ]
         }
     ]
 }

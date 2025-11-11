@@ -1276,4 +1276,174 @@ export const Index: Record<string, RegistryIndexItem> = {
         categories: undefined,
         meta: undefined,
     },
+    "video-player": {
+        name: "video-player",
+        description:
+            "A video player component for shadcn/ui. Easily create a video player with a progress bar, volume control, and fullscreen toggle.",
+        type: "registry:component",
+        registryDependencies: ["button", "slider"],
+        files: [
+            {
+                path: "registry/new-york/components/video-player/video-player.tsx",
+                type: "registry:ui",
+                target: "components/video-player/video-player.tsx",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/video-player/video-player.tsx",
+            },
+            {
+                path: "registry/new-york/components/video-player/video-player-buffer.tsx",
+                type: "registry:ui",
+                target: "components/video-player/video-player-buffer.tsx",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/video-player/video-player-buffer.tsx",
+            },
+            {
+                path: "registry/new-york/components/video-player/video-player-controls.tsx",
+                type: "registry:ui",
+                target: "components/video-player/video-player-controls.tsx",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/video-player/video-player-controls.tsx",
+            },
+            {
+                path: "registry/new-york/components/video-player/video-player-indicator.tsx",
+                type: "registry:ui",
+                target: "components/video-player/video-player-indicator.tsx",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/video-player/video-player-indicator.tsx",
+            },
+            {
+                path: "registry/new-york/components/video-player/video-player-progress-bar.tsx",
+                type: "registry:ui",
+                target: "components/video-player/video-player-progress-bar.tsx",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/video-player/video-player-progress-bar.tsx",
+            },
+            {
+                path: "registry/new-york/hooks/useVideoPlayer.ts",
+                type: "registry:hook",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/hooks/useVideoPlayer.ts",
+            },
+            {
+                path: "registry/new-york/hooks/useEventListener.ts",
+                type: "registry:hook",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/hooks/useEventListener.ts",
+            },
+            {
+                path: "registry/new-york/hooks/useWindowSize.ts",
+                type: "registry:hook",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/hooks/useWindowSize.ts",
+            },
+            {
+                path: "registry/new-york/styles/video-player.css",
+                type: "registry:style",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/styles/video-player.css",
+            },
+        ],
+        component: React.lazy(async () => {
+            const mod = await import(
+                "@/registry/new-york/components/video-player/video-player.tsx"
+            );
+            const exportName =
+                Object.keys(mod).find(
+                    (key) =>
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "function" ||
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "object",
+                ) || "video-player";
+            return {
+                default: (mod as Record<string, unknown>)[
+                    exportName
+                ] as React.ComponentType<object>,
+            };
+        }),
+        dependencies: ["motion", "lucide-react"],
+        categories: undefined,
+        meta: {
+            api: {
+                src: {
+                    description: "(required) Source of the video",
+                    type: '| string        | {              "2160p"?: string;              "1440p"?: string;              "1080p"?: string;              "720p"?: string;              "480p"?: string;              "360p"?: string;              "240p"?: string;          }',
+                    typeDescription:
+                        '| string        | {              "2160p"?: string;              "1440p"?: string;              "1080p"?: string;              "720p"?: string;              "480p"?: string;              "360p"?: string;              "240p"?: string;          }',
+                    required: true,
+                    deprecated: false,
+                },
+                autoPlay: {
+                    description: "(optional) Whether to autoplay the video",
+                    type: "boolean",
+                    typeDescription: "boolean",
+                    required: false,
+                    deprecated: false,
+                },
+                thumbnail: {
+                    description: "(optional) Thumbnail image for the video",
+                    type: "string",
+                    typeDescription: "string",
+                    required: false,
+                    deprecated: false,
+                },
+                thumbnailTime: {
+                    description:
+                        "(optional) Time at which to display the thumbnail",
+                    type: "number",
+                    typeDescription: "number",
+                    required: false,
+                    deprecated: false,
+                },
+                subtitles: {
+                    description: "(optional) Subtitles for the video",
+                    type: "{        src: string;        lang: string;        label: string;    }[]",
+                    typeDescription:
+                        "{        src: string;        lang: string;        label: string;    }[]",
+                    required: false,
+                    deprecated: false,
+                },
+            },
+        },
+    },
+    "video-player-demo": {
+        name: "video-player-demo",
+        description: "",
+        type: "registry:demo",
+        registryDependencies: undefined,
+        files: [
+            {
+                path: "registry/new-york/demos/video-player.demo.tsx",
+                type: "registry:demo",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/demos/video-player.demo.tsx",
+            },
+        ],
+        component: React.lazy(async () => {
+            const mod = await import(
+                "@/registry/new-york/demos/video-player.demo.tsx"
+            );
+            const exportName =
+                Object.keys(mod).find(
+                    (key) =>
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "function" ||
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "object",
+                ) || "video-player-demo";
+            return {
+                default: (mod as Record<string, unknown>)[
+                    exportName
+                ] as React.ComponentType<object>,
+            };
+        }),
+        dependencies: undefined,
+        categories: undefined,
+        meta: undefined,
+    },
 };

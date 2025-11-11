@@ -24,15 +24,8 @@ export async function GET(
         <div
             tw="flex h-full w-full flex-col items-center justify-center bg-slate-900 overflow-hidden"
             style={{
-                // display: "flex",
-                // height: "100%",
-                // width: "100%",
-                // flexDirection: "column",
-                // justifyContent: "center",
-                // alignItems: "center",
                 background:
                     "linear-gradient(135deg, rgba(2,6,24,1) 0%, #0f172b 100%)", // Subtle gradient
-                // position: "relative",
             }}
         >
             <div tw="flex items-center justify-center absolute top-0 bottom-0 right-[-200px] text-slate-900/70">
@@ -72,6 +65,15 @@ export async function GET(
                 <p tw="text-2xl text-gray-300 leading-relaxed max-w-4xl">
                     {page.data.description}
                 </p>
+                <span
+                    tw="text-md bg-code text-gray-300 px-2 py-1 rounded-md inline-block"
+                    style={{
+                        backgroundColor: "#0f172b",
+                    }}
+                >
+                    pnpm dlx shadcn@latest add @shadix-ui/
+                    {page.slugs[page.slugs.length - 1]}
+                </span>
             </div>
 
             {/* Author section - only show if author data is available */}

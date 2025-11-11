@@ -4,7 +4,6 @@ import type * as React from "react";
 
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 
-import { ScrollArea } from "@/shadcn/components/ui/scroll-area";
 import { cn } from "@/shadcn/lib/utils";
 
 function Tabs({

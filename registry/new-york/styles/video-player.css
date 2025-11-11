@@ -1,0 +1,21 @@
+@layer base {
+    [data-slot="slider"],
+    [data-slot="slider-track"] {
+        height: calc(var(--spacing) * 1) !important;
+    }
+
+    [data-slot="slider-track"] {
+        background-color: color-mix(
+            in oklab,
+            var(--accent) 60%,
+            transparent
+        ) !important;
+    }
+
+    [data-slot="slider-thumb"] {
+        width: calc(var(--spacing) * 2.5) !important;
+        height: calc(var(--spacing) * 2.5) !important;
+        background-color: var(--color-primary) !important;
+        border-radius: 50% !important;
+    }
+}
