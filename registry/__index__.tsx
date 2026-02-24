@@ -34,7 +34,7 @@ export const Index: Record<string, RegistryIndexItem> = {
             {
                 path: "registry/new-york/components/action-button.tsx",
                 type: "registry:ui",
-                target: "",
+                target: "components/shadix-ui/components/action-button.tsx",
                 githubUrl:
                     "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/action-button.tsx",
             },
@@ -145,6 +145,104 @@ export const Index: Record<string, RegistryIndexItem> = {
         categories: undefined,
         meta: undefined,
     },
+    "animated-tabs": {
+        name: "animated-tabs",
+        description:
+            "Tabs with animated indicator and content transitions (underline, pill, slide)",
+        type: "registry:component",
+        registryDependencies: ["tabs"],
+        files: [
+            {
+                path: "registry/new-york/components/animated-tabs.tsx",
+                type: "registry:ui",
+                target: "components/shadix-ui/components/animated-tabs.tsx",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/animated-tabs.tsx",
+            },
+            {
+                path: "registry/new-york/lib/tab-variants.ts",
+                type: "registry:lib",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/lib/tab-variants.ts",
+            },
+        ],
+        component: React.lazy(async () => {
+            const mod = await import(
+                "@/registry/new-york/components/animated-tabs.tsx"
+            );
+            const exportName =
+                Object.keys(mod).find(
+                    (key) =>
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "function" ||
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "object",
+                ) || "animated-tabs";
+            return {
+                default: (mod as Record<string, unknown>)[
+                    exportName
+                ] as React.ComponentType<object>,
+            };
+        }),
+        dependencies: ["motion"],
+        categories: undefined,
+        meta: {
+            api: {
+                indicator: {
+                    description:
+                        "Indicator animation: underline, pill or slide",
+                    type: "TabIndicatorVariant",
+                    typeDescription: "TabIndicatorVariant",
+                    required: false,
+                    deprecated: false,
+                },
+                contentAnimation: {
+                    description: "Content animation: fade, slide or slideUp",
+                    type: "TabContentVariant",
+                    typeDescription: "TabContentVariant",
+                    required: false,
+                    deprecated: false,
+                },
+            },
+        },
+    },
+    "animated-tabs-demo": {
+        name: "animated-tabs-demo",
+        description: "",
+        type: "registry:demo",
+        registryDependencies: undefined,
+        files: [
+            {
+                path: "registry/new-york/demos/animated-tabs.demo.tsx",
+                type: "registry:demo",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/demos/animated-tabs.demo.tsx",
+            },
+        ],
+        component: React.lazy(async () => {
+            const mod = await import(
+                "@/registry/new-york/demos/animated-tabs.demo.tsx"
+            );
+            const exportName =
+                Object.keys(mod).find(
+                    (key) =>
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "function" ||
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "object",
+                ) || "animated-tabs-demo";
+            return {
+                default: (mod as Record<string, unknown>)[
+                    exportName
+                ] as React.ComponentType<object>,
+            };
+        }),
+        dependencies: undefined,
+        categories: undefined,
+        meta: undefined,
+    },
     datetimepicker: {
         name: "datetimepicker",
         description: "A datetime picker component",
@@ -154,77 +252,77 @@ export const Index: Record<string, RegistryIndexItem> = {
             {
                 path: "registry/new-york/components/datetimepicker/datetimepicker.tsx",
                 type: "registry:ui",
-                target: "components/datetimepicker/datetimepicker.tsx",
+                target: "components/shadix-ui/components/datetimepicker/datetimepicker.tsx",
                 githubUrl:
                     "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/datetimepicker/datetimepicker.tsx",
             },
             {
                 path: "registry/new-york/components/datetimepicker/index.ts",
                 type: "registry:ui",
-                target: "components/datetimepicker/index.ts",
+                target: "components/shadix-ui/components/datetimepicker/index.ts",
                 githubUrl:
                     "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/datetimepicker/index.ts",
             },
             {
                 path: "registry/new-york/components/datetimepicker/calendar-grid.tsx",
                 type: "registry:ui",
-                target: "components/datetimepicker/calendar-grid.tsx",
+                target: "components/shadix-ui/components/datetimepicker/calendar-grid.tsx",
                 githubUrl:
                     "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/datetimepicker/calendar-grid.tsx",
             },
             {
                 path: "registry/new-york/components/datetimepicker/datepicker-view.tsx",
                 type: "registry:ui",
-                target: "components/datetimepicker/datepicker-view.tsx",
+                target: "components/shadix-ui/components/datetimepicker/datepicker-view.tsx",
                 githubUrl:
                     "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/datetimepicker/datepicker-view.tsx",
             },
             {
                 path: "registry/new-york/components/datetimepicker/datetimepicker-context.tsx",
                 type: "registry:ui",
-                target: "components/datetimepicker/datetimepicker-context.tsx",
+                target: "components/shadix-ui/components/datetimepicker/datetimepicker-context.tsx",
                 githubUrl:
                     "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/datetimepicker/datetimepicker-context.tsx",
             },
             {
                 path: "registry/new-york/components/datetimepicker/datetimepicker-types.ts",
                 type: "registry:ui",
-                target: "components/datetimepicker/datetimepicker-types.ts",
+                target: "components/shadix-ui/components/datetimepicker/datetimepicker-types.ts",
                 githubUrl:
                     "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/datetimepicker/datetimepicker-types.ts",
             },
             {
                 path: "registry/new-york/components/datetimepicker/datetimepicker-utils.ts",
                 type: "registry:ui",
-                target: "components/datetimepicker/datetimepicker-utils.ts",
+                target: "components/shadix-ui/components/datetimepicker/datetimepicker-utils.ts",
                 githubUrl:
                     "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/datetimepicker/datetimepicker-utils.ts",
             },
             {
                 path: "registry/new-york/components/datetimepicker/timepicker-view.tsx",
                 type: "registry:ui",
-                target: "components/datetimepicker/timepicker-view.tsx",
+                target: "components/shadix-ui/components/datetimepicker/timepicker-view.tsx",
                 githubUrl:
                     "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/datetimepicker/timepicker-view.tsx",
             },
             {
                 path: "registry/new-york/components/datetimepicker/wheel-month-picker.tsx",
                 type: "registry:ui",
-                target: "components/datetimepicker/wheel-month-picker.tsx",
+                target: "components/shadix-ui/components/datetimepicker/wheel-month-picker.tsx",
                 githubUrl:
                     "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/datetimepicker/wheel-month-picker.tsx",
             },
             {
                 path: "registry/new-york/components/datetimepicker/wheel-time-picker.tsx",
                 type: "registry:ui",
-                target: "components/datetimepicker/wheel-time-picker.tsx",
+                target: "components/shadix-ui/components/datetimepicker/wheel-time-picker.tsx",
                 githubUrl:
                     "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/datetimepicker/wheel-time-picker.tsx",
             },
             {
                 path: "registry/new-york/components/datetimepicker/wheel-year-picker.tsx",
                 type: "registry:ui",
-                target: "components/datetimepicker/wheel-year-picker.tsx",
+                target: "components/shadix-ui/components/datetimepicker/wheel-year-picker.tsx",
                 githubUrl:
                     "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/datetimepicker/wheel-year-picker.tsx",
             },
@@ -322,7 +420,7 @@ export const Index: Record<string, RegistryIndexItem> = {
             {
                 path: "registry/new-york/components/datetimepicker-input.tsx",
                 type: "registry:ui",
-                target: "",
+                target: "components/shadix-ui/components/datetimepicker-input.tsx",
                 githubUrl:
                     "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/datetimepicker-input.tsx",
             },
@@ -394,7 +492,7 @@ export const Index: Record<string, RegistryIndexItem> = {
             {
                 path: "registry/new-york/components/expandable-card.tsx",
                 type: "registry:ui",
-                target: "",
+                target: "components/shadix-ui/components/expandable-card.tsx",
                 githubUrl:
                     "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/expandable-card.tsx",
             },
@@ -474,7 +572,7 @@ export const Index: Record<string, RegistryIndexItem> = {
             {
                 path: "registry/new-york/components/image-gallery.tsx",
                 type: "registry:ui",
-                target: "",
+                target: "components/shadix-ui/components/image-gallery.tsx",
                 githubUrl:
                     "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/image-gallery.tsx",
             },
@@ -628,7 +726,7 @@ export const Index: Record<string, RegistryIndexItem> = {
             {
                 path: "registry/new-york/components/loader.tsx",
                 type: "registry:ui",
-                target: "",
+                target: "components/shadix-ui/components/loader.tsx",
                 githubUrl:
                     "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/loader.tsx",
             },
@@ -726,7 +824,7 @@ export const Index: Record<string, RegistryIndexItem> = {
             {
                 path: "registry/new-york/components/morph-image.tsx",
                 type: "registry:ui",
-                target: "",
+                target: "components/shadix-ui/components/morph-image.tsx",
                 githubUrl:
                     "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/morph-image.tsx",
             },
@@ -812,7 +910,7 @@ export const Index: Record<string, RegistryIndexItem> = {
             {
                 path: "registry/new-york/components/motion-dialog.tsx",
                 type: "registry:ui",
-                target: "",
+                target: "components/shadix-ui/components/motion-dialog.tsx",
                 githubUrl:
                     "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/motion-dialog.tsx",
             },
@@ -915,7 +1013,7 @@ export const Index: Record<string, RegistryIndexItem> = {
             {
                 path: "registry/new-york/components/reorder-list.tsx",
                 type: "registry:ui",
-                target: "",
+                target: "components/shadix-ui/components/reorder-list.tsx",
                 githubUrl:
                     "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/reorder-list.tsx",
             },
@@ -1033,7 +1131,7 @@ export const Index: Record<string, RegistryIndexItem> = {
             {
                 path: "registry/new-york/components/segment-layout.tsx",
                 type: "registry:ui",
-                target: "",
+                target: "components/shadix-ui/components/segment-layout.tsx",
                 githubUrl:
                     "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/segment-layout.tsx",
             },
@@ -1148,14 +1246,14 @@ export const Index: Record<string, RegistryIndexItem> = {
             {
                 path: "registry/new-york/components/signature-pad.tsx",
                 type: "registry:ui",
-                target: "",
+                target: "components/shadix-ui/components/signature-pad.tsx",
                 githubUrl:
                     "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/signature-pad.tsx",
             },
             {
                 path: "registry/new-york/styles/signature-pad.css",
                 type: "registry:style",
-                target: "",
+                target: "components/shadix-ui/styles/signature-pad.css",
                 githubUrl:
                     "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/styles/signature-pad.css",
             },
@@ -1286,35 +1384,35 @@ export const Index: Record<string, RegistryIndexItem> = {
             {
                 path: "registry/new-york/components/video-player/video-player.tsx",
                 type: "registry:ui",
-                target: "components/video-player/video-player.tsx",
+                target: "components/shadix-ui/components/video-player/video-player.tsx",
                 githubUrl:
                     "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/video-player/video-player.tsx",
             },
             {
                 path: "registry/new-york/components/video-player/video-player-buffer.tsx",
                 type: "registry:ui",
-                target: "components/video-player/video-player-buffer.tsx",
+                target: "components/shadix-ui/components/video-player/video-player-buffer.tsx",
                 githubUrl:
                     "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/video-player/video-player-buffer.tsx",
             },
             {
                 path: "registry/new-york/components/video-player/video-player-controls.tsx",
                 type: "registry:ui",
-                target: "components/video-player/video-player-controls.tsx",
+                target: "components/shadix-ui/components/video-player/video-player-controls.tsx",
                 githubUrl:
                     "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/video-player/video-player-controls.tsx",
             },
             {
                 path: "registry/new-york/components/video-player/video-player-indicator.tsx",
                 type: "registry:ui",
-                target: "components/video-player/video-player-indicator.tsx",
+                target: "components/shadix-ui/components/video-player/video-player-indicator.tsx",
                 githubUrl:
                     "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/video-player/video-player-indicator.tsx",
             },
             {
                 path: "registry/new-york/components/video-player/video-player-progress-bar.tsx",
                 type: "registry:ui",
-                target: "components/video-player/video-player-progress-bar.tsx",
+                target: "components/shadix-ui/components/video-player/video-player-progress-bar.tsx",
                 githubUrl:
                     "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/video-player/video-player-progress-bar.tsx",
             },
@@ -1371,9 +1469,9 @@ export const Index: Record<string, RegistryIndexItem> = {
             api: {
                 src: {
                     description: "(required) Source of the video",
-                    type: '| string        | {              "2160p"?: string;              "1440p"?: string;              "1080p"?: string;              "720p"?: string;              "480p"?: string;              "360p"?: string;              "240p"?: string;          }',
+                    type: '| string\r        | {\r              "2160p"?: string;\r              "1440p"?: string;\r              "1080p"?: string;\r              "720p"?: string;\r              "480p"?: string;\r              "360p"?: string;\r              "240p"?: string;\r          }',
                     typeDescription:
-                        '| string        | {              "2160p"?: string;              "1440p"?: string;              "1080p"?: string;              "720p"?: string;              "480p"?: string;              "360p"?: string;              "240p"?: string;          }',
+                        '| string\r        | {\r              "2160p"?: string;\r              "1440p"?: string;\r              "1080p"?: string;\r              "720p"?: string;\r              "480p"?: string;\r              "360p"?: string;\r              "240p"?: string;\r          }',
                     required: true,
                     deprecated: false,
                 },
@@ -1401,9 +1499,9 @@ export const Index: Record<string, RegistryIndexItem> = {
                 },
                 subtitles: {
                     description: "(optional) Subtitles for the video",
-                    type: "{        src: string;        lang: string;        label: string;    }[]",
+                    type: "{\r        src: string;\r        lang: string;\r        label: string;\r    }[]",
                     typeDescription:
-                        "{        src: string;        lang: string;        label: string;    }[]",
+                        "{\r        src: string;\r        lang: string;\r        label: string;\r    }[]",
                     required: false,
                     deprecated: false,
                 },

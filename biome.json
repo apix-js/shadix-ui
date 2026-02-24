@@ -105,6 +105,16 @@
             "a11y": {
                 "useGenericFontNames": "off",
                 "useSemanticElements": "off"
+            },
+            "nursery": {
+                "useSortedClasses": {
+                    "level": "warn",
+                    "fix": "safe",
+                    "options": {
+                        "attributes": ["className", "class"],
+                        "functions": ["clsx", "cva", "tw", "cn"]
+                    }
+                }
             }
         }
     }

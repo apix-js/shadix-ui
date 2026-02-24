@@ -10,12 +10,18 @@
             "name": "action-button",
             "description": "A button that displays a popup when clicked",
             "type": "registry:component",
-            "registryDependencies": ["button"],
-            "dependencies": ["class-variance-authority", "motion"],
+            "registryDependencies": [
+                "button"
+            ],
+            "dependencies": [
+                "class-variance-authority",
+                "motion"
+            ],
             "files": [
                 {
                     "path": "registry/new-york/components/action-button.tsx",
-                    "type": "registry:ui"
+                    "type": "registry:ui",
+                    "target": "components/shadix-ui/components/action-button.tsx"
                 }
             ]
         },
@@ -23,12 +29,17 @@
             "name": "motion-dialog",
             "description": "A dialog with modern motion animations",
             "type": "registry:component",
-            "registryDependencies": ["dialog"],
-            "dependencies": ["motion"],
+            "registryDependencies": [
+                "dialog"
+            ],
+            "dependencies": [
+                "motion"
+            ],
             "files": [
                 {
                     "path": "registry/new-york/components/motion-dialog.tsx",
-                    "type": "registry:ui"
+                    "type": "registry:ui",
+                    "target": "components/shadix-ui/components/motion-dialog.tsx"
                 },
                 {
                     "path": "registry/new-york/lib/popup-variants.ts",
@@ -40,63 +51,70 @@
             "name": "datetimepicker",
             "description": "A datetime picker component",
             "type": "registry:component",
-            "registryDependencies": ["input-group", "button", "@ncdai/wheel-picker"],
-            "dependencies": ["date-fns", "motion"],
+            "registryDependencies": [
+                "input-group",
+                "button",
+                "@ncdai/wheel-picker"
+            ],
+            "dependencies": [
+                "date-fns",
+                "motion"
+            ],
             "files": [
                 {
                     "path": "registry/new-york/components/datetimepicker/datetimepicker.tsx",
                     "type": "registry:ui",
-                    "target": "components/datetimepicker/datetimepicker.tsx"
+                    "target": "components/shadix-ui/components/datetimepicker/datetimepicker.tsx"
                 },
                 {
                     "path": "registry/new-york/components/datetimepicker/index.ts",
                     "type": "registry:ui",
-                    "target": "components/datetimepicker/index.ts"
+                    "target": "components/shadix-ui/components/datetimepicker/index.ts"
                 },
                 {
                     "path": "registry/new-york/components/datetimepicker/calendar-grid.tsx",
                     "type": "registry:ui",
-                    "target": "components/datetimepicker/calendar-grid.tsx"
+                    "target": "components/shadix-ui/components/datetimepicker/calendar-grid.tsx"
                 },
                 {
                     "path": "registry/new-york/components/datetimepicker/datepicker-view.tsx",
                     "type": "registry:ui",
-                    "target": "components/datetimepicker/datepicker-view.tsx"
+                    "target": "components/shadix-ui/components/datetimepicker/datepicker-view.tsx"
                 },
                 {
                     "path": "registry/new-york/components/datetimepicker/datetimepicker-context.tsx",
                     "type": "registry:ui",
-                    "target": "components/datetimepicker/datetimepicker-context.tsx"
+                    "target": "components/shadix-ui/components/datetimepicker/datetimepicker-context.tsx"
                 },
                 {
                     "path": "registry/new-york/components/datetimepicker/datetimepicker-types.ts",
                     "type": "registry:ui",
-                    "target": "components/datetimepicker/datetimepicker-types.ts"
+                    "target": "components/shadix-ui/components/datetimepicker/datetimepicker-types.ts"
                 },
                 {
                     "path": "registry/new-york/components/datetimepicker/datetimepicker-utils.ts",
                     "type": "registry:ui",
-                    "target": "components/datetimepicker/datetimepicker-utils.ts"
+                    "target": "components/shadix-ui/components/datetimepicker/datetimepicker-utils.ts"
                 },
                 {
                     "path": "registry/new-york/components/datetimepicker/timepicker-view.tsx",
                     "type": "registry:ui",
-                    "target": "components/datetimepicker/timepicker-view.tsx"
+                    "target": "components/shadix-ui/components/datetimepicker/timepicker-view.tsx"
                 },
                 {
                     "path": "registry/new-york/components/datetimepicker/wheel-month-picker.tsx",
                     "type": "registry:ui",
-                    "target": "components/datetimepicker/wheel-month-picker.tsx"
+                    "target": "components/shadix-ui/components/datetimepicker/wheel-month-picker.tsx"
                 },
                 {
                     "path": "registry/new-york/components/datetimepicker/wheel-time-picker.tsx",
                     "type": "registry:ui",
-                    "target": "components/datetimepicker/wheel-time-picker.tsx"
+                    "target": "components/shadix-ui/components/datetimepicker/wheel-time-picker.tsx"
                 },
                 {
                     "path": "registry/new-york/components/datetimepicker/wheel-year-picker.tsx",
                     "type": "registry:ui",
-                    "target": "components/datetimepicker/wheel-year-picker.tsx"
+                    "target": "components/shadix-ui/components/datetimepicker/wheel-year-picker.tsx"
                 },
                 {
                     "path": "registry/new-york/hooks/useClickOutside.ts",
@@ -116,12 +134,21 @@
             "name": "datetimepicker-input",
             "description": "A datetime picker input component",
             "type": "registry:component",
-            "registryDependencies": ["input-group", "button", "@ncdai/wheel-picker", "@shadix-ui/datetimepicker"],
-            "dependencies": ["date-fns", "motion"],
+            "registryDependencies": [
+                "input-group",
+                "button",
+                "@ncdai/wheel-picker",
+                "@shadix-ui/datetimepicker"
+            ],
+            "dependencies": [
+                "date-fns",
+                "motion"
+            ],
             "files": [
                 {
                     "path": "registry/new-york/components/datetimepicker-input.tsx",
-                    "type": "registry:ui"
+                    "type": "registry:ui",
+                    "target": "components/shadix-ui/components/datetimepicker-input.tsx"
                 }
             ]
         },
@@ -129,12 +156,17 @@
             "name": "expandable-card",
             "description": "A card component with an expandable content",
             "type": "registry:component",
-            "registryDependencies": ["button"],
-            "dependencies": ["motion"],
+            "registryDependencies": [
+                "button"
+            ],
+            "dependencies": [
+                "motion"
+            ],
             "files": [
                 {
                     "path": "registry/new-york/components/expandable-card.tsx",
-                    "type": "registry:ui"
+                    "type": "registry:ui",
+                    "target": "components/shadix-ui/components/expandable-card.tsx"
                 },
                 {
                     "path": "registry/new-york/hooks/useClickOutside.ts",
@@ -146,16 +178,23 @@
             "name": "signature-pad",
             "description": "A signature pad component for capturing signatures",
             "type": "registry:component",
-            "registryDependencies": ["button"],
-            "dependencies": ["class-variance-authority", "lucide-react"],
+            "registryDependencies": [
+                "button"
+            ],
+            "dependencies": [
+                "class-variance-authority",
+                "lucide-react"
+            ],
             "files": [
                 {
                     "path": "registry/new-york/components/signature-pad.tsx",
-                    "type": "registry:ui"
+                    "type": "registry:ui",
+                    "target": "components/shadix-ui/components/signature-pad.tsx"
                 },
                 {
                     "path": "registry/new-york/styles/signature-pad.css",
-                    "type": "registry:style"
+                    "type": "registry:style",
+                    "target": "components/shadix-ui/styles/signature-pad.css"
                 }
             ]
         },
@@ -163,11 +202,14 @@
             "name": "reorder-list",
             "description": "A list component with reordering functionality",
             "type": "registry:component",
-            "dependencies": ["motion"],
+            "dependencies": [
+                "motion"
+            ],
             "files": [
                 {
                     "path": "registry/new-york/components/reorder-list.tsx",
-                    "type": "registry:ui"
+                    "type": "registry:ui",
+                    "target": "components/shadix-ui/components/reorder-list.tsx"
                 },
                 {
                     "path": "registry/new-york/hooks/useRaisedShadow.ts",
@@ -179,11 +221,15 @@
             "name": "loader",
             "description": "A loader component with various variants",
             "type": "registry:component",
-            "dependencies": ["motion", "class-variance-authority"],
+            "dependencies": [
+                "motion",
+                "class-variance-authority"
+            ],
             "files": [
                 {
                     "path": "registry/new-york/components/loader.tsx",
-                    "type": "registry:ui"
+                    "type": "registry:ui",
+                    "target": "components/shadix-ui/components/loader.tsx"
                 }
             ]
         },
@@ -191,11 +237,15 @@
             "name": "segment-layout",
             "description": "A segment layout component for shadcn/ui. Easily create a segment layout with left and right items and a content area",
             "type": "registry:component",
-            "dependencies": ["motion","clsx"],
+            "dependencies": [
+                "motion",
+                "clsx"
+            ],
             "files": [
                 {
                     "path": "registry/new-york/components/segment-layout.tsx",
-                    "type": "registry:ui"
+                    "type": "registry:ui",
+                    "target": "components/shadix-ui/components/segment-layout.tsx"
                 }
             ]
         },
@@ -203,11 +253,14 @@
             "name": "morph-image",
             "description": "A morph image component for shadcn/ui. Easily create a morph image with a thumbnail and a modal",
             "type": "registry:component",
-            "dependencies": ["motion"],
+            "dependencies": [
+                "motion"
+            ],
             "files": [
                 {
                     "path": "registry/new-york/components/morph-image.tsx",
-                    "type": "registry:ui"
+                    "type": "registry:ui",
+                    "target": "components/shadix-ui/components/morph-image.tsx"
                 },
                 {
                     "path": "registry/new-york/hooks/useClickOutside.ts",
@@ -223,12 +276,17 @@
             "name": "image-gallery",
             "description": "A image gallery component for shadcn/ui. Easily create a image gallery with a list of images",
             "type": "registry:component",
-            "dependencies": ["motion"],
-            "registryDependencies": ["@shadix-ui/morph-image"],
+            "dependencies": [
+                "motion"
+            ],
+            "registryDependencies": [
+                "@shadix-ui/morph-image"
+            ],
             "files": [
                 {
                     "path": "registry/new-york/components/image-gallery.tsx",
-                    "type": "registry:ui"
+                    "type": "registry:ui",
+                    "target": "components/shadix-ui/components/image-gallery.tsx"
                 },
                 {
                     "path": "registry/new-york/hooks/useMasonry.ts",
@@ -244,33 +302,39 @@
             "name": "video-player",
             "description": "A video player component for shadcn/ui. Easily create a video player with a progress bar, volume control, and fullscreen toggle.",
             "type": "registry:component",
-            "dependencies": ["motion","lucide-react"],
-            "registryDependencies": ["button","slider"],
+            "dependencies": [
+                "motion",
+                "lucide-react"
+            ],
+            "registryDependencies": [
+                "button",
+                "slider"
+            ],
             "files": [
                 {
                     "path": "registry/new-york/components/video-player/video-player.tsx",
                     "type": "registry:ui",
-                    "target": "components/video-player/video-player.tsx"
+                    "target": "components/shadix-ui/components/video-player/video-player.tsx"
                 },
                 {
                     "path": "registry/new-york/components/video-player/video-player-buffer.tsx",
                     "type": "registry:ui",
-                    "target": "components/video-player/video-player-buffer.tsx"
+                    "target": "components/shadix-ui/components/video-player/video-player-buffer.tsx"
                 },
                 {
                     "path": "registry/new-york/components/video-player/video-player-controls.tsx",
                     "type": "registry:ui",
-                    "target": "components/video-player/video-player-controls.tsx"
+                    "target": "components/shadix-ui/components/video-player/video-player-controls.tsx"
                 },
                 {
                     "path": "registry/new-york/components/video-player/video-player-indicator.tsx",
                     "type": "registry:ui",
-                    "target": "components/video-player/video-player-indicator.tsx"
+                    "target": "components/shadix-ui/components/video-player/video-player-indicator.tsx"
                 },
                 {
                     "path": "registry/new-york/components/video-player/video-player-progress-bar.tsx",
                     "type": "registry:ui",
-                    "target": "components/video-player/video-player-progress-bar.tsx"
+                    "target": "components/shadix-ui/components/video-player/video-player-progress-bar.tsx"
                 },
                 {
                     "path": "registry/new-york/hooks/useVideoPlayer.ts",
@@ -289,6 +353,24 @@
                     "type": "registry:style"
                 }
             ]
-        }
+        },
+        {
+            "name": "animated-tabs",
+            "description": "Tabs with animated indicator and content transitions (underline, pill, slide)",
+            "type": "registry:component",
+            "registryDependencies": ["tabs"],
+            "dependencies": ["motion"],
+            "files": [
+              {
+                "path": "registry/new-york/components/animated-tabs.tsx",
+                "type": "registry:ui",
+                "target": "components/shadix-ui/components/animated-tabs.tsx"
+              },
+              {
+                "path": "registry/new-york/lib/tab-variants.ts",
+                "type": "registry:lib"
+              }
+            ]
+          }
     ]
 }

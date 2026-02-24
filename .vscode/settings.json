@@ -1,7 +1,12 @@
 {
     "svg.preview.background": "dark-transparent",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.biome": "explicit",
+        "source.organizeImports.biome": "explicit"
+    },
     "editor.defaultFormatter": "biomejs.biome",
-    "[typescriptreact]": {
+    "[jsonc]": {
         "editor.defaultFormatter": "biomejs.biome"
     },
     "[javascript]": {
@@ -12,5 +17,24 @@
     },
     "[javascriptreact]": {
         "editor.defaultFormatter": "biomejs.biome"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    },
+    "[css]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    },
+    "biome.enabled": true,
+    "json.schemas": [
+        {
+            "fileMatch": ["biome.json", ".biomerc.json"],
+            "url": "https://biomejs.dev/schemas/2.2.6/schema.json"
+        }
+    ],
+    "[mdx]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     }
 }

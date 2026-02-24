@@ -1,0 +1,53 @@
+---
+title: Animated Tabs
+description: Tabs with animated indicator and content transitions (underline, pill, slide)
+author: 'Gihan Rangana'
+authorUrl: 'https://github.com/gihanrangana'
+authorImage: 'https://github.com/gihanrangana.png'
+---
+
+import { ComponentPreview } from '@/components/ComponentPreview';
+
+<ComponentPreview name="animated-tabs-demo" />
+
+## Installation
+
+<InstalationDocs name="animated-tabs" filepath="components/ui" />
+
+## Usage
+
+### Basic Usage
+
+```tsx
+import {
+    AnimatedTabs,
+    AnimatedTabsContent,
+    AnimatedTabsList,
+    AnimatedTabsTrigger
+} from '@/components/shadix-ui/animated-tabs';
+
+const AnimatedTabsDemo = () => {
+    return (
+        <AnimatedTabs defaultValue="tab1" indicator="underline" contentAnimation="fade">
+            <AnimatedTabsList>
+                <AnimatedTabsTrigger value="tab1">Account</AnimatedTabsTrigger>
+                <AnimatedTabsTrigger value="tab2">Password</AnimatedTabsTrigger>
+                <AnimatedTabsTrigger value="tab3">Settings</AnimatedTabsTrigger>
+            </AnimatedTabsList>
+            <AnimatedTabsContent value="tab1">
+                <p className="text-muted-foreground text-sm">Account settings and profile.</p>
+            </AnimatedTabsContent>
+            <AnimatedTabsContent value="tab2">
+                <p className="text-muted-foreground text-sm">Change your password here.</p>
+            </AnimatedTabsContent>
+            <AnimatedTabsContent value="tab3">
+                <p className="text-muted-foreground text-sm">Manage app preferences.</p>
+            </AnimatedTabsContent>
+        </AnimatedTabs>
+    );
+};
+```
+
+## Props
+
+<PropsTable name="AnimatedTabsProps" filename="animated-tabs" />
