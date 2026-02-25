@@ -81,5 +81,13 @@
   },
   "engines": {
     "node": ">=20"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@tailwindcss/oxide",
+      "esbuild",
+      "msw",
+      "sharp"
+    ]
   }
 }
