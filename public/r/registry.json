@@ -371,6 +371,36 @@
                 "type": "registry:lib"
               }
             ]
+          },
+          {
+            "name": "smooth-scroll-area",
+            "description": "A smooth scroll area component for shadcn/ui. Easily create a smooth scroll area with a scrollbar.",
+            "type": "registry:ui",
+            "dependencies": [
+                "lenis"
+            ],
+            "files": [
+                {
+                    "path": "registry/new-york/components/smooth-scroll-area/smooth-scroll-provider.tsx",
+                    "type": "registry:ui",
+                    "target": "components/shadix-ui/components/smooth-scroll-area/smooth-scroll-provider.tsx"
+                },
+                {
+                    "path": "registry/new-york/components/smooth-scroll-area/lenis-context.tsx",
+                    "type": "registry:ui",
+                    "target": "components/shadix-ui/components/smooth-scroll-area/lenis-context.tsx"
+                },
+                {
+                    "path": "registry/new-york/components/smooth-scroll-area/scrollbar.tsx",
+                    "type": "registry:ui",
+                    "target": "components/shadix-ui/components/smooth-scroll-area/scrollbar.tsx"
+                },
+                {
+                    "path": "registry/new-york/components/smooth-scroll-area/scroll-area.tsx",
+                    "type": "registry:ui",
+                    "target": "components/shadix-ui/components/smooth-scroll-area/scroll-area.tsx"
+                }
+            ]
           }
     ]
 }

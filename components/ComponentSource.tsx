@@ -13,12 +13,14 @@ import { cn } from "@/shadcn/lib/utils";
 export async function ComponentSource({
     name,
     src,
+    githubUrl: githubUrlProp,
     title,
     language,
     collapsible = true,
     className,
 }: React.ComponentProps<"div"> & {
     name?: string;
+    githubUrl?: string;
     src?: string;
     title?: string;
     language?: string;
@@ -29,12 +31,12 @@ export async function ComponentSource({
     }
 
     let code: string | undefined;
-    let githubUrl: string | undefined;
+    let githubUrl: string | undefined = githubUrlProp;
 
     if (name) {
         const item = await getRegistryItem(name);
         code = item?.files?.[0]?.content;
-        githubUrl = item?.files?.[0]?.githubUrl;
+        githubUrl = githubUrl ?? item?.files?.[0]?.githubUrl;
     }
 
     if (src) {
@@ -98,7 +100,7 @@ function ComponentCode({
             {title && (
                 <figcaption
                     data-rehype-pretty-code-title=""
-                    className="text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70"
+                    className="flex items-center gap-2 text-code-foreground [&_svg]:size-4 [&_svg]:text-code-foreground [&_svg]:opacity-70"
                     data-language={language}
                 >
                     {getIconForLanguageExtension(language)}

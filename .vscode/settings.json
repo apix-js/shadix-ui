@@ -36,5 +36,12 @@
     ],
     "[mdx]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    },
+    "tailwindCSS.experimental.classRegex": [
+        ["cn\\(((?:[^()]|\\([^()]*\\))*)\\)", "(?:'|\"|`)([^\"'`]*)(?:'|\"|`)"],
+        [
+            "(?:^|[\\s>])(?:[\\w$]*[Cc]lass[\\w$]*|[\\w$]*[Ss]tyles[\\w$]*)\\s*=\\s*[\"']([^\"']*)[\"']",
+            "(\\S+)"
+        ]
+    ]
 }

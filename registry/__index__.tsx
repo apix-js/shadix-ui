@@ -1374,6 +1374,100 @@ export const Index: Record<string, RegistryIndexItem> = {
         categories: undefined,
         meta: undefined,
     },
+    "smooth-scroll-area": {
+        name: "smooth-scroll-area",
+        description:
+            "A smooth scroll area component for shadcn/ui. Easily create a smooth scroll area with a scrollbar.",
+        type: "registry:ui",
+        registryDependencies: undefined,
+        files: [
+            {
+                path: "registry/new-york/components/smooth-scroll-area/smooth-scroll-provider.tsx",
+                type: "registry:ui",
+                target: "components/shadix-ui/components/smooth-scroll-area/smooth-scroll-provider.tsx",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/smooth-scroll-area/smooth-scroll-provider.tsx",
+            },
+            {
+                path: "registry/new-york/components/smooth-scroll-area/lenis-context.tsx",
+                type: "registry:ui",
+                target: "components/shadix-ui/components/smooth-scroll-area/lenis-context.tsx",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/smooth-scroll-area/lenis-context.tsx",
+            },
+            {
+                path: "registry/new-york/components/smooth-scroll-area/scrollbar.tsx",
+                type: "registry:ui",
+                target: "components/shadix-ui/components/smooth-scroll-area/scrollbar.tsx",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/smooth-scroll-area/scrollbar.tsx",
+            },
+            {
+                path: "registry/new-york/components/smooth-scroll-area/scroll-area.tsx",
+                type: "registry:ui",
+                target: "components/shadix-ui/components/smooth-scroll-area/scroll-area.tsx",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/components/smooth-scroll-area/scroll-area.tsx",
+            },
+        ],
+        component: React.lazy(async () => {
+            const mod = await import(
+                "@/registry/new-york/components/smooth-scroll-area/smooth-scroll-provider.tsx"
+            );
+            const exportName =
+                Object.keys(mod).find(
+                    (key) =>
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "function" ||
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "object",
+                ) || "smooth-scroll-area";
+            return {
+                default: (mod as Record<string, unknown>)[
+                    exportName
+                ] as React.ComponentType<object>,
+            };
+        }),
+        dependencies: ["lenis"],
+        categories: undefined,
+        meta: { api: {} },
+    },
+    "smooth-scroll-area-demo": {
+        name: "smooth-scroll-area-demo",
+        description: "",
+        type: "registry:demo",
+        registryDependencies: undefined,
+        files: [
+            {
+                path: "registry/new-york/demos/smooth-scroll-area.demo.tsx",
+                type: "registry:demo",
+                target: "",
+                githubUrl:
+                    "https://github.com/apix-js/shadix-ui/tree/main/registry/new-york/demos/smooth-scroll-area.demo.tsx",
+            },
+        ],
+        component: React.lazy(async () => {
+            const mod = await import(
+                "@/registry/new-york/demos/smooth-scroll-area.demo.tsx"
+            );
+            const exportName =
+                Object.keys(mod).find(
+                    (key) =>
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "function" ||
+                        typeof (mod as Record<string, unknown>)[key] ===
+                            "object",
+                ) || "smooth-scroll-area-demo";
+            return {
+                default: (mod as Record<string, unknown>)[
+                    exportName
+                ] as React.ComponentType<object>,
+            };
+        }),
+        dependencies: undefined,
+        categories: undefined,
+        meta: undefined,
+    },
     "video-player": {
         name: "video-player",
         description:

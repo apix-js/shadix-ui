@@ -32,16 +32,16 @@ const InstalationDocs: React.FC<InstalationDocsProps> = ({
 
     return (
         <Tabs defaultValue="cli">
-            <TabsList className="bg-transparent gap-2 justify-between flex w-full">
+            <TabsList className="flex w-full justify-between gap-2 bg-transparent">
                 <div>
                     <TabsTrigger
-                        className="border-0 rounded-none data-[state=active]:shadow-none !bg-transparent data-[state=active]:border-b-muted-foreground dark:data-[state=active]:border-b-muted-foreground data-[state=active]:border-b-2"
+                        className="!bg-transparent rounded-none border-0 data-[state=active]:border-b-2 data-[state=active]:border-b-muted-foreground data-[state=active]:shadow-none dark:data-[state=active]:border-b-muted-foreground"
                         value="cli"
                     >
                         CLI
                     </TabsTrigger>
                     <TabsTrigger
-                        className="border-0 rounded-none data-[state=active]:shadow-none !bg-transparent data-[state=active]:border-b-muted-foreground dark:data-[state=active]:border-b-muted-foreground data-[state=active]:border-b-2"
+                        className="!bg-transparent rounded-none border-0 data-[state=active]:border-b-2 data-[state=active]:border-b-muted-foreground data-[state=active]:shadow-none dark:data-[state=active]:border-b-muted-foreground"
                         value="manual"
                     >
                         Manual
@@ -80,10 +80,12 @@ const InstalationDocs: React.FC<InstalationDocsProps> = ({
                 {pkg.files.map((f) => (
                     <ComponentSource
                         key={f.path}
+                        src={f.path}
                         name={getFileName(f.path).replace(
                             /\.(tsx|ts|jsx|js)$/i,
                             "",
                         )}
+                        githubUrl={f.githubUrl}
                         title={`${filepath}/${getFileName(f.path)}`}
                     />
                 ))}

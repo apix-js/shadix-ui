@@ -84,15 +84,15 @@ export const CalendarGrid = memo(
                                         !day.isCurrentMonth &&
                                             "text-gray-400 dark:text-stone-700",
                                         day.isDisabled &&
-                                            "opacity-50 cursor-not-allowed",
+                                            "cursor-not-allowed opacity-50",
                                         day.isRangeStart &&
-                                            "bg-blue-600 dark:bg-blue-400 text-white rounded-r-none",
+                                            "rounded-r-none bg-blue-600 text-white dark:bg-blue-400",
                                         day.isRangeEnd &&
-                                            "bg-blue-600 dark:bg-blue-400 text-white rounded-l-none",
+                                            "rounded-l-none bg-blue-600 text-white dark:bg-blue-400",
                                         day.isInRange &&
                                             !day.isRangeStart &&
                                             !day.isRangeEnd &&
-                                            "bg-blue-100 dark:bg-blue-900 rounded-none",
+                                            "rounded-none bg-blue-100 dark:bg-blue-900",
                                     )}
                                 >
                                     {day.date.getDate()}

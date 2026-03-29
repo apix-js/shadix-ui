@@ -1,0 +1,54 @@
+---
+title: Smooth Scroll Area
+description: A customizable smooth scroll area component for shadcn/ui. Built with Lenis, and interactive loading states.
+author: 'Gihan Rangana'
+authorUrl: 'https://github.com/gihanrangana'
+authorImage: 'https://github.com/gihanrangana.png'
+---
+
+import { ComponentPreview } from '@/components/ComponentPreview';
+
+<ComponentPreview name="smooth-scroll-area-demo" />
+
+## Installation
+
+<InstalationDocs name="smooth-scroll-area" filepath="components/ui" />
+
+## Usage
+
+### Basic Usage
+
+```tsx
+import { ScrollArea } from '@/components/smooth-scroll-area';
+
+const SmoothScrollAreaDemo = () => {
+    return (
+        <ScrollArea>
+            <div>Hello World</div>
+        </ScrollArea>
+    );
+};
+```
+
+### Custom Styles
+
+```tsx
+import { ScrollArea } from '@/components/smooth-scroll-area';
+
+const SmoothScrollAreaDemo = () => {
+    return (
+        <ScrollArea
+            className="rounded-md bg-muted p-4"
+            scrollbarClassName={{
+                track: cn('w-2.5'),
+                thumb: cn('bg-gradient-to-b from-blue-200 to-blue-500')
+            }}>
+            <div>Hello World</div>
+        </ScrollArea>
+    );
+};
+```
+
+## Props
+
+<PropsTable name="ScrollAreaProps" filename="scroll-area" />
